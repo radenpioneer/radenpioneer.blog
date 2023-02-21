@@ -1,0 +1,14 @@
+---
+import Head from './head.astro'
+
+import '~/styles/global.scss'
+---
+
+<html lang="id">
+  <Head>
+    <slot name="head" />
+  </Head>
+  <body>
+    <slot />
+  </body>
+</html>
