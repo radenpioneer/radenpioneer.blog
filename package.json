@@ -1,14 +1,18 @@
 {
   "name": "@example/minimal",
-  "type": "module",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "astro": "astro",
+    "prebuild": "pnpm dlx npm-run-all -p check:*",
     "build": "astro build",
+    "check:lint": "astro check && tsc --noEmit",
+    "check:style": "pnpm exec prettier --plugin-search-dir=. --check .",
+    "dev": "astro dev",
+    "format": "pnpm exec prettier --plugin-search-dir=. --write .",
     "preview": "astro preview",
-    "astro": "astro"
+    "start": "astro dev"
   },
   "dependencies": {
     "astro": "^2.0.14"
