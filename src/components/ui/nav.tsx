@@ -5,7 +5,7 @@ import style from './nav.module.scss'
 const navLinks = [
   {
     title: 'About',
-    path: '#',
+    path: '/about',
   },
   {
     title: 'Blog',

@@ -1,0 +1,12 @@
+---
+import PageLayout from '~/layouts/page.astro'
+import { marked } from 'marked'
+
+const contentMarkdown = await fetch(
+  'https://raw.githubusercontent.com/radenpioneer/radenpioneer/main/README.md'
+).then((res) => res.text())
+---
+
+<PageLayout title="About">
+  <Fragment set:html={marked.parse(contentMarkdown)} />
+</PageLayout>
