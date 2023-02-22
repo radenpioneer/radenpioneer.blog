@@ -1,0 +1,47 @@
+---
+import PageLayout from '~/layouts/page.astro'
+import { marked } from 'marked'
+
+// const HASHNODE_API = 'https://api.hashnode.com/'
+
+export const getStaticPaths = async () => {
+  const res = await fetch('https://api.hashnode.com/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
+        query {
+          user(username: "radenpioneer") {
+            publication {
+              posts {
+                title
+                slug
+                coverImage
+                contentMarkdown
+              }
+            }
+          }
+        }
+      `,
+    }),
+  }).then((res) => res.json())
+
+  return res.data.user.publication.posts.map((post) => {
+    return {
+      params: {
+        slug: post.slug,
+      },
+      props: { post },
+    }
+  })
+}
+
+// const { slug } = Astro.params
+const { post } = Astro.props
+---
+
+<PageLayout title={post.title} image={post.coverImage}>
+  <Fragment set:html={marked.parse(post.contentMarkdown)} />
+</PageLayout>

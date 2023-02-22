@@ -1,4 +1,6 @@
-@use '../../node_modules/@picocss/pico/scss/pico.scss';
+@use '../../node_modules/@picocss/pico/scss/pico.slim.scss';
+@use '../../node_modules/@picocss/pico/scss/components/nav';
+@use '../../node_modules/@picocss/pico/scss/content/code';
 
 :root {
   --font-family: 'Fira Mono', ui-monospace, monospace;

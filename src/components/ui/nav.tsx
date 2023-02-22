@@ -4,15 +4,11 @@ import style from './nav.module.scss'
 
 const navLinks = [
   {
-    title: 'Home',
-    path: '#',
-  },
-  {
     title: 'About',
     path: '#',
   },
   {
-    title: 'Projects',
+    title: 'Blog',
     path: '#',
   },
   {
