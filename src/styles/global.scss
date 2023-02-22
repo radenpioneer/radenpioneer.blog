@@ -1,1 +1,5 @@
 @use '../../node_modules/@picocss/pico/scss/pico.scss';
+
+:root {
+  --font-family: 'Fira Mono', ui-monospace, monospace;
+}

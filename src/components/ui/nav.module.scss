@@ -1,0 +1,15 @@
+.__d_menu {
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .__m_menu {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .__d_menu {
+    display: none;
+  }
+}

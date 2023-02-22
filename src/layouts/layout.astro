@@ -1,0 +1,29 @@
+---
+import BaseLayout from './base.astro'
+import Nav from '~/components/ui/nav'
+
+import '@fontsource/fira-mono/400.css'
+import '@fontsource/fira-mono/500.css'
+import '@fontsource/fira-mono/700.css'
+import '~/styles/global.scss'
+---
+
+<BaseLayout>
+  <Fragment slot="head">
+    <slot name="head" />
+  </Fragment>
+
+  <header class="container-fluid">
+    <Nav />
+  </header>
+  <main class="container-fluid">
+    <slot />
+  </main>
+</BaseLayout>
+
+<style lang="scss">
+  header {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+</style>
