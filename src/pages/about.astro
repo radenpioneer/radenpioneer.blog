@@ -1,12 +1,21 @@
 ---
 import PageLayout from '~/layouts/page.astro'
 import { marked } from 'marked'
+import { SEO } from 'astro-seo'
+import site from '~/site'
 
 const contentMarkdown = await fetch(
   'https://raw.githubusercontent.com/radenpioneer/radenpioneer/main/README.md'
 ).then((res) => res.text())
+
+const title = 'About'
 ---
 
-<PageLayout title="About">
+<PageLayout title={title}>
+  <SEO
+    title={`${title}\u2014${site.name}`}
+    description={site.description}
+    slot="head"
+  />
   <Fragment set:html={marked.parse(contentMarkdown)} />
 </PageLayout>

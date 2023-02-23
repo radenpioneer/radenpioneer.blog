@@ -1,6 +1,8 @@
 ---
 import PageLayout from '~/layouts/page.astro'
 import { marked } from 'marked'
+import { SEO } from 'astro-seo'
+import site from '~/site'
 
 // const HASHNODE_API = 'https://api.hashnode.com/'
 
@@ -14,10 +16,13 @@ export const getStaticPaths = async () => {
       query: `
         query {
           user(username: "radenpioneer") {
+            publicationDomain
             publication {
               posts {
                 title
                 slug
+                brief
+                dateAdded
                 coverImage
                 contentMarkdown
               }
@@ -33,15 +38,25 @@ export const getStaticPaths = async () => {
       params: {
         slug: post.slug,
       },
-      props: { post },
+      props: {
+        post: {
+          domain: res.data.user.publicationDomain,
+          ...post,
+        },
+      },
     }
   })
 }
 
-// const { slug } = Astro.params
 const { post } = Astro.props
 ---
 
 <PageLayout title={post.title} image={post.coverImage}>
+  <SEO
+    title={`${post.title}\u2014${site.name}`}
+    description={post.brief}
+    canonical={`https://${post.domain}/${post.slug}`}
+    slot="head"
+  />
   <Fragment set:html={marked.parse(post.contentMarkdown)} />
 </PageLayout>

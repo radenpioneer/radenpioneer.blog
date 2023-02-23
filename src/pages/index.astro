@@ -1,6 +1,8 @@
 ---
 import Layout from '~/layouts/layout.astro'
 import HomeFeatured from '~/components/home/featured'
+import { SEO } from 'astro-seo'
+import site from '~/site'
 import { getCollection } from 'astro:content'
 
 const allWorksItems = await getCollection('works')
@@ -8,7 +10,7 @@ const featuredWork = allWorksItems.find((item) => item.data.featured)
 ---
 
 <Layout>
-  <title slot="head">Astro</title>
+  <SEO title={site.name} description={site.description} slot="head" />
 
   <div class="__top"></div>
   <HomeFeatured

@@ -1,21 +1,7 @@
 import type { FC } from 'react'
 import MenuIcon from '~icons/material-symbols/menu-rounded'
+import site from '~/site'
 import style from './nav.module.scss'
-
-const navLinks = [
-  {
-    title: 'About',
-    path: '/about',
-  },
-  {
-    title: 'Blog',
-    path: '#',
-  },
-  {
-    title: 'Contact',
-    path: '#',
-  },
-]
 
 const Nav: FC = () => {
   return (
@@ -29,7 +15,7 @@ const Nav: FC = () => {
           </li>
         </ul>
         <ul className={style.__d_menu}>
-          {navLinks.map((item, i) => (
+          {site.nav.map((item, i) => (
             <li key={i}>
               <a href={item.path}>{item.title}</a>
             </li>
