@@ -13,17 +13,14 @@ import '~/styles/global.scss'
     <slot name="head" />
   </Fragment>
 
-  <header class="container-fluid">
-    <Nav />
-  </header>
+  <Nav />
   <main class="container-fluid">
     <slot />
   </main>
 </BaseLayout>
 
 <style lang="scss">
-  header {
+  main {
     padding-top: 0 !important;
-    padding-bottom: 0 !important;
   }
 </style>

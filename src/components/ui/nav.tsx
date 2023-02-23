@@ -19,27 +19,29 @@ const navLinks = [
 
 const Nav: FC = () => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <a href="/">
-            <b>R. Ilham Sastronegoro</b>
-          </a>
-        </li>
-      </ul>
-      <ul className={style.__d_menu}>
-        {navLinks.map((item, i) => (
-          <li key={i}>
-            <a href={item.path}>{item.title}</a>
+    <header className={`container-fluid ${style.__header}`}>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">
+              <span className={style.__title}>R. Ilham Sastronegoro</span>
+            </a>
           </li>
-        ))}
-      </ul>
-      <ul className={style.__m_menu}>
-        <li>
-          <MenuIcon />
-        </li>
-      </ul>
-    </nav>
+        </ul>
+        <ul className={style.__d_menu}>
+          {navLinks.map((item, i) => (
+            <li key={i}>
+              <a href={item.path}>{item.title}</a>
+            </li>
+          ))}
+        </ul>
+        <ul className={style.__m_menu}>
+          <li>
+            <MenuIcon />
+          </li>
+        </ul>
+      </nav>
+    </header>
   )
 }
 

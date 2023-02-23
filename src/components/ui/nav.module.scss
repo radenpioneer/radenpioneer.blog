@@ -1,3 +1,17 @@
+.__header {
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: var(--background-color) / 0.2;
+  position: fixed;
+  z-index: 2;
+
+  backdrop-filter: blur(30px) saturate(125%);
+}
+
+.__title {
+  font-weight: bold;
+}
+
 .__d_menu {
   gap: 1rem;
 }

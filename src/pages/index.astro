@@ -10,6 +10,7 @@ const featuredWork = allWorksItems.find((item) => item.data.featured)
 <Layout>
   <title slot="head">Astro</title>
 
+  <div class="__top"></div>
   <HomeFeatured
     title={featuredWork?.data.title}
     subtitle={featuredWork?.data.subtitle}
@@ -17,3 +18,9 @@ const featuredWork = allWorksItems.find((item) => item.data.featured)
     url={`/works/${featuredWork?.slug}`}
   />
 </Layout>
+
+<style lang="scss">
+  .__top {
+    padding-top: calc(var(--block-spacing-vertical) * 4);
+  }
+</style>
