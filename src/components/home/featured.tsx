@@ -37,10 +37,10 @@ const HomeFeatured: FC<{
       </figure>
       <footer>
         <a href={url} role="button">
-          Studi Kasus
+          Story Behind
         </a>
         <a href={link} className="secondary" role="button">
-          Kunjungi
+          Visit Work
         </a>
       </footer>
     </article>
