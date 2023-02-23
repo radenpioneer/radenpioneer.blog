@@ -1,0 +1,34 @@
+.__featured {
+  text-align: center;
+
+  > * {
+    --typography-spacing-vertical: 1.25rem;
+  }
+
+  > figure {
+    border: 0.15rem solid var(--primary);
+    border-radius: 1rem;
+    img {
+      width: 100%;
+    }
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+
+  > footer {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .__mobile {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  .__desktop {
+    display: none;
+  }
+}

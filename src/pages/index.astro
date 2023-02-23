@@ -1,8 +1,19 @@
 ---
 import Layout from '~/layouts/layout.astro'
+import HomeFeatured from '~/components/home/featured'
+import { getCollection } from 'astro:content'
+
+const allWorksItems = await getCollection('works')
+const featuredWork = allWorksItems.find((item) => item.data.featured)
 ---
 
 <Layout>
   <title slot="head">Astro</title>
-  <h1>Astro</h1>
+
+  <HomeFeatured
+    title={featuredWork?.data.title}
+    subtitle={featuredWork?.data.subtitle}
+    link={featuredWork?.data.link}
+    url={`#`}
+  />
 </Layout>

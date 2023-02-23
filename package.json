@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@astrojs/image": "0.14.1",
+    "@astrojs/mdx": "^0.14.0",
     "@astrojs/react": "2.0.2",
     "@fontsource/fira-mono": "4.5.10",
     "@picocss/pico": "1.5.7",
