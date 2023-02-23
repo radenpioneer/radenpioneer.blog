@@ -1,0 +1,19 @@
+---
+import PageLayout from '~/layouts/page.astro'
+import { getCollection } from 'astro:content'
+
+export const getStaticPaths = async () => {
+  const allWorks = await getCollection('works')
+  return allWorks.map((work) => ({
+    params: { slug: work.slug },
+    props: { work },
+  }))
+}
+
+const { work } = Astro.props
+const { Content } = await work.render()
+---
+
+<PageLayout title={work.data.title}>
+  <Content />
+</PageLayout>

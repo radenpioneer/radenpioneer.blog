@@ -14,6 +14,6 @@ const featuredWork = allWorksItems.find((item) => item.data.featured)
     title={featuredWork?.data.title}
     subtitle={featuredWork?.data.subtitle}
     link={featuredWork?.data.link}
-    url={`#`}
+    url={`/works/${featuredWork?.slug}`}
   />
 </Layout>

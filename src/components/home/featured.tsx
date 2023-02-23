@@ -39,7 +39,7 @@ const HomeFeatured: FC<{
         <a href={url} role="button">
           Story Behind
         </a>
-        <a href={link} className="secondary" role="button">
+        <a href={link} className="secondary" role="button" target={'_blank'}>
           Visit Work
         </a>
       </footer>
