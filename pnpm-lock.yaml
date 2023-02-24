@@ -9,6 +9,7 @@ specifiers:
   '@iconify/json': 2.2.26
   '@picocss/pico': 1.5.7
   '@svgr/core': 6.5.1
+  '@types/marked': ^4.0.8
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   astro: 2.0.14
@@ -40,6 +41,7 @@ dependencies:
 devDependencies:
   '@iconify/json': 2.2.26
   '@svgr/core': 6.5.1
+  '@types/marked': 4.0.8
   sass: 1.58.3
   typescript: 4.9.5
   unplugin-icons: 0.15.3_@svgr+core@6.5.1
@@ -1035,6 +1037,10 @@ packages:
   /@types/json5/0.0.30:
     resolution: {integrity: sha512-sqm9g7mHlPY/43fcSNrCYfOeX9zkTTK+euO5E6+CVijSMm5tTjkVdwdqRkY3ljjIAf8679vps5jKUoJBCLsMDA==}
     dev: false
+
+  /@types/marked/4.0.8:
+    resolution: {integrity: sha512-HVNzMT5QlWCOdeuBsgXP8EZzKUf0+AXzN+sLmjvaB3ZlLqO+e4u0uXrdw9ub69wBKFs+c6/pA4r9sy6cCDvImw==}
+    dev: true
 
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
