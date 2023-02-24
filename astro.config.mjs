@@ -5,6 +5,9 @@ import mdx from '@astrojs/mdx'
 import Icons from 'unplugin-icons/vite'
 
 // https://astro.build/config
+import sitemap from '@astrojs/sitemap'
+
+// https://astro.build/config
 export default defineConfig({
   site: 'https://radenpioneer.blog',
   integrations: [
@@ -13,6 +16,7 @@ export default defineConfig({
       serviceEntryPoint: '@astrojs/image/sharp',
     }),
     mdx(),
+    sitemap(),
   ],
   vite: {
     plugins: [
