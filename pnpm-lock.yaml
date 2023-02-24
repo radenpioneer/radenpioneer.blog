@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@astrojs/image': 0.14.1
-  '@astrojs/mdx': ^0.14.0
+  '@astrojs/mdx': 0.14.0
   '@astrojs/react': 2.0.2
   '@fontsource/fira-mono': 4.5.10
   '@iconify/json': 2.2.26
