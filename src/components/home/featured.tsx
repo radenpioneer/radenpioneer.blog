@@ -1,12 +1,20 @@
 import type { FC } from 'react'
 import style from './featured.module.scss'
 
-const HomeFeatured: FC<{
+export interface HomeFeaturedProps {
   title: string
   subtitle?: string
   link: string
   url: string
-}> = ({ title, subtitle, link, url }) => {
+}
+
+const HomeFeatured: FC<HomeFeaturedProps & { renderedImages: any }> = ({
+  title,
+  subtitle,
+  link,
+  url,
+  renderedImages,
+}) => {
   return (
     <article className={`container ${style.__featured}`}>
       <h2>{title}</h2>
@@ -14,9 +22,7 @@ const HomeFeatured: FC<{
       <figure className={style.__desktop}>
         <picture>
           <img
-            src={`https://api.sngr.studio/image/1280w/720h/${encodeURIComponent(
-              link
-            )}`}
+            src={renderedImages.desktop.image.src}
             width={1280}
             height={720}
             alt={title}
@@ -26,9 +32,7 @@ const HomeFeatured: FC<{
       <figure className={style.__mobile}>
         <picture>
           <img
-            src={`https://api.sngr.studio/image/393w/851h/${encodeURIComponent(
-              link
-            )}`}
+            src={renderedImages.mobile.image.src}
             width={393}
             height={851}
             alt={title}

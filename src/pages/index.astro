@@ -1,12 +1,14 @@
 ---
 import Layout from '~/layouts/layout.astro'
-import HomeFeatured from '~/components/home/featured'
+import HomeFeatured from '~/components/home/featured.astro'
 import { SEO } from 'astro-seo'
 import site from '~/site'
 import { getCollection } from 'astro:content'
 
 const allWorksItems = await getCollection('works')
 const featuredWork = allWorksItems.find((item) => item.data.featured)
+
+export const prerender = true
 ---
 
 <Layout>
