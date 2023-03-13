@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import image from '@astrojs/image'
 import mdx from '@astrojs/mdx'
-import netlify from '@astrojs/netlify/functions'
-import sitemap from '@astrojs/sitemap'
 import Icons from 'unplugin-icons/vite'
+
+// https://astro.build/config
+import sitemap from '@astrojs/sitemap'
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,6 +26,4 @@ export default defineConfig({
       }),
     ],
   },
-  output: 'server',
-  adapter: netlify(),
 })

@@ -14,7 +14,6 @@ export const getStaticPaths = async () => {
 
 const { work } = Astro.props
 const { Content } = await work.render()
-export const prerender = true
 ---
 
 <PageLayout title={work.data.title}>
