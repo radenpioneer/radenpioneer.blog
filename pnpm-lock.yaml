@@ -7,7 +7,7 @@ specifiers:
   '@astrojs/react': 2.1.0
   '@astrojs/sitemap': 1.2.0
   '@fontsource/fira-mono': 4.5.10
-  '@iconify/json': 2.2.33
+  '@iconify/json': 2.2.32
   '@picocss/pico': 1.5.7
   '@svgr/core': 6.5.1
   '@types/marked': 4.0.8
@@ -18,7 +18,7 @@ specifiers:
   marked: 4.2.12
   react: 18.2.0
   react-dom: 18.2.0
-  sass: 1.59.2
+  sass: 1.58.3
   sharp: 0.31.3
   typescript: 4.9.5
   unplugin-icons: 0.15.3
@@ -33,7 +33,7 @@ dependencies:
   '@picocss/pico': 1.5.7
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
-  astro: 2.1.2_sass@1.59.2+sharp@0.31.3
+  astro: 2.1.2_sass@1.58.3+sharp@0.31.3
   astro-seo: 0.7.1
   marked: 4.2.12
   react: 18.2.0
@@ -41,10 +41,10 @@ dependencies:
   sharp: 0.31.3
 
 devDependencies:
-  '@iconify/json': 2.2.33
+  '@iconify/json': 2.2.32
   '@svgr/core': 6.5.1
   '@types/marked': 4.0.8
-  sass: 1.59.2
+  sass: 1.58.3
   typescript: 4.9.5
   unplugin-icons: 0.15.3_@svgr+core@6.5.1
 
@@ -90,7 +90,7 @@ packages:
         optional: true
     dependencies:
       '@altano/tiny-async-pool': 1.0.2
-      astro: 2.1.2_sass@1.59.2+sharp@0.31.3
+      astro: 2.1.2_sass@1.58.3+sharp@0.31.3
       http-cache-semantics: 4.1.1
       image-size: 1.0.2
       kleur: 4.1.5
@@ -123,7 +123,7 @@ packages:
       astro: ^2.1.0
     dependencies:
       '@astrojs/prism': 2.1.0
-      astro: 2.1.2_sass@1.59.2+sharp@0.31.3
+      astro: 2.1.2_sass@1.58.3+sharp@0.31.3
       github-slugger: 1.5.0
       image-size: 1.0.2
       import-meta-resolve: 2.2.1
@@ -175,7 +175,7 @@ packages:
     dependencies:
       '@astrojs/webapi': 2.1.0
       '@netlify/functions': 1.4.0
-      astro: 2.1.2_sass@1.59.2+sharp@0.31.3
+      astro: 2.1.2_sass@1.58.3+sharp@0.31.3
       esbuild: 0.15.18
     dev: false
 
@@ -680,8 +680,8 @@ packages:
     resolution: {integrity: sha512-bxUnRP8xptGRo8YXeY073DSpfK74XpSb0ZyRNpHV9WvLnJ7TwPOjZll8hTMin7zLC6iOp59pDZ8EQDj1gzgAQQ==}
     dev: false
 
-  /@iconify/json/2.2.33:
-    resolution: {integrity: sha512-e5PVSGmEXWMijHi396h3hfx5hBzbCiI5AcqvGOSJIaaZyRB4pdPIHCrQ//xRBeFRw+TtATRlDJUkE2XBC05b4g==}
+  /@iconify/json/2.2.32:
+    resolution: {integrity: sha512-303XU9iOVQxihO0a11S9x/cQgrlgQk3j4TwT5lCfx4kxomHL00mswTPrnUGZXM5VOTbLOM+7LdpdCnay7NAJnw==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.0
@@ -1190,7 +1190,7 @@ packages:
     resolution: {integrity: sha512-8Yo1nQrl2iB5zj+VUAHrvGIck8bZ4WAmXQgJOeF9FuAZGQD5qK6DtSZaRbpBXsFfZYHA6tE8pjs3btHhLbC1zQ==}
     dev: false
 
-  /astro/2.1.2_sass@1.59.2+sharp@0.31.3:
+  /astro/2.1.2_sass@1.58.3+sharp@0.31.3:
     resolution: {integrity: sha512-qxBIPHfFJhwNOxI2E96XrGrUM6lGkDRkDY8iqEJNFWPGP+t5yY5SWb8H+OdYUGopexy1GGjoY7SYQCzFBkt7iw==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
@@ -1251,7 +1251,7 @@ packages:
       typescript: 4.9.5
       unist-util-visit: 4.1.2
       vfile: 5.3.7
-      vite: 4.1.4_sass@1.59.2
+      vite: 4.1.4_sass@1.58.3
       vitefu: 0.2.4_vite@4.1.4
       yargs-parser: 21.1.1
       zod: 3.20.6
@@ -3675,8 +3675,8 @@ packages:
       suf-log: 2.5.3
     dev: false
 
-  /sass/1.59.2:
-    resolution: {integrity: sha512-jJyO6SmbzkJexF8MUorHx5tAilcgabioYxT/BHbY4+OvoqmbHxsYlrjZ8Adhqcgl6Zqwie0TgMXLCAmPFxXOuw==}
+  /sass/1.58.3:
+    resolution: {integrity: sha512-Q7RaEtYf6BflYrQ+buPudKR26/lH+10EmO9bBqbmPh/KeLqv8bjpTNqxe71ocONqXq+jYiCbpPUmQMS+JJPk4A==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -4190,7 +4190,7 @@ packages:
       vfile-message: 3.1.4
     dev: false
 
-  /vite/4.1.4_sass@1.59.2:
+  /vite/4.1.4_sass@1.58.3:
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -4219,7 +4219,7 @@ packages:
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 3.17.3
-      sass: 1.59.2
+      sass: 1.58.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
@@ -4232,7 +4232,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.1.4_sass@1.59.2
+      vite: 4.1.4_sass@1.58.3
     dev: false
 
   /vscode-css-languageservice/6.2.4:
