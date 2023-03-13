@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@astrojs/image': 0.16.0
   '@astrojs/mdx': 0.18.0
-  '@astrojs/netlify': 2.2.0
+  '@astrojs/netlify': ^2.1.2
   '@astrojs/react': 2.1.0
   '@astrojs/sitemap': 1.2.0
   '@fontsource/fira-mono': 4.5.10
@@ -25,8 +25,8 @@ specifiers:
 
 dependencies:
   '@astrojs/image': 0.16.0_astro@2.1.2+sharp@0.31.3
-  '@astrojs/mdx': 0.18.0_astro@2.1.2+rollup@3.17.3
-  '@astrojs/netlify': 2.2.0_astro@2.1.2
+  '@astrojs/mdx': 0.18.0_astro@2.1.2+rollup@3.17.1
+  '@astrojs/netlify': 2.1.2_astro@2.1.2
   '@astrojs/react': 2.1.0_3xleytyzprlgycb2ded54tx72i
   '@astrojs/sitemap': 1.2.0
   '@fontsource/fira-mono': 4.5.10
@@ -141,14 +141,14 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/mdx/0.18.0_astro@2.1.2+rollup@3.17.3:
+  /@astrojs/mdx/0.18.0_astro@2.1.2+rollup@3.17.1:
     resolution: {integrity: sha512-mgICosefMpl67O7ER6Yi6ylT9Hk8ZAO6GhTlx4pYXIMOWFMQlP0NXQ9teZwPhOWzBcHWnsHEF+AzVZWbiC2EBg==}
     engines: {node: '>=16.12.0'}
     dependencies:
       '@astrojs/markdown-remark': 2.1.0_astro@2.1.2
       '@astrojs/prism': 2.1.0
       '@mdx-js/mdx': 2.3.0
-      '@mdx-js/rollup': 2.3.0_rollup@3.17.3
+      '@mdx-js/rollup': 2.3.0_rollup@3.17.1
       acorn: 8.8.2
       es-module-lexer: 1.2.0
       estree-util-visit: 1.2.1
@@ -168,12 +168,12 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/netlify/2.2.0_astro@2.1.2:
-    resolution: {integrity: sha512-zpWb7yI96Gxmp6CuhFw7U0I4rH7LMHH6nIyf14gLXmRSLp9YHDux1a1T6zz1SZPNkbwkaHYHCCBnIMszHpkLCQ==}
+  /@astrojs/netlify/2.1.2_astro@2.1.2:
+    resolution: {integrity: sha512-igX7ur4dPDmt5Cw6QtoExdmoTRZheo9XdtM09J1xmh3pU2DprHJcWE8D5xGgvm/3dabwEu4XFObjwAAbX/DNHA==}
     peerDependencies:
-      astro: ^2.1.0
+      astro: ^2.0.7
     dependencies:
-      '@astrojs/webapi': 2.1.0
+      '@astrojs/webapi': 2.0.2
       '@netlify/functions': 1.4.0
       astro: 2.1.2_sass@1.58.3+sharp@0.31.3
       esbuild: 0.15.18
@@ -226,6 +226,12 @@ packages:
       which-pm-runs: 1.1.0
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@astrojs/webapi/2.0.2:
+    resolution: {integrity: sha512-uSNtxLuvCWOcwy/DdIy30ocIcIUedEZpyhn1MHW3XuZ3PZHg4PMej3EP38Ns6uKgDKqMyEdscca9bMLuf4cO/w==}
+    dependencies:
+      undici: 5.20.0
     dev: false
 
   /@astrojs/webapi/2.1.0:
@@ -764,14 +770,14 @@ packages:
       - supports-color
     dev: false
 
-  /@mdx-js/rollup/2.3.0_rollup@3.17.3:
+  /@mdx-js/rollup/2.3.0_rollup@3.17.1:
     resolution: {integrity: sha512-wLvRfJS/M4UmdqTd+WoaySEE7q4BIejYf1xAHXYvtT1du/1Tl/z2450Gg2+Hu7fh05KwRRiehiTP9Yc/Dtn0fA==}
     peerDependencies:
       rollup: '>=2'
     dependencies:
       '@mdx-js/mdx': 2.3.0
-      '@rollup/pluginutils': 5.0.2_rollup@3.17.3
-      rollup: 3.17.3
+      '@rollup/pluginutils': 5.0.2_rollup@3.17.1
+      rollup: 3.17.1
       source-map: 0.7.4
       vfile: 5.3.7
     transitivePeerDependencies:
@@ -822,7 +828,7 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@rollup/pluginutils/5.0.2_rollup@3.17.3:
+  /@rollup/pluginutils/5.0.2_rollup@3.17.1:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -834,7 +840,7 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 3.17.3
+      rollup: 3.17.1
     dev: false
 
   /@svgr/babel-plugin-add-jsx-attribute/6.5.1_@babel+core@7.21.0:
@@ -3638,6 +3644,14 @@ packages:
   /reusify/1.0.4:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
+    dev: false
+
+  /rollup/3.17.1:
+    resolution: {integrity: sha512-8RnSms6rNqHmZK+wiqgnPCqen+rRnUHXkciGDirh7B00g1rX1vpKbPDhuxCvAG2bburoI+W4Q9/PlUB/zYkiYA==}
+    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: false
 
   /rollup/3.17.3:
