@@ -9,12 +9,22 @@ interface Props {
 }
 
 const { post } = Astro.props
+
+if (!post.data.date) {
+  throw new Error('Post has no date')
+}
 ---
 
 <article
   class='prose prose-zinc prose-h2:text-4xl prose-h2:mb-4 prose-h2:*:font-bold prose-h2:*:no-underline prose-h2:*:transition-colors prose-h2:hover:*:text-neutral-950/60 prose-p:font-serif md:prose-lg max-w-none'
 >
-  <h2><a href={`/${post.id}`}>{post.data.title}</a></h2>
+  <h2>
+    <a
+      href={`${post.data.date.getFullYear()}/${String(post.data.date.getMonth() + 1).padStart(2, '0')}/${post.id}`}
+    >
+      {post.data.title}
+    </a>
+  </h2>
   {
     post.data.image && (
       <Picture

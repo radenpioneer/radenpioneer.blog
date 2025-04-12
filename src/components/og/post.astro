@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import Template from './template.astro'
-import { Image } from 'astro:assets'
 import { getExcerpt } from '~/utils/excerpt'
+import img from '~/assets/site/logo.svg?inline'
 
 interface Props {
   post: CollectionEntry<'pages'>
@@ -28,10 +28,9 @@ const { post, site } = Astro.props
   <div style='display: flex; align-items: center; justify-content: flex-end;'>
     {
       site.data.favicon && (
-        <Image
+        <img
           style='margin-right: 0.5rem; border-radius: 9999px;'
-          src={new URL(site.data.favicon, import.meta.env.SITE).href}
-          layout='fixed'
+          src={img}
           width={25}
           height={25}
           alt=''

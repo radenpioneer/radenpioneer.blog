@@ -5,7 +5,12 @@ import { getCollection } from 'astro:content'
 export const getStaticPaths = async () => {
   const pages = await getCollection('pages')
   return pages.map((page) => ({
-    params: { page: page.id },
+    params: {
+      page:
+        page.data.isPost && page.data.date
+          ? `${page.data.date.getFullYear()}/${String(page.data.date.getMonth() + 1).padStart(2, '0')}/${page.id}`
+          : page.id
+    },
     props: { page }
   }))
 }

@@ -7,9 +7,11 @@ export const site = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string().max(160),
+      slogan: z.string().max(160),
       description: z.string().max(280),
       logo: image(),
       favicon: z.string(),
-      hidden: z.boolean().default(false)
+      hidden: z.boolean().default(false),
+      lang: z.string().default('id')
     })
 })
