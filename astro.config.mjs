@@ -8,7 +8,7 @@ import cloudflare from '@astrojs/cloudflare'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'http://localhost:4321',
+  site: 'https://www.radenpioneer.blog',
   integrations: [react(), sitemap()],
   image: {
     experimentalLayout: 'responsive',
