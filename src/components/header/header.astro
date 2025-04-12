@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Social from './social.astro'
+import Menu from './menu.astro'
+import { Picture } from 'astro:assets'
+
+export interface Props {
+  image?: ImageMetadata
+  site: CollectionEntry<'site'>
+}
+
+const { image, site } = Astro.props
+---
+
+<header
+  class='group relative mb-8 flex flex-col items-center justify-center gap-2 overflow-hidden px-2 pt-8 *:text-center data-[image=true]:min-h-[80vh] data-[image=true]:bg-neutral-950/25 md:px-0'
+  data-image={!!image}
+>
+  {
+    site.data.logo && (
+      <Picture
+        class='mb-4 rounded-full'
+        src={site.data.logo}
+        layout='fixed'
+        width={80}
+        height={80}
+        priority={true}
+        alt=''
+      />
+    )
+  }
+  <a
+    class='text-4xl font-bold group-[[data-image=true]]:text-neutral-50'
+    href='/'
+  >
+    {site.data.title}
+  </a>
+  <div class='text-neutral-500 group-[[data-image=true]]:text-neutral-50'>
+    {site.data.description}
+  </div>
+  <Social />
+  <Menu />
+  {
+    image && (
+      <Picture
+        class='absolute inset-0 z-[-1] max-h-full min-h-full'
+        src={image}
+        layout='full-width'
+        position='center'
+        priority={true}
+        alt=''
+      />
+    )
+  }
+</header>

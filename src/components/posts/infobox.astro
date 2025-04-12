@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import type { HTMLAttributes } from 'astro/types'
+import MaterialSymbolsCalendarToday from '~icons/material-symbols/calendar-today'
+import MaterialSymbolsArticle from '~icons/material-symbols/article'
+import MaterialSymbolsLabel from '~icons/material-symbols/label'
+import readingTime from 'reading-time'
+
+interface Props extends HTMLAttributes<'div'> {
+  post: CollectionEntry<'pages'>
+  dateAsLink?: boolean
+}
+
+const { post, dateAsLink, class: className, ...props } = Astro.props
+const date = post.data.date?.toLocaleDateString('en-US', { dateStyle: 'long' })
+---
+
+<div
+  {...props}
+  class:list={[
+    'not-prose flex flex-wrap gap-x-4 gap-y-1 text-neutral-500/80 *:flex *:items-center *:gap-1 *:text-sm [&_a]:hover:underline',
+    className
+  ]}
+>
+  {
+    /* post date */
+    post.data.date && (
+      <div>
+        <MaterialSymbolsCalendarToday />
+        {dateAsLink ? <a href={`/${post.id}`}>{date}</a> : <span>{date}</span>}
+      </div>
+    )
+  }
+
+  {
+    /* post tags */
+    post.data.tags && (
+      <div>
+        <MaterialSymbolsLabel />
+        <div>
+          {post.data.tags.map((tag, _i, _arr) => (
+            <a
+              href={`/tags/${tag}`}
+            >{`${tag}${_i < _arr.length - 1 ? ',' : ''} `}</a>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  {
+    /* post reading time */
+    post.body && (
+      <div>
+        <MaterialSymbolsArticle />
+        <span>{readingTime(post.body).text}</span>
+      </div>
+    )
+  }
+</div>

@@ -23,6 +23,12 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# generated icons
+public/favicon.ico
+public/apple-touch-icon-*
+public/maskable-icon-*
+public/pwa-*
+
 # wrangler files
 .wrangler
 .dev.vars*

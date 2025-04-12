@@ -1,19 +1,61 @@
 ---
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
-import Meta, { type Props as MetaProps } from './meta.astro'
+import Meta, { type Props as MetaProps } from '~/components/common/meta.astro'
+import SEO from '~/components/common/seo.astro'
+import Header, {
+  type Props as HeaderProps
+} from '~/components/header/header.astro'
+import Footer from '~/components/footer/footer.astro'
+import { getEntry } from 'astro:content'
+import './global.css'
 
-export interface Props extends BaseLayoutProps, MetaProps {}
+export interface Props
+  extends BaseLayoutProps,
+    Omit<MetaProps, 'site'>,
+    Omit<HeaderProps, 'site'> {}
 
-const { title, description, canonical, ...props } = Astro.props
+const {
+  title,
+  description,
+  canonical,
+  hidden,
+  image,
+  class: className,
+  ...props
+} = Astro.props
+const site = await getEntry('site', 'site')
+if (!site) {
+  throw new Error('Site entry not found')
+}
 ---
 
-<BaseLayout {...props}>
+<BaseLayout
+  {...props}
+  class:list={['min-h-screen bg-neutral-50 text-neutral-950', className]}
+>
   {/* <body> */}
+  <Header image={image} site={site} />
   <slot />
+  <Footer site={site} />
 
   {/* <head> */}
   <Fragment slot='head'>
-    <Meta title={title} description={description} canonical={canonical} />
+    <Meta
+      title={title}
+      description={description}
+      canonical={canonical || Astro.url}
+      hidden={hidden}
+      site={site}
+    />
+
+    {/* Open Head Slot */}
     <slot name='head' />
+
+    {/* SEO */}
+    <SEO
+      title={title || site.data.title}
+      description={description || site.data.description}
+      canonical={Astro.url}
+    />
   </Fragment>
 </BaseLayout>

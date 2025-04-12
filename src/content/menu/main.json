@@ -1,0 +1,17 @@
+{
+  "$schema": "../../../.astro/collections/menu.schema.json",
+  "items": [
+    {
+      "label": "Home",
+      "url": "/"
+    },
+    {
+      "label": "About",
+      "url": "/about"
+    },
+    {
+      "label": "Contact",
+      "url": "/#contact"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Template from './template.astro'
+import { Image } from 'astro:assets'
+import { getExcerpt } from '~/utils/excerpt'
+
+interface Props {
+  post: CollectionEntry<'pages'>
+  site: CollectionEntry<'site'>
+}
+
+const { post, site } = Astro.props
+---
+
+<Template>
+  <div
+    style='display: flex; flex: 1; flex-direction: column; align-items: flex-start; justify-content: center;'
+  >
+    <div style='margin-bottom: 1.375rem; font-size: 4rem; font-weight: 700;'>
+      {post.data.title}
+    </div>
+    <div
+      style='display: block; font-size: 2rem; color: #71717a; line-clamp: 2;'
+    >
+      {post.data.description || (await getExcerpt(post.body!, { html: false }))}
+    </div>
+  </div>
+  <div style='display: flex; align-items: center; justify-content: flex-end;'>
+    {
+      site.data.favicon && (
+        <Image
+          style='margin-right: 0.5rem; border-radius: 9999px;'
+          src={new URL(site.data.favicon, import.meta.env.SITE).href}
+          layout='fixed'
+          width={25}
+          height={25}
+          alt=''
+        />
+      )
+    }
+    <div style='font-weight: 700; font-size: 1.25rem;'>{site.data.title}</div>
+  </div>
+</Template>

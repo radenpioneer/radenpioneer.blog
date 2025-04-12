@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Infobox from './infobox.astro'
+import { Picture } from 'astro:assets'
+import { getExcerpt } from '~/utils/excerpt'
+
+interface Props {
+  post: CollectionEntry<'pages'>
+}
+
+const { post } = Astro.props
+---
+
+<article
+  class='prose prose-zinc prose-h2:text-4xl prose-h2:mb-4 prose-h2:*:font-bold prose-h2:*:no-underline prose-h2:*:transition-colors prose-h2:hover:*:text-neutral-950/60 prose-p:font-serif md:prose-lg max-w-none'
+>
+  <h2><a href={`/${post.id}`}>{post.data.title}</a></h2>
+  {
+    post.data.image && (
+      <Picture
+        class='-mx-8 w-[calc(100%+calc(var(--spacing)*2*8))]! md:mx-0 md:w-full!'
+        src={post.data.image}
+        layout='responsive'
+        alt=''
+      />
+    )
+  }
+  <Fragment set:html={await getExcerpt(post.body!)} />
+  <Infobox post={post} dateAsLink={true} />
+</article>

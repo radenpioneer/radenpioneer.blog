@@ -1,0 +1,8 @@
+{
+  "$schema": "../../../.astro/collections/site.schema.json",
+  "title": "Independently Published",
+  "description": "An Astro theme inspired by Raam Dev's Independent Publisher 2.",
+  "logo": "~/assets/site/logo.svg",
+  "favicon": "/favicon.svg",
+  "hidden": true
+}

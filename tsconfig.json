@@ -3,10 +3,13 @@
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
+    "types": [
+        "unplugin-icons/types/astro",
+        "@cloudflare/workers-types/2023-07-01"
+    ],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
-    },
-    "types": ["@cloudflare/workers-types/2023-07-01"]
+    }
   }
 }

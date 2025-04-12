@@ -1,0 +1,34 @@
+---
+import type { Props as MetaProps } from './meta.astro'
+
+interface Props extends Required<Omit<MetaProps, 'site' | 'hidden'>> {
+  isArticle?: boolean
+}
+
+const { title, description, canonical } = Astro.props
+---
+
+{/* OpenGraph Tags */}
+<meta property='og:title' content={title} />
+<meta property='og:description' content={description} />
+<meta property='og:url' content={canonical} />
+
+{/* OpenGraph Image */}
+<meta
+  property='og:image'
+  content={`${canonical.href}/og.png`.replace(/\/\//g, '/')}
+/>
+<meta property='og:image:width' content='1200' />
+<meta property='og:image:height' content='630' />
+<meta property='og:image:alt' content={description} />
+<meta property='og:image:type' content='image/png' />
+
+{/* Twitter Tags */}
+<meta name='twitter:card' content='summary_large_image' />
+<meta name='twitter:title' content={title} />
+<meta name='twitter:description' content={description} />
+<meta
+  name='twitter:image'
+  content={`${canonical.href}/og.png`.replace(/\/\//g, '/')}
+/>
+<meta name='twitter:image:alt' content={description} />

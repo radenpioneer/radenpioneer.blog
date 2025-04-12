@@ -1,0 +1,30 @@
+---
+import Layout, { type Props as LayoutProps } from './layout.astro'
+import type { HTMLAttributes } from 'astro/types'
+import Main from '~/components/common/main.astro'
+
+interface Props
+  extends Pick<LayoutProps, 'title' | 'description' | 'image'>,
+    Omit<HTMLAttributes<'article'>, 'title'> {}
+
+const { title, description, image, class: className, ...props } = Astro.props
+---
+
+<Layout title={title} description={description} image={image}>
+  <Main>
+    <article
+      {...props}
+      class:list={[
+        'prose prose-zinc md:prose-xl prose-p:font-serif md:prose-h1:text-6xl max-w-none',
+        className
+      ]}
+    >
+      <h1>{title}</h1>
+      <slot />
+    </article>
+  </Main>
+
+  <Fragment slot='head'>
+    <slot name='head' />
+  </Fragment>
+</Layout>

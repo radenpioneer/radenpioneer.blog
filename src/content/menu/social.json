@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../.astro/collections/menu.schema.json",
+  "items": [
+    {
+      "label": "Facebook",
+      "url": "/#",
+      "type": "facebook"
+    },
+    {
+      "label": "Bluesky",
+      "url": "/#",
+      "type": "bluesky"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "/#",
+      "type": "linkedin"
+    },
+    {
+      "label": "GitHub",
+      "url": "/#",
+      "type": "github"
+    }
+  ]
+}

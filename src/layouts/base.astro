@@ -1,7 +1,8 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 
-export interface Props extends Omit<HTMLAttributes<'body'>, 'title'> {
+export interface Props
+  extends Omit<HTMLAttributes<'body'>, 'title' | 'hidden'> {
   lang?: string | undefined
 }
 

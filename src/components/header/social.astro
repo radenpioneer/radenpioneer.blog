@@ -1,0 +1,58 @@
+---
+import { getEntry } from 'astro:content'
+import SimpleIconsBluesky from '~icons/simple-icons/bluesky'
+import SimpleIconsFacebook from '~icons/simple-icons/facebook'
+import SimpleIconsGithub from '~icons/simple-icons/github'
+import SimpleIconsInstagram from '~icons/simple-icons/instagram'
+import SimpleIconsLinkedin from '~icons/simple-icons/linkedin'
+import SimpleIconsThreads from '~icons/simple-icons/threads'
+import SimpleIconsTiktok from '~icons/simple-icons/tiktok'
+import SimpleIconsX from '~icons/simple-icons/x'
+import SimpleIconsYoutube from '~icons/simple-icons/youtube'
+import MaterialSymbolsArrowOutward from '~icons/material-symbols/arrow-outward'
+
+const links = await getEntry('menu', 'social')
+---
+
+<Fragment>
+  {
+    links && links.data.items.length > 0 && (
+      <nav class='my-4'>
+        <ul class='flex gap-8'>
+          {links.data.items.map((link) => (
+            <li class='text-xl text-neutral-500/60 transition-colors group-[[data-image=true]]:text-neutral-50/80 hover:text-neutral-500 hover:group-[[data-image=true]]:text-neutral-50'>
+              <a
+                href={link.url}
+                aria-label={link.label}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                {link.type === 'bluesky' ? (
+                  <SimpleIconsBluesky />
+                ) : link.type === 'facebook' ? (
+                  <SimpleIconsFacebook />
+                ) : link.type === 'github' ? (
+                  <SimpleIconsGithub />
+                ) : link.type === 'instagram' ? (
+                  <SimpleIconsInstagram />
+                ) : link.type === 'linkedin' ? (
+                  <SimpleIconsLinkedin />
+                ) : link.type === 'threads' ? (
+                  <SimpleIconsThreads />
+                ) : link.type === 'tiktok' ? (
+                  <SimpleIconsTiktok />
+                ) : link.type === 'x' ? (
+                  <SimpleIconsX />
+                ) : link.type === 'youtube' ? (
+                  <SimpleIconsYoutube />
+                ) : (
+                  <MaterialSymbolsArrowOutward />
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
+</Fragment>

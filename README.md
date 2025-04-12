@@ -52,6 +52,13 @@ All commands are run from the root of the project, from a terminal:
 | `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `bun astro -- --help` | Get help using the Astro CLI                     |
 
+## Batteries included:
+
+- A `.devcontainer` custom configuration to use either in [GitHub Codespaces](https://github.com/features/codespaces), [Gitpod Flex](https://www.gitpod.io/docs/flex/introduction/overview), or [run locally](https://containers.dev) using Docker (make sure Docker is installed first).
+- a Gitpod Flex automations config _(feel free to delete it if you don't need it)_.
+- a Renovate config file at `renovate.json`.
+- Prettier, (will be configured automatically if you're using Dev Container)
+
 ## 👀 Want to learn more?
 
 Feel free to check [Astro's documentation](https://docs.astro.build) or jump into Astro's [Discord server](https://astro.build/chat).

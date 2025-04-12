@@ -1,0 +1,48 @@
+---
+import PageLayout from '~/layouts/page.astro'
+import Infobox from '~/components/posts/infobox.astro'
+import { getCollection, render } from 'astro:content'
+
+export const getStaticPaths = async () => {
+  const pages = await getCollection('pages')
+  return pages.map((page) => ({
+    params: { page: page.id },
+    props: { page }
+  }))
+}
+
+const { page } = Astro.props
+const { Content } = await render(page)
+---
+
+<PageLayout
+  title={page.data.title}
+  description={page.data.description}
+  image={page.data.image}
+  data-post={page.data.isPost}
+  class='group data-[post=true]:prose-h1:mb-4'
+>
+  {/* infobox for posts */}
+  <Infobox post={page} class='not-group-[[data-post=true]]:hidden' />
+
+  {/* content */}
+  <Content />
+
+  {/* meta tags */}
+  <Fragment slot='head'>
+    <meta property='og:type' content='article' />
+    {
+      page.data.date && (
+        <meta
+          property='article:published_time'
+          content={page.data.date.toISOString()}
+        />
+      )
+    }
+    {
+      page.data.tags && (
+        <meta property='article:tags' content={page.data.tags.join(', ')} />
+      )
+    }
+  </Fragment>
+</PageLayout>

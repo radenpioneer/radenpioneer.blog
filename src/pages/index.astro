@@ -1,13 +1,15 @@
 ---
-import Layout from '~/layouts/layout.astro'
+import ListLayout from '~/layouts/list.astro'
+import Posts from '~/components/posts/posts.astro'
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection('pages', (page) => page.data.isPost)
 ---
 
-<Layout>
-  <h1>Hello World!</h1>
-  <p>
-    This is Astro Base Template by <a href='/sngrcreative' target='_blank'>
-      SNGR Creative.
-    </a>
-  </p>
-  <a href='/about' role='button'>About</a>
-</Layout>
+<ListLayout>
+  <Posts posts={posts} />
+
+  <Fragment slot='head'>
+    <meta property='og:type' content='website' />
+  </Fragment>
+</ListLayout>
