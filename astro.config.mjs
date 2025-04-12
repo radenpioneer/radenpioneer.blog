@@ -15,7 +15,14 @@ export default defineConfig({
     domains: ['astro.badg.es']
   },
   vite: {
-    plugins: [tailwindcss(), icons({ compiler: 'astro' })]
+    plugins: [tailwindcss(), icons({ compiler: 'astro' })],
+    resolve: {
+      alias: import.meta.env.PROD
+        ? {
+            'react-dom/server': 'react-dom/server.edge'
+          }
+        : {}
+    }
   },
   experimental: {
     responsiveImages: true,
