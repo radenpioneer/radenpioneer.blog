@@ -2,23 +2,13 @@
   "$schema": "../../../.astro/collections/menu.schema.json",
   "items": [
     {
-      "label": "Facebook",
-      "url": "/#",
-      "type": "facebook"
-    },
-    {
       "label": "Bluesky",
-      "url": "/#",
+      "url": "https://bsky.app/profile/radenpioneer.work",
       "type": "bluesky"
     },
     {
-      "label": "LinkedIn",
-      "url": "/#",
-      "type": "linkedin"
-    },
-    {
       "label": "GitHub",
-      "url": "/#",
+      "url": "https://github.com/radenpioneer",
       "type": "github"
     }
   ]

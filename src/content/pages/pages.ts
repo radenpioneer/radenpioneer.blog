@@ -11,6 +11,7 @@ export const pages = defineCollection({
       image: image().optional(),
       date: z.coerce.date().optional(),
       tags: z.array(z.string()).optional(),
-      isPost: z.boolean().default(false).optional()
+      isPost: z.boolean().default(false).optional(),
+      isDraft: z.boolean().default(false).optional()
     })
 })
