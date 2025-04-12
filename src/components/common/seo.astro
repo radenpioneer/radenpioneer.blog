@@ -5,7 +5,7 @@ interface Props extends Required<Omit<MetaProps, 'site' | 'hidden'>> {
   isArticle?: boolean
 }
 
-const { title, description, canonical } = Astro.props
+const { title, description, canonical = Astro.url } = Astro.props
 ---
 
 {/* OpenGraph Tags */}

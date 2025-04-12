@@ -14,6 +14,6 @@ export const getExcerpt = async (
   { html }: { html?: boolean } = { html: true }
 ) => {
   const match = text.match(/(?:^|\n\s*\n)(?![>#*`-])([\s\S]+?)(?=\n\s*\n|$)/)
-  if (!html) return match ? match[1].trim() : ''
-  return await render(match ? match[1].trim() : '')
+  if (!html) return match ? match[1]?.trim() : ''
+  return await render(match ? match[1]?.trim()! : '')
 }

@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { experimental_AstroContainer as AstroContainer } from 'astro/container'
 import DefaultOGTemplate from '~/components/og/default.astro'
 import PostOGTemplate from '~/components/og/post.astro'
@@ -45,7 +46,7 @@ export const generateOG = async ({
         props: { site }
       })
 
-  const svg = await satori(html(markup), {
+  const svg = await satori(html(markup) as ReactNode, {
     width: 1200,
     height: 630,
     fonts: [
