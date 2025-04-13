@@ -3,7 +3,7 @@ import Layout, { type Props as LayoutProps } from './layout.astro'
 import type { HTMLAttributes } from 'astro/types'
 import Main from '~/components/common/main.astro'
 
-interface Props
+export interface Props
   extends Pick<LayoutProps, 'title' | 'description' | 'image'>,
     Omit<HTMLAttributes<'article'>, 'title'> {}
 

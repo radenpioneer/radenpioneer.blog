@@ -1,0 +1,16 @@
+---
+import ErrorLayout, { type Props as ErrorProps } from '~/layouts/error.astro'
+import { Picture } from 'astro:assets'
+import gif from '~/assets/errors/404.gif'
+
+const props = {
+  title: '404 Not Found',
+  message: `Saya lagi nyari halamannya ${Astro.url.pathname}. Saya nyari-nyari di mana ini halaman. Kok nggak ketemu ini halaman?`
+} satisfies Pick<ErrorProps, 'title' | 'message'>
+
+export const prerender = false
+---
+
+<ErrorLayout {...props}>
+  <p><Picture src={gif} layout='responsive' priority={true} alt='' /></p>
+</ErrorLayout>

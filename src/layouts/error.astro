@@ -1,0 +1,22 @@
+---
+import PageLayout, { type Props as PageProps } from './page.astro'
+
+export interface Props extends PageProps {
+  title: string
+  message: string
+}
+
+const { title, message, class: className } = Astro.props
+---
+
+<PageLayout
+  title={title}
+  description={message}
+  class:list={[
+    'prose-h1:text-center prose-p:text-center prose-p:italic prose-img:min-w-full prose-img:max-h-none!',
+    className
+  ]}
+>
+  <slot />
+  <p>{message}</p>
+</PageLayout>
