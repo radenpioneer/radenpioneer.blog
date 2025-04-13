@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
 import Template from './template.astro'
-import img from '~/assets/site/logo.svg?inline'
+import img from '../../../public/favicon.svg?inline'
 
 interface Props {
   site: CollectionEntry<'site'>
@@ -31,7 +31,7 @@ const { site } = Astro.props
       {site.data.title}
     </div>
     <div style='text-align: center; font-size: 1.75rem; color: #71717a;'>
-      {site.data.description}
+      {site.data.slogan}
     </div>
   </div>
 </Template>

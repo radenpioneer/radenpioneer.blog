@@ -28,6 +28,13 @@ const { Content } = await render(page)
   class='group data-[post=true]:prose-h1:mb-4'
 >
   {/* infobox for posts */}
+  {
+    page.data.description && (
+      <div class='not-prose font-neutral-600 my-8 font-sans text-xl italic md:text-2xl'>
+        {page.data.description}
+      </div>
+    )
+  }
   <Infobox post={page} class='not-group-[[data-post=true]]:hidden' />
 
   {/* content */}
