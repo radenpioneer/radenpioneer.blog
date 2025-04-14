@@ -18,5 +18,5 @@ const { title, message, class: className } = Astro.props
   ]}
 >
   <slot />
-  <p>{message}</p>
+  <p set:html={message} />
 </PageLayout>
