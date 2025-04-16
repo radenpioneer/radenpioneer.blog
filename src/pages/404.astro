@@ -5,10 +5,8 @@ import gif from '~/assets/errors/404.gif'
 
 const props = {
   title: '404 Not Found',
-  message: `Saya lagi nyari halamannya <code>${Astro.url.pathname}</code>. Saya nyari-nyari di mana ini halaman. Kok nggak ketemu ini halaman? &mdash; Mas Wapres, 2024`
+  message: `Saya lagi nyari halamann. Saya nyari-nyari di mana ini halaman. Kok nggak ketemu ini halaman? &mdash; Mas Wapres, 2024`
 } satisfies Pick<ErrorProps, 'title' | 'message'>
-
-export const prerender = false
 ---
 
 <ErrorLayout {...props}>

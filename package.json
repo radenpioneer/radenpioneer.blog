@@ -8,11 +8,11 @@
     "cf-typegen": "wrangler types",
     "check:astro": "astro check",
     "check:style": "prettier --check .",
-    "deploy": "astro build && wrangler pages deploy",
+    "deploy": "conc pnpm:build && wrangler deploy",
     "dev": "astro dev",
     "format": "prettier --write .",
     "gen:icons": "pwa-assets-generator --preset minimal-2023 public/favicon.svg",
-    "preview": "astro build && wrangler pages dev"
+    "preview": "conc pnpm:build && wrangler dev"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.4.0",
@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.4",
-    "@cloudflare/workers-types": "^4.20250412.0",
     "@iconify/json": "2.2.326",
     "@tailwindcss/typography": "0.5.16",
     "@types/marked": "6.0.0",

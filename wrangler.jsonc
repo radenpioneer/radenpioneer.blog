@@ -5,11 +5,28 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "radenpioneer-blog",
+  "main": "./dist/_worker.js/index.js",
   "compatibility_date": "2025-04-12",
   "compatibility_flags": ["nodejs_compat"],
-  "pages_build_output_dir": "./dist",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
   "observability": {
     "enabled": true
+  },
+  "workers_dev": true,
+  "env": {
+    "production": {
+      "workers_dev": false,
+      "routes": [
+        {
+          "pattern": "radenpioneer.blog",
+          "custom_domain": true
+        }
+      ]
+    }
   }
   /**
    * Smart Placement

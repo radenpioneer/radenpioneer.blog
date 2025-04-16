@@ -8,7 +8,7 @@
       "type": "node-terminal"
     },
     {
-      "command": "pnpm run build && pnpm run preview --host=0.0.0.0",
+      "command": "pnpm run preview --host=0.0.0.0 --port=4321",
       "name": "Preview server",
       "request": "launch",
       "type": "node-terminal"
