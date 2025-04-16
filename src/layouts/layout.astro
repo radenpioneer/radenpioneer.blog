@@ -2,6 +2,7 @@
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
 import Meta, { type Props as MetaProps } from '~/components/common/meta.astro'
 import SEO from '~/components/common/seo.astro'
+import Analytics from '~/components/common/analytics.astro'
 import Header, {
   type Props as HeaderProps
 } from '~/components/header/header.astro'
@@ -58,5 +59,6 @@ if (!site) {
       description={description || site.data.description}
       canonical={Astro.url}
     />
+    <Analytics />
   </Fragment>
 </BaseLayout>

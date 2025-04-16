@@ -5,6 +5,5 @@
   "description": "Blog pribadi R. Ilham Sastronegoro.",
   "logo": "~/assets/site/logo.svg",
   "favicon": "/favicon.svg",
-  "hidden": true,
   "lang": "id"
 }

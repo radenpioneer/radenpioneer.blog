@@ -1,0 +1,15 @@
+---
+const { env } = Astro.locals.runtime
+---
+
+<Fragment>
+  {
+    import.meta.env.PROD && (
+      <script
+        src='/analytics.js'
+        data-website-id={env.ANALYTICS_ID}
+        is:inline
+      />
+    )
+  }
+</Fragment>
