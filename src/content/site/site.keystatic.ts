@@ -14,6 +14,15 @@ export const site = singleton({
         }
       }
     }),
+    slogan: fields.text({
+      label: 'Slogan',
+      validation: {
+        isRequired: true,
+        length: {
+          max: 160
+        }
+      }
+    }),
     description: fields.text({
       label: 'Deskripsi Website',
       multiline: true,
@@ -43,6 +52,14 @@ export const site = singleton({
     hidden: fields.checkbox({
       label: 'Sembunyikan dari bot?',
       defaultValue: false
+    }),
+    lang: fields.text({
+      label: 'Bahasa Website',
+      validation: {
+        length: {
+          max: 2
+        }
+      }
     }),
     $schema: fields.ignored()
   }

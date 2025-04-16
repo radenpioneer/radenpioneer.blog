@@ -52,6 +52,5 @@
     "typescript": "5.8.3",
     "unplugin-icons": "22.1.0",
     "wrangler": "4.11.1"
-  },
-  "packageManager": "pnpm@10.8.0"
+  }
 }
