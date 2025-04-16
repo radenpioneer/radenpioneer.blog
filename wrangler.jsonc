@@ -22,7 +22,7 @@
       "workers_dev": false,
       "routes": [
         {
-          "pattern": "radenpioneer.blog",
+          "pattern": "www.radenpioneer.blog",
           "custom_domain": true
         }
       ]
