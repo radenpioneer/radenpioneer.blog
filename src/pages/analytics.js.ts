@@ -2,8 +2,8 @@ import type { APIRoute } from 'astro'
 
 export const GET: APIRoute = async ({ locals, redirect }) => {
   const { env } = locals.runtime
+  if (!env.ANALYTICS_ENDPOINT) return redirect('/404')
   const res = await fetch(env.ANALYTICS_ENDPOINT)
-
   if (!res.ok) return redirect('/404')
 
   const script = await res.text()
