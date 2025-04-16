@@ -19,30 +19,25 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
-      - name: Setup package manager
-        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          run_install: |
-            - args: [--frozen-lockfile, --strict-peer-dependencies]
+          bun-version-file: '.bun-version'
 
-      - name: Install Node.js
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with:
-          cache-dependency-path: 'pnpm-lock.yaml'
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
+      - name: Install Deps
+        run: bun install --frozen-lockfile
 
       - name: Restore Build Cache
         uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4
         with:
           path: './node_modules/.astro'
-          key: astro-cache-${{ hashFiles('pnpm-lock.yaml') }}-${{ hashFiles('src/**') }}
+          key: astro-cache-${{ hashFiles('bun.lock') }}-${{ hashFiles('src/**') }}
           restore-keys: |
-            astro-cache-${{ hashFiles('pnpm-lock.yaml') }}-
+            astro-cache-${{ hashFiles('bun.lock') }}-
             astro-cache-
 
       - name: Build your site
-        run: pnpm run build
+        run: bun run build
 
       - name: Deploy to Cloudflare Pages (dev)
         if: github.event_name == 'pull_request'

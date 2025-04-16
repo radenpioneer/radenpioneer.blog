@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
+import keystatic from '@keystatic/astro'
 import tailwindcss from '@tailwindcss/vite'
 import icons from 'unplugin-icons/vite'
 import cloudflare from '@astrojs/cloudflare'
@@ -9,7 +10,7 @@ import cloudflare from '@astrojs/cloudflare'
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.radenpioneer.blog',
-  integrations: [react(), sitemap()],
+  integrations: [react(), sitemap(), keystatic()],
   image: {
     experimentalLayout: 'responsive',
     domains: ['astro.badg.es']
@@ -25,8 +26,7 @@ export default defineConfig({
     }
   },
   experimental: {
-    responsiveImages: true,
-    svg: true
+    responsiveImages: true
   },
   adapter: cloudflare({
     platformProxy: {
