@@ -59,6 +59,6 @@ if (!site) {
       description={description || site.data.description}
       canonical={Astro.url}
     />
-    <Analytics />
+    <Analytics server:defer />
   </Fragment>
 </BaseLayout>
