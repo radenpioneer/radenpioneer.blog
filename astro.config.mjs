@@ -26,8 +26,7 @@ export default defineConfig({
     }
   },
   experimental: {
-    responsiveImages: true,
-    svg: true
+    responsiveImages: true
   },
   adapter: cloudflare({
     platformProxy: {
