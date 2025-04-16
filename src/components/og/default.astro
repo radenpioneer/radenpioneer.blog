@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import Template from './template.astro'
+import img from '../../../public/favicon.svg?inline'
+
+interface Props {
+  site: CollectionEntry<'site'>
+}
+
+const { site } = Astro.props
+---
+
+<Template>
+  <div
+    style='display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center;'
+  >
+    {
+      site.data.favicon && (
+        <img
+          style='margin-bottom: 2rem; border-radius: 9999px;'
+          src={img}
+          width={120}
+          height={120}
+          alt=''
+        />
+      )
+    }
+    <div
+      style='text-align: center; font-size: 5rem; font-weight: 700; margin-bottom: 1rem;'
+    >
+      {site.data.title}
+    </div>
+    <div style='text-align: center; font-size: 1.75rem; color: #71717a;'>
+      {site.data.slogan}
+    </div>
+  </div>
+</Template>

@@ -2,8 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "bun run dev --host=0.0.0.0",
+      "command": "pnpm run dev --host=0.0.0.0",
       "name": "Development server",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "pnpm run preview --host=0.0.0.0 --port=4321",
+      "name": "Preview server",
       "request": "launch",
       "type": "node-terminal"
     }

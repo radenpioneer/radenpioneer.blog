@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { Picture } from 'astro:assets'
+
+const ASTRO_BADGE_URL = 'https://astro.badg.es/v2/built-with-astro/tiny.svg'
+
+interface Props {
+  site: CollectionEntry<'site'>
+}
+
+const { site } = Astro.props
+const year = new Date().getFullYear()
+---
+
+<footer class='px-4 pt-16 pb-8 md:mx-auto md:max-w-screen-md md:px-0'>
+  <div
+    class='flex flex-col gap-y-2 md:flex-row md:items-center md:justify-between'
+  >
+    <div class='text-sm text-neutral-500/80'>
+      {`© ${year} ${site.data.title}.`}
+    </div>
+    <div>
+      <a href='https://astro.build'>
+        <Picture
+          src={ASTRO_BADGE_URL}
+          layout='fixed'
+          width={120}
+          height={20}
+          fit='contain'
+          alt='Built with Astro'
+        />
+      </a>
+    </div>
+  </div>
+</footer>

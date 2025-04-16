@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../.astro/collections/menu.schema.json",
+  "items": [
+    {
+      "label": "Bluesky",
+      "url": "https://bsky.app/profile/radenpioneer.work",
+      "type": "bluesky"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/radenpioneer",
+      "type": "github"
+    }
+  ]
+}
