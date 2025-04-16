@@ -4,7 +4,9 @@ import Infobox from '~/components/posts/infobox.astro'
 import { getCollection, render } from 'astro:content'
 
 export const getStaticPaths = async () => {
-  const pages = await getCollection('pages', (page) => !page.data.isDraft)
+  const pages = await getCollection('pages', (page) =>
+    import.meta.env.PROD ? !page.data.isDraft : page
+  )
   return pages.map((page) => ({
     params: {
       page:

@@ -5,7 +5,10 @@ import { getExcerpt, render } from '~/utils/excerpt'
 import sanitizeHtml from 'sanitize-html'
 
 export const GET: APIRoute = async () => {
-  const posts = await getCollection('pages', (page) => page.data.isPost)
+  const posts = await getCollection(
+    'pages',
+    (page) => page.data.isPost && !page.data.isDraft
+  )
   const site = await getEntry('site', 'site')
 
   if (!site) return new Response('Error generating RSS', { status: 500 })

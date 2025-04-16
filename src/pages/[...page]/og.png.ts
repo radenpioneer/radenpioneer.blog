@@ -3,7 +3,10 @@ import { generateOG } from '~/utils/generate-og'
 import { getCollection } from 'astro:content'
 
 export const getStaticPaths = async () => {
-  const pages = await getCollection('pages')
+  const pages = await getCollection(
+    'pages',
+    (page) => import.meta.env.PROD && !page.data.isDraft
+  )
   return pages.map((page) => ({
     params: {
       page:
