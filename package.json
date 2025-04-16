@@ -4,15 +4,15 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "conc pnpm:check:* && conc pnpm:gen:icons && astro build",
+    "build": "conc bun:check:* && conc bun:gen:icons && astro build",
     "cf-typegen": "wrangler types",
     "check:astro": "astro check",
     "check:style": "prettier --check .",
-    "deploy": "conc pnpm:build && wrangler deploy",
+    "deploy": "conc bun:build && wrangler deploy",
     "dev": "astro dev",
     "format": "prettier --write .",
     "gen:icons": "pwa-assets-generator --preset minimal-2023 public/favicon.svg",
-    "preview": "conc pnpm:build && wrangler dev"
+    "preview": "conc bun:build && wrangler dev"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.5.0",
