@@ -3,9 +3,14 @@ import { config } from '@keystatic/core'
 import { site } from '~/content/site/site.keystatic'
 
 export default config({
-  storage: {
-    kind: 'local'
-  },
+  storage: import.meta.env.PROD
+    ? {
+        kind: 'github',
+        repo: 'radenpioneer/radenpioneer.blog'
+      }
+    : {
+        kind: 'local'
+      },
 
   singletons: {
     site
