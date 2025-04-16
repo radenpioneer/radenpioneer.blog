@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # pnpm lockfiles
 pnpm-lock.yaml
+
+# generated
+worker-configuration.d.ts

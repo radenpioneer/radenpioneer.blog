@@ -8,11 +8,11 @@
     "cf-typegen": "wrangler types",
     "check:astro": "astro check",
     "check:style": "prettier --check .",
-    "deploy": "astro build && wrangler pages deploy",
+    "deploy": "conc pnpm:build && wrangler deploy",
     "dev": "astro dev",
     "format": "prettier --write .",
     "gen:icons": "pwa-assets-generator --preset minimal-2023 public/favicon.svg",
-    "preview": "astro build && wrangler pages dev"
+    "preview": "conc pnpm:build && wrangler dev"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.4.0",
@@ -36,13 +36,12 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.4",
-    "@cloudflare/workers-types": "^4.20250412.0",
     "@iconify/json": "2.2.326",
     "@tailwindcss/typography": "0.5.16",
     "@types/marked": "6.0.0",
     "@types/node": "22.14.1",
-    "@types/react": "^19.1.1",
-    "@types/react-dom": "^19.1.2",
+    "@types/react": "19.1.1",
+    "@types/react-dom": "19.1.2",
     "@types/sanitize-html": "2.15.0",
     "@vite-pwa/assets-generator": "1.0.0",
     "concurrently": "9.1.2",
@@ -52,7 +51,7 @@
     "prettier-plugin-tailwindcss": "0.6.11",
     "typescript": "5.8.3",
     "unplugin-icons": "22.1.0",
-    "wrangler": "^4.10.0"
+    "wrangler": "4.10.0"
   },
   "packageManager": "pnpm@10.8.0"
 }
