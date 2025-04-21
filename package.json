@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.4",
-    "@iconify/json": "2.2.326",
+    "@iconify/json": "2.2.329",
     "@tailwindcss/typography": "0.5.16",
     "@types/marked": "6.0.0",
     "@types/node": "22.14.1",
