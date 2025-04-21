@@ -61,8 +61,8 @@ importers:
         specifier: 0.9.4
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.3)(typescript@5.8.3)
       '@iconify/json':
-        specifier: 2.2.326
-        version: 2.2.326
+        specifier: 2.2.329
+        version: 2.2.329
       '@tailwindcss/typography':
         specifier: 0.5.16
         version: 0.5.16(tailwindcss@4.1.3)
@@ -645,8 +645,8 @@ packages:
   '@fontsource-variable/inter@5.2.5':
     resolution: {integrity: sha512-TrWffUAFOnT8zroE9YmGybagoOgM/HjRqMQ8k9R0vVgXlnUh/vnpbGPAS/Caz1KIlOPnPGh6fvJbb7DHbFCncA==}
 
-  '@iconify/json@2.2.326':
-    resolution: {integrity: sha512-owN5JS4WajJyZcTDyzedzBcDloCSbYyCDqyRD7NCej2c2kQwF+OWwpclAlw2SYwqZSIoJyMtw0vCCyhfnp5Bgw==}
+  '@iconify/json@2.2.329':
+    resolution: {integrity: sha512-t8h9fj+u5Fjre4jifYaC1SPqzIxZ8OIJefzSlLpjX0+2ejrcXKiYl+slIQ1uv2Eco28c+gzkvrwO7cXr3sELMw==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3494,7 +3494,7 @@ snapshots:
 
   '@fontsource-variable/inter@5.2.5': {}
 
-  '@iconify/json@2.2.326':
+  '@iconify/json@2.2.329':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
