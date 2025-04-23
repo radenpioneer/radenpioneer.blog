@@ -1,0 +1,13 @@
+{
+  "title": "Main Menu",
+  "description": "Menu Utama.",
+  "items": [
+    {
+      "discriminant": "url",
+      "value": {
+        "label": "Beranda",
+        "url": "/"
+      }
+    }
+  ]
+}

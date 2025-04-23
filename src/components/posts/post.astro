@@ -5,29 +5,23 @@ import { Picture } from 'astro:assets'
 import { getExcerpt } from '~/utils/excerpt'
 
 interface Props {
-  post: CollectionEntry<'pages'>
+  post: CollectionEntry<'posts'>
 }
 
 const { post } = Astro.props
-
-if (!post.data.date) {
-  throw new Error('Post has no date')
-}
-
-const url = `/${post.data.date.getFullYear()}/${String(post.data.date.getMonth() + 1).padStart(2, '0')}/${post.id}`
 ---
 
 <article
   class='prose prose-zinc prose-h2:text-4xl prose-h2:mb-4 prose-h2:*:font-bold prose-h2:*:no-underline prose-h2:*:transition-colors prose-h2:hover:*:text-neutral-950/60 prose-headings:font-sans md:prose-lg max-w-none font-serif'
 >
   <h2>
-    <a href={url}>
+    <a href={`/${post.id}`}>
       {post.data.title}
     </a>
   </h2>
   {
     post.data.image && (
-      <a href={url}>
+      <a href={`/${post.id}`}>
         <Picture
           class='-mx-8 w-[calc(100%+calc(var(--spacing)*2*8))]! md:mx-0 md:w-full!'
           src={post.data.image}

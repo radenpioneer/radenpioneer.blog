@@ -22,8 +22,9 @@ export const posts = collection({
         }
       },
       slug: {
-        label: 'Permalink',
-        description: 'Permalink, atau alamat artikel ini dapat diakses.'
+        label: 'Slug',
+        description:
+          'Slug Artikel. Akan digunakan sebagai permalink jika kolom permalink dikosongkan.'
       }
     }),
     subtitle: fields.text({
@@ -81,6 +82,11 @@ export const posts = collection({
       label: 'Draf?',
       description: 'Hapus centang apabila artikel ini sudah siap diterbitkan.',
       defaultValue: true
+    }),
+    slug: fields.text({
+      label: 'Permalink',
+      description:
+        'Alamat URL artikel. Jika dikosongkan, akan menggunakan value slug.'
     }),
     body: fields.mdx({
       label: 'Konten Artikel',

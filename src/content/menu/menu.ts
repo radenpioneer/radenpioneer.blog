@@ -12,7 +12,7 @@ export const menu = defineCollection({
         .discriminatedUnion('discriminant', [
           z.object({
             discriminant: z.literal('url'),
-            value: z.object({ label: z.string(), url: z.string().url() })
+            value: z.object({ label: z.string(), url: z.string() })
           }),
           z.object({
             discriminant: z.literal('pages'),
@@ -36,7 +36,7 @@ export const menu = defineCollection({
                 'github',
                 'linkedin'
               ]),
-              url: z.string().url()
+              url: z.string()
             })
           })
         ])

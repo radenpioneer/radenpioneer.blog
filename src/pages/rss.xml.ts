@@ -5,9 +5,8 @@ import { getExcerpt, render } from '~/utils/excerpt'
 import sanitizeHtml from 'sanitize-html'
 
 export const GET: APIRoute = async () => {
-  const posts = await getCollection(
-    'pages',
-    (page) => page.data.isPost && !page.data.isDraft
+  const posts = await getCollection('posts', (post) =>
+    import.meta.env.DEV ? true : !post.data.draft
   )
   const site = await getEntry('site', 'site')
 
@@ -19,10 +18,7 @@ export const GET: APIRoute = async () => {
     site: import.meta.env.SITE,
     items: await Promise.all(
       posts
-        .sort(
-          (a, b) =>
-            (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0)
-        )
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
         .map(async (post) => ({
           title: post.data.title,
           description: post.data.description || (await getExcerpt(post.body!)),
