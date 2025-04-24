@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import Post from './post.astro'
 
 interface Props {
-  posts: Array<CollectionEntry<'pages'>>
+  posts: Array<CollectionEntry<'posts'>>
 }
 
 const { posts } = Astro.props
@@ -12,9 +12,7 @@ const { posts } = Astro.props
 <section class='grid grid-cols-1 gap-y-12'>
   {
     posts
-      .sort(
-        (a, b) => (b.data.date?.getTime() || 0) - (a.data.date?.getTime() || 0)
-      )
+      .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
       .map((post) => <Post post={post} />)
   }
 </section>

@@ -10,6 +10,7 @@ const { env } = Astro.locals.runtime
         src='/analytics.js'
         data-website-id={env.ANALYTICS_ID}
         data-host-url={env.ANALYTICS_ENDPOINT}
+        data-domains={Astro.site?.hostname}
         is:inline
       />
     )

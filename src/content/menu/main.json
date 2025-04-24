@@ -1,13 +1,17 @@
 {
-  "$schema": "../../../.astro/collections/menu.schema.json",
+  "title": "Main Menu",
+  "description": "Menu Utama.",
   "items": [
     {
-      "label": "Home",
-      "url": "/"
+      "discriminant": "url",
+      "value": {
+        "label": "Beranda",
+        "url": "/"
+      }
     },
     {
-      "label": "About",
-      "url": "/about"
+      "discriminant": "pages",
+      "value": "about"
     }
   ]
 }

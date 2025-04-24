@@ -1,15 +1,39 @@
 ---
 import { getEntry } from 'astro:content'
 
-const links = await getEntry('menu', 'main')
+const mainMenu = await getEntry('menu', 'main')
+const links = mainMenu
+  ? await Promise.all(
+      mainMenu.data.items.map(async (link) => {
+        if (link.discriminant === 'pages') {
+          const page = await getEntry(link.value)
+          return {
+            url: `/${page.id}`,
+            label: page.data.title
+          }
+        } else if (link.discriminant === 'category') {
+          const category = await getEntry(link.value)
+          return {
+            url: `/${category.id}`,
+            label: category.data.title
+          }
+        } else if (link.discriminant === 'social') {
+          return {
+            url: link.value.url,
+            label: link.value.type
+          }
+        } else return link.value
+      })
+    )
+  : undefined
 ---
 
 <Fragment>
   {
-    links && links.data.items.length > 0 && (
+    links && links.length > 0 && (
       <nav class='-mx-2 my-2 w-full md:mx-0'>
         <ul class='flex justify-center gap-4'>
-          {links.data.items.map((link) => (
+          {links.map((link) => (
             <li class='text-primary-700 hover:text-primary-700/60 font-bold transition-colors group-[[data-image=true]]:text-neutral-50 hover:group-[[data-image=true]]:text-neutral-50/80'>
               <a href={link.url}>{link.label}</a>
             </li>

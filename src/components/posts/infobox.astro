@@ -7,7 +7,7 @@ import MaterialSymbolsLabel from '~icons/material-symbols/label'
 import readingTime from 'reading-time'
 
 interface Props extends HTMLAttributes<'div'> {
-  post: CollectionEntry<'pages'>
+  post: CollectionEntry<'posts'>
   dateAsLink?: boolean
 }
 
@@ -40,8 +40,8 @@ const date = post.data.date?.toLocaleDateString('en-US', { dateStyle: 'long' })
         <div>
           {post.data.tags.map((tag, _i, _arr) => (
             <a
-              href={`/tags/${tag}`}
-            >{`${tag}${_i < _arr.length - 1 ? ',' : ''} `}</a>
+              href={`/tags/${tag.slug}`}
+            >{`${tag.name}${_i < _arr.length - 1 ? ',' : ''} `}</a>
           ))}
         </div>
       </div>

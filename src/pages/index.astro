@@ -3,10 +3,8 @@ import ListLayout from '~/layouts/list.astro'
 import Posts from '~/components/posts/posts.astro'
 import { getCollection } from 'astro:content'
 
-const posts = await getCollection('pages', (page) =>
-  import.meta.env.PROD
-    ? !page.data.isDraft && page.data.isPost
-    : page.data.isPost
+const posts = await getCollection('posts', (post) =>
+  import.meta.env.DEV ? true : !post.data.draft
 )
 ---
 

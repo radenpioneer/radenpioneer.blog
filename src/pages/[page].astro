@@ -1,0 +1,39 @@
+---
+import PageLayout from '~/layouts/page.astro'
+import { getCollection, render } from 'astro:content'
+
+export const getStaticPaths = async () => {
+  const pages = await getCollection('pages', (page) =>
+    import.meta.env.DEV ? true : !page.data.draft
+  )
+  return pages.map((page) => ({
+    params: {
+      page: page.id
+    },
+    props: { page }
+  }))
+}
+
+const { page } = Astro.props
+const { Content } = await render(page)
+---
+
+<PageLayout
+  title={page.data.title}
+  description={page.data.description}
+  image={page.data.image}
+  data-page={true}
+  class='group data-[page=true]:prose-h1:mb-4'
+>
+  {/* infobox for pages */}
+  {
+    page.data.subtitle && (
+      <div class='not-prose font-neutral-600 my-8 font-sans text-xl italic md:text-2xl'>
+        {page.data.subtitle}
+      </div>
+    )
+  }
+
+  {/* content */}
+  <Content />
+</PageLayout>

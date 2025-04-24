@@ -29,3 +29,7 @@ pnpm-lock.yaml
 
 # generated
 worker-configuration.d.ts
+
+# content collections
+src/content/**/*.*
+!src/content/**/*.ts
