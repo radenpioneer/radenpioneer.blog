@@ -8,6 +8,10 @@
         "label": "Beranda",
         "url": "/"
       }
+    },
+    {
+      "discriminant": "pages",
+      "value": "about"
     }
   ]
 }
