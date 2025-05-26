@@ -25,7 +25,7 @@
       },
       "devDependencies": {
         "@astrojs/check": "0.9.4",
-        "@iconify/json": "2.2.337",
+        "@iconify/json": "2.2.341",
         "@tailwindcss/typography": "0.5.16",
         "@types/marked": "6.0.0",
         "@types/node": "22.14.1",
@@ -253,7 +253,7 @@
 
     "@graphql-typed-document-node/core": ["@graphql-typed-document-node/core@3.2.0", "", { "peerDependencies": { "graphql": "^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0" } }, "sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ=="],
 
-    "@iconify/json": ["@iconify/json@2.2.337", "", { "dependencies": { "@iconify/types": "*", "pathe": "^1.1.2" } }, "sha512-+Z4wwoHHhqebbQ4v+s9GJ2fxS82zWd79SnjXlg4B4WCXTMdV2sXmNXs6P7NzfzbZugITwK6rPeyr6cgoH/bHmw=="],
+    "@iconify/json": ["@iconify/json@2.2.341", "", { "dependencies": { "@iconify/types": "*", "pathe": "^1.1.2" } }, "sha512-IwH6m5hbVRtjBcmcI7xI6/H3VV3Tt0rqzWO4UxV1L82Cv32CsnvwpykLe9a2DgC06/gnrCmp3vgEzPsEHzndqg=="],
 
     "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
 
