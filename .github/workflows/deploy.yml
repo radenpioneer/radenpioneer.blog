@@ -32,7 +32,7 @@ jobs:
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: upload --preview-alias preview
+          command: versions upload --preview-alias preview
 
       - uses: cloudflare/wrangler-action@v3
         name: Deploy to Cloudflare (Production)
