@@ -1,0 +1,28 @@
+name: test build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Build project
+        run: npm run build 2>&1 | tee build.log
+      - name: Annotate build errors
+        if: failure()
+        run: |
+          if [ -f build.log ]; then
+            echo "::error title=Build Failed::$(cat build.log | tail -20)"
+          fi

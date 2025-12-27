@@ -2,33 +2,16 @@
  * For more details on how to configure Wrangler, refer to:
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  */
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "radenpioneer-blog",
-  "main": ".open-next/worker.js",
-  "compatibility_date": "2025-12-01",
+  "main": "./dist/_worker.js/index.js",
+  "compatibility_date": "2025-12-25",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "binding": "ASSETS",
-    "directory": ".open-next/assets"
+    "directory": "./dist"
   },
-  "images": {
-    // Enable image optimization
-    // see https://opennext.js.org/cloudflare/howtos/image
-    "binding": "IMAGES"
-  },
-  "services": [
-    {
-      // Self-reference service binding, the service name must match the worker name
-      // see https://opennext.js.org/cloudflare/caching
-      "binding": "WORKER_SELF_REFERENCE",
-      "service": "radenpioneer-blog"
-    }
-  ],
   "observability": {
     "enabled": true
   }
@@ -50,4 +33,9 @@
    * https://developers.cloudflare.com/workers/configuration/secrets/
    */
   // "vars": {  "MY_VARIABLE": "production_value" }
+  /**
+   * Service Bindings (communicate between multiple Workers)
+   * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
+   */
+  // "services": [  {   "binding": "MY_SERVICE",   "service": "my-service"  } ]
 }

@@ -1,47 +1,56 @@
-# OpenNext Starter
+# SNGR Creative's Ultra Minimal Astro Starter Kit
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-Read the documentation at https://opennext.js.org/cloudflare.
-
-## Develop
-
-Run the Next.js development server:
-
-```bash
-npm run dev
-# or similar package manager command
+```sh
+bun create astro@latest -- --template sngrcreative/astro-base
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/sngrcreative/astro-base)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/sngrcreative/astro-base)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sngrcreative/astro-base)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## Preview
+## 🚀 Project Structure
 
-Preview the application locally on the Cloudflare runtime:
+Inside of your Astro project, you'll see the following folders and files:
 
-```bash
-npm run preview
-# or similar package manager command
+```text
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── layouts/
+│   │   ├── base.astro
+│   │   ├── head.astro
+│   │   ├── layout.astro
+│   │   └── meta.astro
+│   └── pages/
+│       └── index.astro
+├── astro.config.mjs
+└── package.json
 ```
 
-## Deploy
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-Deploy the application to Cloudflare:
+The `src/layouts/` directory contains reusable layout components that can be used across multiple pages.
 
-```bash
-npm run deploy
-# or similar package manager command
-```
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-## Learn More
+Any static assets, like images, can be placed in the `public/` directory.
 
-To learn more about Next.js, take a look at the following resources:
+## 🧞 Commands
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All commands are run from the root of the project, from a terminal:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command               | Action                                           |
+| :-------------------- | :----------------------------------------------- |
+| `bun install`         | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [Astro's documentation](https://docs.astro.build) or jump into [Astro's Discord server](https://astro.build/chat).
