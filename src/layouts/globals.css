@@ -1,1 +1,12 @@
 @import 'tailwindcss';
+
+@theme {
+  --color-background-primary: oklch(40.7% 0.104 245.87);
+  --color-background-secondary: oklch(61.4% 0.118 289.42);
+
+  --color-text-primary: oklch(96.4% 0.009 242.84);
+
+  --font-sans:
+    'Lexend Variable', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}

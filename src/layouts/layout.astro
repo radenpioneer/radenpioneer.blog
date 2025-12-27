@@ -1,12 +1,21 @@
 ---
 import BaseLayout, { type Props as BLProps } from './base.astro'
 import Meta, { type Props as MetaProps } from './meta.astro'
+import Scan from '~/components/dev/scan.astro'
+import '@fontsource-variable/lexend'
+import './globals.css'
 
 export interface Props extends BLProps, MetaProps {}
 const { title, description, hide, class: className, ...props } = Astro.props
 ---
 
-<BaseLayout class:list={[className]} {...props}>
+<BaseLayout
+  class:list={[
+    'min-h-dvh bg-background-primary text-text-primary select-none',
+    className
+  ]}
+  {...props}
+>
   {/* <body/> */}
   <slot />
 
@@ -15,4 +24,13 @@ const { title, description, hide, class: className, ...props } = Astro.props
     <Meta {...{ title, description, hide }} />
     <slot name='head' />
   </Fragment>
+
+  {/* Devtools */}
+  {
+    import.meta.env.DEV && (
+      <Fragment>
+        <Scan />
+      </Fragment>
+    )
+  }
 </BaseLayout>

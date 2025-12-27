@@ -1,4 +1,14 @@
 {
   "title": "R Ilham Sastronegoro",
-  "description": "Professional Web Builder | NextJS, Astro, and container enthusiast"
+  "description": "Professional Web Builder | NextJS, Astro, and container enthusiast",
+  "menu": [
+    {
+      "label": "About",
+      "uri": "/about"
+    },
+    {
+      "label": "Projects",
+      "uri": "/projects"
+    }
+  ]
 }

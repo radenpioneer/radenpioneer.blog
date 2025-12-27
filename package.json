@@ -16,8 +16,10 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/react": "^4.4.2",
+    "@fontsource-variable/lexend": "^5.2.11",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "5.16.6",
+    "motion": "^12.23.26",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "tailwindcss": "^4.1.18"
@@ -31,6 +33,7 @@
     "prettier": "3.6.2",
     "prettier-config-standard": "7.0.0",
     "prettier-plugin-astro": "0.14.1",
+    "react-scan": "^0.4.3",
     "typescript": "5.8.3",
     "wrangler": "^4.54.0"
   }
