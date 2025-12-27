@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 import Head from './head.astro'
+import './globals.css'
 
 export interface Props extends Omit<HTMLAttributes<'body'>, 'title'> {}
 const { class: className, ...props } = Astro.props
@@ -10,7 +11,7 @@ const { class: className, ...props } = Astro.props
   <Head>
     <slot name='head' />
   </Head>
-  <body class:list={[className]} {...props}>
+  <body class:list={['min-h-dvh', className]} {...props}>
     <slot />
   </body>
 </html>

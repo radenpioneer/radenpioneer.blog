@@ -7,6 +7,8 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "types": ["./worker-configuration.d.ts", "node"]
+    "types": ["./worker-configuration.d.ts", "bun"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

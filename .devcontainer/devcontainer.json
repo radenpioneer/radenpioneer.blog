@@ -12,7 +12,8 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["astro-build.astro-vscode"]
+      "extensions": ["astro-build.astro-vscode", "bradlc.vscode-tailwindcss"]
     }
-  }
+  },
+  "postStartCommand": "if command -v bun >/dev/null 2>&1; then sudo ln -sf \"$(command -v bun)\" /usr/local/bin/node || true; fi"
 }

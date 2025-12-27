@@ -1,5 +1,15 @@
 {
   "files.associations": {
+    "*.css": "tailwindcss",
     "wrangler.json": "jsonc"
-  }
+  },
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["/src/data/site/**"],
+      "url": "./.astro/collections/site.schema.json"
+    }
+  ]
 }
