@@ -1,0 +1,12 @@
+---
+import MenuRC from './menu'
+import { getEntry } from 'astro:content'
+
+const site = await getEntry('site', 'site')
+---
+
+<MenuRC
+  title={site?.data.title ?? ''}
+  items={site?.data.menu ?? []}
+  client:idle
+/>

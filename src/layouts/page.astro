@@ -1,0 +1,23 @@
+---
+import Layout, { type Props as LProps } from './layout.astro'
+import Menu from '~/components/menu/menu.astro'
+
+export interface Props extends LProps {}
+const { ...props } = Astro.props
+---
+
+<Layout {...props}>
+  <main class='flex flex-col-reverse p-8 lg:p-12 h-dvh'>
+    <Menu transition:name='menu' transition:persist />
+    <article id='main' class='flex-1 overflow-y-auto'>
+      {
+        props.title && (
+          <h1 class='text-center text-4xl xl:text-5xl font-bold'>
+            {props.title}
+          </h1>
+        )
+      }
+      <slot />
+    </article>
+  </main>
+</Layout>

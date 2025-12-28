@@ -3,6 +3,10 @@
   "description": "Professional Web Builder | NextJS, Astro, and container enthusiast",
   "menu": [
     {
+      "label": "Home",
+      "uri": "/"
+    },
+    {
       "label": "About",
       "uri": "/about"
     },

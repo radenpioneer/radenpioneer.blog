@@ -1,17 +1,7 @@
 ---
-import Layout from '~/layouts/layout.astro'
-import Menu from '~/components/menu/menu'
-import { getEntry } from 'astro:content'
-
-const site = await getEntry('site', 'site')
+import PageLayout from '~/layouts/page.astro'
 ---
 
-<Layout>
-  <main class='flex flex-col-reverse p-8 lg:p-12 min-h-dvh'>
-    <Menu
-      title={site?.data.title ?? ''}
-      items={site?.data.menu ?? []}
-      client:idle
-    />
-  </main>
-</Layout>
+<PageLayout>
+  <h1>Home</h1>
+</PageLayout>

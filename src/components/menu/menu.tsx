@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react'
+import { type FC, useState, useEffect } from 'react'
 import { motion } from 'motion/react'
 
 interface MenuItem {
@@ -13,6 +13,11 @@ interface MenuProps {
 
 const Menu: FC<MenuProps> = ({ title, items }) => {
   const [open, setOpen] = useState<boolean>(false)
+  const [pathname, setPathname] = useState<string>('')
+
+  useEffect(() => {
+    setPathname(window.location.pathname)
+  }, [])
 
   return (
     <motion.div
@@ -27,18 +32,18 @@ const Menu: FC<MenuProps> = ({ title, items }) => {
         }
       }}
     >
-      <motion.h1
+      <motion.div
         className='font-extrabold text-4xl lg:text-6xl max-w-[10ch]'
         variants={{
           initial: { x: 0, y: 0 },
-          open: { x: '1rem', y: '-2rem' }
+          open: { x: '1rem', y: '-2.5rem' }
         }}
         transition={{
           duration: 0.12
         }}
       >
         {title}
-      </motion.h1>
+      </motion.div>
       <motion.nav
         className='absolute bottom-0 left-0 z-[0]'
         variants={{
@@ -55,14 +60,14 @@ const Menu: FC<MenuProps> = ({ title, items }) => {
           duration: 0.08
         }}
       >
-        <ul className='flex gap-x-2'>
+        <ul className='flex gap-x-4'>
           {items.map((item, key) => (
-            <li className='md:text-xl font-bold' key={key}>
+            <li className='text-lg lg:text-2xl font-bold' key={key}>
               <motion.a
                 href={item.uri}
-                initial={{ opacity: 0.4 }}
-                whileHover={{ opacity: 1 }}
-                whileTap={{ opacity: 0.8 }}
+                initial={{ opacity: item.uri === pathname ? 1 : 0.6 }}
+                whileHover={{ opacity: 0.8 }}
+                whileTap={{ opacity: 1 }}
               >
                 {item.label}
               </motion.a>
