@@ -17,6 +17,10 @@ export default defineConfig({
 
   integrations: [react()],
 
+  prefetch: {
+    defaultStrategy: 'tap'
+  },
+
   vite: {
     plugins: [tailwindcss(), icons({ compiler: 'jsx', jsx: 'react' })]
   },

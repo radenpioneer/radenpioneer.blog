@@ -27,7 +27,9 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
           </span>
         )
       },
-      header: () => <span>Year</span>
+      header: () => <span>Year</span>,
+      sortingFn: 'datetime',
+      sortUndefined: 'last'
     }),
     columnHelper.accessor('title', {
       cell: (info) => <b>{info.getValue()}</b>,
@@ -58,7 +60,8 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
           ))}
         </div>
       ),
-      header: () => <span>Built With?</span>
+      header: () => <span>Built With?</span>,
+      enableSorting: false
     }),
     columnHelper.display({
       id: 'urls',
@@ -89,8 +92,7 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
   ]
 
   const columnsForMobile = [
-    columnHelper.display({
-      id: 'mobile',
+    columnHelper.accessor('date', {
       cell: (info) => {
         const { title, status, date, dateEnd, builtWith, url, repo } =
           info.cell.row.original
@@ -137,14 +139,29 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
           </div>
         )
       },
-      header: () => <span className='text-xl'>All Projects</span>
+      header: () => <span className='text-xl'>All Projects</span>,
+      sortingFn: 'datetime',
+      sortUndefined: 'last'
     })
   ]
 
+  const defaultSorting = [{ id: 'date', desc: true }]
+  const defaultMobileSorting = [{ id: 'date', desc: true }]
+
   return (
     <>
-      <Table className='max-sm:hidden' data={data} columns={columns} />
-      <Table className='sm:hidden' data={data} columns={columnsForMobile} />
+      <Table
+        className='max-sm:hidden'
+        data={data}
+        columns={columns}
+        defaultSorting={defaultSorting}
+      />
+      <Table
+        className='sm:hidden'
+        data={data}
+        columns={columnsForMobile}
+        defaultSorting={defaultMobileSorting}
+      />
     </>
   )
 }
