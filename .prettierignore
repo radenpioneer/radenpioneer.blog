@@ -5,6 +5,7 @@ dist/
 
 # dependencies
 node_modules/
+worker-configuration.d.ts
 
 # logs
 npm-debug.log*

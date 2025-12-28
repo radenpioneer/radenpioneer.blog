@@ -11,5 +11,6 @@
       "fileMatch": ["/src/data/site/**"],
       "url": "./.astro/collections/site.schema.json"
     }
-  ]
+  ],
+  "astro.content-intellisense": true
 }

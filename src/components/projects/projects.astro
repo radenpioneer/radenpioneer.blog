@@ -1,0 +1,10 @@
+---
+import ProjectsRC from './projects'
+import { getCollection } from 'astro:content'
+
+const data = await getCollection('projects').then((coll) =>
+  coll.map((ent) => ent.data)
+)
+---
+
+<ProjectsRC data={data} client:idle />
