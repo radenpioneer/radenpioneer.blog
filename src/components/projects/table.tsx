@@ -68,7 +68,7 @@ const Table: FC<TableProps> = ({
       {visible && (
         <motion.table
           className={clsx(
-            'table-auto w-full border-collapse border-2 border-text-primary/50',
+            'border-text-primary/50 w-full table-auto border-collapse border-2',
             className
           )}
           initial='initial'
@@ -102,7 +102,7 @@ const Table: FC<TableProps> = ({
                 {hGroup.headers.map((header) => (
                   <th
                     className={clsx(
-                      'border-2 border-text-primary/50 p-4',
+                      'border-text-primary/50 border-2 p-4',
                       header.column.getCanSort() && 'cursor-pointer'
                     )}
                     onClick={header.column.getToggleSortingHandler()}
@@ -158,7 +158,7 @@ const Table: FC<TableProps> = ({
               >
                 {row.getVisibleCells().map((cell) => (
                   <td
-                    className='border-2 border-text-primary/50 p-4'
+                    className='border-text-primary/50 border-2 p-4'
                     key={cell.id}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

@@ -53,7 +53,7 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
         <div className='flex flex-wrap gap-x-2 gap-y-1 py-1'>
           {info.getValue()?.map((val, key) => (
             <span
-              className='text-xs py-1 px-3 rounded-full bg-text-primary/10 border border-text-primary/30 uppercase'
+              className='bg-text-primary/10 border-text-primary/30 rounded-full border px-3 py-1 text-xs uppercase'
               key={key}
             >
               {val}
@@ -99,23 +99,23 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
           info.cell.row.original
 
         return (
-          <div className='flex gap-4 justify-between'>
-            <div className='flex flex-col flex-1 gap-1'>
+          <div className='flex justify-between gap-4'>
+            <div className='flex flex-1 flex-col gap-1'>
               {date && (
-                <span className='text-sm  uppercase w-max'>
+                <span className='w-max text-sm uppercase'>
                   {dateEnd
                     ? `${date.getFullYear()}-${dateEnd.getFullYear()}`
                     : date.getFullYear()}
                 </span>
               )}
-              <h2 className='font-bold text-xl'>{title}</h2>
+              <h2 className='text-xl font-bold'>{title}</h2>
               <span className='text-sm uppercase'>{status}</span>
               {builtWith && (
                 <div className='flex flex-wrap items-center gap-2'>
                   {builtWith.map((entry, key) => (
                     <span
                       key={key}
-                      className='text-xs py-1 px-3 rounded-full bg-text-primary/10 border border-text-primary/30 uppercase mt-3'
+                      className='bg-text-primary/10 border-text-primary/30 mt-3 rounded-full border px-3 py-1 text-xs uppercase'
                     >
                       {entry}
                     </span>

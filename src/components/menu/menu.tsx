@@ -21,7 +21,7 @@ const Menu: FC<MenuProps> = ({ title, items }) => {
 
   return (
     <motion.div
-      className='relative flex flex-col gap-y-2 max-w-max z-[1]'
+      className='relative z-[1] flex max-w-max flex-col gap-y-2'
       initial='initial'
       animate={open ? 'open' : 'initial'}
       onHoverStart={() => setOpen(true)}
@@ -33,7 +33,7 @@ const Menu: FC<MenuProps> = ({ title, items }) => {
       }}
     >
       <motion.div
-        className='font-extrabold text-4xl lg:text-6xl max-w-[10ch]'
+        className='max-w-[10ch] text-4xl font-extrabold lg:text-6xl'
         variants={{
           initial: { x: 0, y: 0 },
           open: { x: '1rem', y: '-2.5rem' }
@@ -62,7 +62,7 @@ const Menu: FC<MenuProps> = ({ title, items }) => {
       >
         <ul className='flex gap-x-4'>
           {items.map((item, key) => (
-            <li className='text-lg lg:text-2xl font-bold' key={key}>
+            <li className='text-lg font-bold lg:text-2xl' key={key}>
               <motion.a
                 href={item.uri}
                 initial={{ opacity: item.uri === pathname ? 1 : 0.6 }}

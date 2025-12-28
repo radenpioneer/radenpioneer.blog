@@ -38,6 +38,7 @@
     "prettier": "3.6.2",
     "prettier-config-standard": "7.0.0",
     "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "react-scan": "^0.4.3",
     "typescript": "5.8.3",
     "unplugin-icons": "^22.5.0",
