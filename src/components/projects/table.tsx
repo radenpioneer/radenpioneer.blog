@@ -1,5 +1,5 @@
 import { type FC, useState, useEffect } from 'react'
-import { type CollectionEntry } from 'astro:content'
+import { type Project } from '~/data/projects/schema'
 import {
   type AccessorKeyColumnDef,
   type DisplayColumnDef,
@@ -18,8 +18,6 @@ import {
 import { clsx } from 'clsx/lite'
 import SortDownIcon from '~icons/material-symbols/keyboard-arrow-down'
 import SortUpIcon from '~icons/material-symbols/keyboard-arrow-up'
-
-export type Project = CollectionEntry<'projects'>['data']
 
 export interface TableProps extends HTMLMotionProps<'table'> {
   data: Array<Project>

@@ -1,5 +1,6 @@
 import type { FC } from 'react'
-import Table, { type TableProps, type Project } from './table'
+import type { Project } from '~/data/projects/schema'
+import Table, { type TableProps } from './table'
 import { createColumnHelper } from '@tanstack/react-table'
 import OpenLinkIcon from '~icons/material-symbols/open-in-new'
 import GitIcon from '~icons/simple-icons/git'
