@@ -9,4 +9,6 @@ const site = await getEntry('site', 'site')
   title={site?.data.title ?? ''}
   items={site?.data.menu ?? []}
   client:idle
+  transition:name='menu'
+  transition:persist
 />

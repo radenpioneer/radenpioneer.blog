@@ -1,6 +1,5 @@
 ---
 import Layout, { type Props as LProps } from './layout.astro'
-import Menu from '~/components/menu/menu.astro'
 
 export interface Props extends LProps {}
 const { ...props } = Astro.props
@@ -8,25 +7,22 @@ const { ...props } = Astro.props
 
 <Layout {...props}>
   <main
-    class='mx-auto flex h-dvh max-w-screen-xl flex-col-reverse gap-2 p-8 lg:p-12'
+    class='prose lg:prose-lg prose-theme relative mx-auto max-w-screen-lg px-4 pt-8 pb-48 sm:px-8 xl:px-0'
   >
-    <Menu transition:name='menu' transition:persist />
-    <article
-      id='main'
-      class='relative flex-1 overflow-x-hidden overflow-y-auto pb-8'
-    >
-      {
-        props.title && (
-          <h1 class='mb-4 text-center text-4xl font-bold lg:mb-8 xl:text-5xl'>
+    {
+      props.title && (
+        <hgroup class='not-prose mb-6 xl:mb-8'>
+          <h1 class='font-display text-4xl font-bold lg:text-6xl'>
             {props.title}
           </h1>
-        )
-      }
-      <slot />
-      <div
-        class='from-background-primary to-background-primary/0 sticky -bottom-9 h-12 bg-linear-to-t'
-      >
-      </div>
-    </article>
+        </hgroup>
+      )
+    }
+
+    <slot />
+    <div
+      class='from-background-primary fixed inset-x-0 bottom-0 h-48 bg-gradient-to-t to-transparent'
+    >
+    </div>
   </main>
 </Layout>

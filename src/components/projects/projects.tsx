@@ -2,14 +2,16 @@ import type { FC } from 'react'
 import type { Project } from '~/data/projects/schema'
 import Table, { type TableProps } from './table'
 import { createColumnHelper } from '@tanstack/react-table'
+import { clsx } from 'clsx/lite'
 import OpenLinkIcon from '~icons/material-symbols/open-in-new'
 import GitIcon from '~icons/simple-icons/git'
 
-export interface ProjectsProps extends Pick<TableProps, 'data'> {}
+export interface ProjectsProps
+  extends Omit<TableProps, 'columns' | 'defaultSorting'> {}
 
 const columnHelper = createColumnHelper<Project>()
 
-const Projects: FC<ProjectsProps> = ({ data }) => {
+const Projects: FC<ProjectsProps> = ({ data, className, ...props }) => {
   const columns = [
     columnHelper.accessor('date', {
       cell: (info) => {
@@ -44,13 +46,9 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
       ),
       header: () => <span>Status</span>
     }),
-    columnHelper.accessor('madeFor', {
-      cell: (info) => info.getValue(),
-      header: () => <span>Made for?</span>
-    }),
     columnHelper.accessor('builtWith', {
       cell: (info) => (
-        <div className='flex flex-wrap gap-x-2 gap-y-1 py-1'>
+        <div className='flex flex-wrap gap-2'>
           {info.getValue()?.map((val, key) => (
             <span
               className='bg-text-primary/10 border-text-primary/30 rounded-full border px-3 py-1 text-xs uppercase'
@@ -74,7 +72,7 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
         }
 
         return (
-          <div className='flex gap-2'>
+          <div className='flex justify-center gap-2'>
             {url && (
               <a href={url} target='_blank'>
                 <OpenLinkIcon />
@@ -152,16 +150,18 @@ const Projects: FC<ProjectsProps> = ({ data }) => {
   return (
     <>
       <Table
-        className='max-sm:hidden'
+        className={clsx('max-sm:hidden', className)}
         data={data}
         columns={columns}
         defaultSorting={defaultSorting}
+        {...props}
       />
       <Table
-        className='sm:hidden'
+        className={clsx('sm:hidden', className)}
         data={data}
         columns={columnsForMobile}
         defaultSorting={defaultMobileSorting}
+        {...props}
       />
     </>
   )

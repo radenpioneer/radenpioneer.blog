@@ -67,10 +67,7 @@ const Table: FC<TableProps> = ({
     <AnimatePresence>
       {visible && (
         <motion.table
-          className={clsx(
-            'border-text-primary/50 w-full table-auto border-collapse border-2',
-            className
-          )}
+          className={clsx(className)}
           initial='initial'
           animate='current'
           exit='exit'
@@ -109,7 +106,7 @@ const Table: FC<TableProps> = ({
                     key={header.id}
                   >
                     {!header.isPlaceholder && (
-                      <div className='flex items-center'>
+                      <div className='flex items-center justify-center gap-x-2'>
                         {flexRender(
                           header.column.columnDef.header,
                           header.getContext()
