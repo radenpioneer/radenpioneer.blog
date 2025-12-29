@@ -7,6 +7,7 @@ import icons from 'unplugin-icons/vite'
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.radenpioneer.blog',
   adapter: cloudflare({
     platformProxy: {
       enabled: true
@@ -14,17 +15,13 @@ export default defineConfig({
 
     imageService: 'cloudflare'
   }),
-
   integrations: [react()],
-
   prefetch: {
     defaultStrategy: 'tap'
   },
-
   vite: {
     plugins: [tailwindcss(), icons({ compiler: 'jsx', jsx: 'react' })]
   },
-
   experimental: {
     contentIntellisense: true
   }
