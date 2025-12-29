@@ -1,33 +1,48 @@
 {
-	"name": "radenpioneer-blog",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"dev": "next dev --turbopack",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint",
-		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-		"upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
-		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-		"cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts"
-	},
-	"dependencies": {
-		"@opennextjs/cloudflare": "^1.14.4",
-		"next": "15.5.9",
-		"react": "19.1.4",
-		"react-dom": "19.1.4"
-	},
-	"devDependencies": {
-		"@eslint/eslintrc": "^3",
-		"@tailwindcss/postcss": "^4",
-		"@types/node": "^25.0.3",
-		"@types/react": "^19",
-		"@types/react-dom": "^19",
-		"eslint": "^9",
-		"eslint-config-next": "15.4.6",
-		"tailwindcss": "^4",
-		"typescript": "^5",
-		"wrangler": "^4.56.0"
-	}
+  "name": "radenpioneer-blog",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "conc bun:check:* && astro build",
+    "cf-typegen": "wrangler types",
+    "check:astro": "astro check",
+    "check:style": "prettier --check .",
+    "deploy": "astro build && wrangler deploy",
+    "dev": "astro dev",
+    "format": "prettier --write .",
+    "preview": "astro build && wrangler dev"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/react": "^4.4.2",
+    "@fontsource-variable/lexend": "^5.2.11",
+    "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-table": "^8.21.3",
+    "astro": "5.16.6",
+    "clsx": "^2.1.1",
+    "motion": "^12.23.26",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.6",
+    "@iconify/json": "^2.2.421",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/bun": "^1.3.5",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "concurrently": "9.2.0",
+    "prettier": "3.6.2",
+    "prettier-config-standard": "7.0.0",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "react-scan": "^0.4.3",
+    "typescript": "5.8.3",
+    "unplugin-icons": "^22.5.0",
+    "wrangler": "^4.54.0"
+  }
 }

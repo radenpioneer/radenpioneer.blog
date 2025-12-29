@@ -1,0 +1,28 @@
+---
+import Layout, { type Props as LProps } from './layout.astro'
+
+export interface Props extends LProps {}
+const { ...props } = Astro.props
+---
+
+<Layout {...props}>
+  <main
+    class='prose lg:prose-lg prose-theme relative mx-auto max-w-screen-lg px-4 pt-8 pb-48 sm:px-8 xl:px-0'
+  >
+    {
+      props.title && (
+        <hgroup class='not-prose mb-6 xl:mb-8'>
+          <h1 class='font-display text-4xl font-bold lg:text-6xl'>
+            {props.title}
+          </h1>
+        </hgroup>
+      )
+    }
+
+    <slot />
+    <div
+      class='from-background-primary fixed inset-x-0 bottom-0 h-48 bg-gradient-to-t to-transparent'
+    >
+    </div>
+  </main>
+</Layout>

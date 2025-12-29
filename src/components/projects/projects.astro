@@ -1,0 +1,13 @@
+---
+import ProjectsRC, { type ProjectsProps } from './projects'
+import { getCollection } from 'astro:content'
+
+type Props = Omit<ProjectsProps, 'data'>
+
+const props = Astro.props
+const data = await getCollection('projects').then((coll) =>
+  coll.map((ent) => ent.data)
+)
+---
+
+<ProjectsRC {...props} data={data} client:idle />

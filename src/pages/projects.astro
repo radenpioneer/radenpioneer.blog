@@ -1,0 +1,12 @@
+---
+import PageLayout, { type Props as PageProps } from '~/layouts/page.astro'
+import ProjectsTable from '~/components/projects/projects.astro'
+
+const props = {
+  title: 'Projects'
+} satisfies PageProps
+---
+
+<PageLayout {...props}>
+  <ProjectsTable className='not-prose' />
+</PageLayout>

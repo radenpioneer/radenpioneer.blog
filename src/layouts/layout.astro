@@ -1,0 +1,40 @@
+---
+import BaseLayout, { type Props as BLProps } from './base.astro'
+import Meta, { type Props as MetaProps } from './meta.astro'
+import Menu from '~/components/menu/menu.astro'
+import { ClientRouter } from 'astro:transitions'
+import Scan from '~/components/dev/scan.astro'
+import '@fontsource-variable/lexend'
+import './globals.css'
+
+export interface Props extends BLProps, MetaProps {}
+const { title, description, hide, class: className, ...props } = Astro.props
+---
+
+<BaseLayout
+  class:list={[
+    'bg-background-primary text-text-primary h-dvh select-none',
+    className
+  ]}
+  {...props}
+>
+  {/* <body/> */}
+  <slot />
+  <Menu />
+
+  {/* <head/> */}
+  <Fragment slot='head'>
+    <Meta {...{ title, description, hide }} />
+    <ClientRouter />
+    <slot name='head' />
+  </Fragment>
+
+  {/* Devtools */}
+  {
+    import.meta.env.DEV && (
+      <Fragment>
+        <Scan />
+      </Fragment>
+    )
+  }
+</BaseLayout>
