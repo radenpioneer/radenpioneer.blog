@@ -13,10 +13,11 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "oven.bun-vscode",
         "astro-build.astro-vscode",
+        "unifiedjs.vscode-mdx",
         "bradlc.vscode-tailwindcss",
-        "GitHub.vscode-github-actions",
-        "unifiedjs.vscode-mdx"
+        "GitHub.vscode-github-actions"
       ]
     }
   },

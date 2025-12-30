@@ -2,10 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./node_modules/.bin/astro dev --host=0.0.0.0",
-      "name": "Development server",
+      "name": "Run dev server",
+      "type": "bun",
       "request": "launch",
-      "type": "node-terminal"
+      "program": "./node_modules/.bin/astro",
+      "args": ["dev", "--host=0.0.0.0"],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
