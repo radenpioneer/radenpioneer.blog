@@ -95,11 +95,14 @@ const Table: FC<TableProps> = ({
         >
           <thead>
             {table.getHeaderGroups().map((hGroup) => (
-              <tr className='bg-text-primary/25' key={hGroup.id}>
+              <tr
+                className='bg-primary-500/80 dark:bg-accent-900/80'
+                key={hGroup.id}
+              >
                 {hGroup.headers.map((header) => (
                   <th
                     className={clsx(
-                      'border-text-primary/50 border-2 p-4',
+                      'border-primary-300 dark:border-accent-600 border-2 p-4',
                       header.column.getCanSort() && 'cursor-pointer'
                     )}
                     onClick={header.column.getToggleSortingHandler()}
@@ -207,7 +210,7 @@ const Table: FC<TableProps> = ({
               >
                 {row.getVisibleCells().map((cell) => (
                   <td
-                    className='border-text-primary/50 border-2 p-4'
+                    className='border-primary-300 dark:border-accent-600 border-2 p-4'
                     key={cell.id}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

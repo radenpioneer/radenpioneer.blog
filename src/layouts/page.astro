@@ -9,11 +9,11 @@ const { ...props } = Astro.props
 
 <Layout {...props}>
   <main
-    class='prose lg:prose-lg prose-theme relative mx-auto max-w-screen-lg px-4 pt-8 pb-48 sm:px-8 xl:px-0'
+    class='prose lg:prose-lg prose-theme dark:prose-invert prose-headings:font-display dark:prose-img:saturate-50 dark:prose-img:opacity-80 relative mx-auto max-w-screen-lg px-4 pt-20 pb-48 sm:px-8 xl:px-0'
   >
     {
       props.title && (
-        <Header title={props.title} className='not-prose mb-6 xl:mb-8' />
+        <Header title={props.title} className='not-prose mb-8 xl:mb-10' />
       )
     }
 

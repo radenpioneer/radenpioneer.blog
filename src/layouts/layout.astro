@@ -13,7 +13,7 @@ const { title, description, hide, class: className, ...props } = Astro.props
 
 <BaseLayout
   class:list={[
-    'bg-background-primary text-text-primary h-dvh select-none',
+    'bg-theme dark:bg-theme-dark text-theme-text dark:text-theme-text-dark h-dvh select-none',
     className
   ]}
   {...props}
