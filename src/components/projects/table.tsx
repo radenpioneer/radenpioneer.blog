@@ -111,11 +111,63 @@ const Table: FC<TableProps> = ({
                           header.column.columnDef.header,
                           header.getContext()
                         )}
-                        {header.column.getIsSorted() === 'desc' ? (
-                          <SortDownIcon />
-                        ) : header.column.getIsSorted() === 'asc' ? (
-                          <SortUpIcon />
-                        ) : null}
+                        <AnimatePresence mode='wait'>
+                          {header.column.getIsSorted() === 'desc' ? (
+                            <motion.span
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                                transition: {
+                                  ease: 'easeOut'
+                                }
+                              }}
+                              initial={{
+                                y: '-0.25rem',
+                                opacity: 0
+                              }}
+                              exit={{
+                                y: '0.25rem',
+                                opacity: 0,
+                                transition: {
+                                  ease: 'easeIn'
+                                }
+                              }}
+                              transition={{
+                                duration: 0.04
+                              }}
+                              key='sort-down'
+                            >
+                              <SortDownIcon />
+                            </motion.span>
+                          ) : header.column.getIsSorted() === 'asc' ? (
+                            <motion.span
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                                transition: {
+                                  ease: 'easeOut'
+                                }
+                              }}
+                              initial={{
+                                y: '0.25rem',
+                                opacity: 0
+                              }}
+                              exit={{
+                                y: '-0.25rem',
+                                opacity: 0,
+                                transition: {
+                                  ease: 'easeIn'
+                                }
+                              }}
+                              transition={{
+                                duration: 0.04
+                              }}
+                              key='sort-up'
+                            >
+                              <SortUpIcon />
+                            </motion.span>
+                          ) : null}
+                        </AnimatePresence>
                       </div>
                     )}
                   </th>

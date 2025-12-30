@@ -1,0 +1,10 @@
+---
+import HeaderRC, { type HeaderProps } from './header'
+
+interface Props extends HeaderProps {}
+const { ...props } = Astro.props
+---
+
+<HeaderRC {...props}>
+  <slot />
+</HeaderRC>

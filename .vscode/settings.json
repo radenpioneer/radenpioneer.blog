@@ -12,5 +12,6 @@
       "url": "./.astro/collections/site.schema.json"
     }
   ],
-  "astro.content-intellisense": true
+  "astro.content-intellisense": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
