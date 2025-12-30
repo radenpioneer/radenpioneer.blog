@@ -1,5 +1,7 @@
 ---
 title: About
+description: >-
+  About, who? Me?
 ---
 
 You have so many different things placeholder text has to be able to do, and I don't believe Lorem Ipsum has the stamina.
