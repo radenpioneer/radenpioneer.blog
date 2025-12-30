@@ -2,6 +2,7 @@ import type { FC } from 'react'
 import type { Project } from '~/data/projects/schema'
 import Table, { type TableProps } from './table'
 import { createColumnHelper } from '@tanstack/react-table'
+import { motion } from 'motion/react'
 import { clsx } from 'clsx/lite'
 import OpenLinkIcon from '~icons/material-symbols/open-in-new'
 import GitIcon from '~icons/simple-icons/git'
@@ -71,17 +72,29 @@ const Projects: FC<ProjectsProps> = ({ data, className, ...props }) => {
           return null
         }
 
+        const animation = { y: '-0.25rem', transition: { duration: 0.08 } }
+
         return (
           <div className='flex justify-center gap-2'>
             {url && (
-              <a href={url} target='_blank'>
+              <motion.a
+                href={url}
+                whileHover={animation}
+                target='_blank'
+                aria-label={`visit ${url}`}
+              >
                 <OpenLinkIcon />
-              </a>
+              </motion.a>
             )}
             {repo && (
-              <a href={repo} target='_blank'>
+              <motion.a
+                href={repo}
+                whileHover={animation}
+                target='_blank'
+                aria-label={`visit ${repo}`}
+              >
                 <GitIcon />
-              </a>
+              </motion.a>
             )}
           </div>
         )
@@ -95,6 +108,10 @@ const Projects: FC<ProjectsProps> = ({ data, className, ...props }) => {
       cell: (info) => {
         const { title, status, date, dateEnd, builtWith, url, repo } =
           info.cell.row.original
+
+        const tapAnimation = {
+          scale: 0.8
+        }
 
         return (
           <div className='flex justify-between gap-4'>
@@ -124,14 +141,26 @@ const Projects: FC<ProjectsProps> = ({ data, className, ...props }) => {
             {(url || repo) && (
               <div className='flex items-center gap-2'>
                 {url && (
-                  <a href={url} target='_blank'>
+                  <motion.a
+                    className='text-xl'
+                    href={url}
+                    whileTap={tapAnimation}
+                    target='_blank'
+                    aria-label={`visit ${url}`}
+                  >
                     <OpenLinkIcon />
-                  </a>
+                  </motion.a>
                 )}
                 {repo && (
-                  <a href={repo} target='_blank'>
+                  <motion.a
+                    className='text-xl'
+                    href={repo}
+                    whileTap={tapAnimation}
+                    target='_blank'
+                    aria-label={`visit ${repo}`}
+                  >
                     <GitIcon />
-                  </a>
+                  </motion.a>
                 )}
               </div>
             )}

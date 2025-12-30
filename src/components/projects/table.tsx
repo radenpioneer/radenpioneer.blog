@@ -95,11 +95,14 @@ const Table: FC<TableProps> = ({
         >
           <thead>
             {table.getHeaderGroups().map((hGroup) => (
-              <tr className='bg-text-primary/25' key={hGroup.id}>
+              <tr
+                className='bg-primary-500/80 dark:bg-accent-900/80'
+                key={hGroup.id}
+              >
                 {hGroup.headers.map((header) => (
                   <th
                     className={clsx(
-                      'border-text-primary/50 border-2 p-4',
+                      'border-primary-300 dark:border-accent-600 border-2 p-4',
                       header.column.getCanSort() && 'cursor-pointer'
                     )}
                     onClick={header.column.getToggleSortingHandler()}
@@ -111,11 +114,63 @@ const Table: FC<TableProps> = ({
                           header.column.columnDef.header,
                           header.getContext()
                         )}
-                        {header.column.getIsSorted() === 'desc' ? (
-                          <SortDownIcon />
-                        ) : header.column.getIsSorted() === 'asc' ? (
-                          <SortUpIcon />
-                        ) : null}
+                        <AnimatePresence mode='wait'>
+                          {header.column.getIsSorted() === 'desc' ? (
+                            <motion.span
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                                transition: {
+                                  ease: 'easeOut'
+                                }
+                              }}
+                              initial={{
+                                y: '-0.25rem',
+                                opacity: 0
+                              }}
+                              exit={{
+                                y: '0.25rem',
+                                opacity: 0,
+                                transition: {
+                                  ease: 'easeIn'
+                                }
+                              }}
+                              transition={{
+                                duration: 0.04
+                              }}
+                              key='sort-down'
+                            >
+                              <SortDownIcon />
+                            </motion.span>
+                          ) : header.column.getIsSorted() === 'asc' ? (
+                            <motion.span
+                              animate={{
+                                y: 0,
+                                opacity: 1,
+                                transition: {
+                                  ease: 'easeOut'
+                                }
+                              }}
+                              initial={{
+                                y: '0.25rem',
+                                opacity: 0
+                              }}
+                              exit={{
+                                y: '-0.25rem',
+                                opacity: 0,
+                                transition: {
+                                  ease: 'easeIn'
+                                }
+                              }}
+                              transition={{
+                                duration: 0.04
+                              }}
+                              key='sort-up'
+                            >
+                              <SortUpIcon />
+                            </motion.span>
+                          ) : null}
+                        </AnimatePresence>
                       </div>
                     )}
                   </th>
@@ -155,7 +210,7 @@ const Table: FC<TableProps> = ({
               >
                 {row.getVisibleCells().map((cell) => (
                   <td
-                    className='border-text-primary/50 border-2 p-4'
+                    className='border-primary-300 dark:border-accent-600 border-2 p-4'
                     key={cell.id}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

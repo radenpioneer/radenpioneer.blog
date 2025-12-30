@@ -1,5 +1,7 @@
 ---
 import Layout, { type Props as LProps } from './layout.astro'
+import Header from '~/components/common/header/header.astro'
+import Gradient from '~/components/common/gradient/gradient.astro'
 
 export interface Props extends LProps {}
 const { ...props } = Astro.props
@@ -7,22 +9,15 @@ const { ...props } = Astro.props
 
 <Layout {...props}>
   <main
-    class='prose lg:prose-lg prose-theme relative mx-auto max-w-screen-lg px-4 pt-8 pb-48 sm:px-8 xl:px-0'
+    class='prose lg:prose-lg prose-theme dark:prose-invert prose-headings:font-display dark:prose-img:saturate-50 dark:prose-img:opacity-80 relative mx-auto max-h-dvh max-w-screen-lg overflow-y-auto px-4 pt-20 pb-48 sm:px-8 xl:px-0'
   >
     {
       props.title && (
-        <hgroup class='not-prose mb-6 xl:mb-8'>
-          <h1 class='font-display text-4xl font-bold lg:text-6xl'>
-            {props.title}
-          </h1>
-        </hgroup>
+        <Header title={props.title} className='not-prose mb-8 xl:mb-10' />
       )
     }
 
     <slot />
-    <div
-      class='from-background-primary fixed inset-x-0 bottom-0 h-48 bg-gradient-to-t to-transparent'
-    >
-    </div>
+    <Gradient class='fixed inset-x-0 bottom-0 h-48' />
   </main>
 </Layout>

@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config'
 import cloudflare from '@astrojs/cloudflare'
 import react from '@astrojs/react'
+import mdx from '@astrojs/mdx'
 import tailwindcss from '@tailwindcss/vite'
 import icons from 'unplugin-icons/vite'
 
@@ -15,7 +16,7 @@ export default defineConfig({
 
     imageService: 'cloudflare'
   }),
-  integrations: [react()],
+  integrations: [react(), mdx()],
   prefetch: {
     defaultStrategy: 'tap'
   },

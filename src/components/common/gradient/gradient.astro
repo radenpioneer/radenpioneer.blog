@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'div'> {}
+const { class: className, ...props } = Astro.props
+---
+
+<div
+  class:list={[
+    'from-theme dark:from-theme-dark bg-linear-to-t to-transparent',
+    className
+  ]}
+  {...props}
+>
+</div>
