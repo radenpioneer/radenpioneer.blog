@@ -12,10 +12,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         name: Checkout
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: oven-sh/setup-bun@735343b667d3e6f658f44d0eca948eb6282f2b76 # v2
         name: Setup Bun
         with:
           bun-version-file: .bun-version
@@ -26,7 +26,7 @@ jobs:
       - run: bun run build
         name: Run build
 
-      - uses: cloudflare/wrangler-action@v3
+      - uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3
         name: Deploy to Cloudflare (Preview)
         if: ${{ github.event_name == 'pull_request' }}
         with:
@@ -34,7 +34,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: versions upload --preview-alias preview
 
-      - uses: cloudflare/wrangler-action@v3
+      - uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3
         name: Deploy to Cloudflare (Production)
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         with:
