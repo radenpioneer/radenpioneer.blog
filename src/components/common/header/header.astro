@@ -5,6 +5,6 @@ interface Props extends HeaderProps {}
 const { ...props } = Astro.props
 ---
 
-<HeaderRC {...props}>
+<HeaderRC {...props} client:idle>
   <slot />
 </HeaderRC>
