@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.6",
-    "@iconify/json": "2.2.422",
+    "@iconify/json": "2.2.423",
     "@svgr/core": "8.1.0",
     "@svgr/plugin-jsx": "8.1.0",
     "@tailwindcss/typography": "0.5.19",
