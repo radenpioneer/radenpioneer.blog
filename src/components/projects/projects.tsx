@@ -7,8 +7,10 @@ import { clsx } from 'clsx/lite'
 import OpenLinkIcon from '~icons/material-symbols/open-in-new'
 import GitIcon from '~icons/simple-icons/git'
 
-export interface ProjectsProps
-  extends Omit<TableProps, 'columns' | 'defaultSorting'> {}
+export interface ProjectsProps extends Omit<
+  TableProps,
+  'columns' | 'defaultSorting'
+> {}
 
 const columnHelper = createColumnHelper<Project>()
 
