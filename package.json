@@ -37,7 +37,7 @@
     "@types/react": "19.2.9",
     "@types/react-dom": "19.2.3",
     "concurrently": "9.2.1",
-    "prettier": "3.8.0",
+    "prettier": "3.8.1",
     "prettier-config-standard": "7.0.0",
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-tailwindcss": "0.7.2",
