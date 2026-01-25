@@ -43,7 +43,7 @@
     "prettier-plugin-tailwindcss": "0.7.2",
     "react-scan": "0.4.3",
     "typescript": "5.9.3",
-    "unplugin-icons": "22.5.0",
+    "unplugin-icons": "23.0.1",
     "wrangler": "4.60.0"
   }
 }
