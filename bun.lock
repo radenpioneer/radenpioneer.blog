@@ -20,7 +20,7 @@
       },
       "devDependencies": {
         "@astrojs/check": "0.9.6",
-        "@iconify/json": "2.2.431",
+        "@iconify/json": "2.2.432",
         "@svgr/core": "8.1.0",
         "@svgr/plugin-jsx": "8.1.0",
         "@tailwindcss/typography": "0.5.19",
@@ -198,7 +198,7 @@
 
     "@fontsource-variable/lexend": ["@fontsource-variable/lexend@5.2.11", "", {}, "sha512-0hgEQ4O7Nh8fxL/WWmspJf0BErbocRkZwtLRGey/V4mUUqxfF7QUwqhcdzwpjom3NYCniY4uzQ5wYD7r9/92tQ=="],
 
-    "@iconify/json": ["@iconify/json@2.2.431", "", { "dependencies": { "@iconify/types": "*", "pathe": "^2.0.3" } }, "sha512-pOJ8ntUspUj6MNpNVdc9r3ezsuP70bhXG6/w3y0id7vqJqXJasjdiWu6SXi9GPleTf2sHdRB6R+gTyCyiKajXg=="],
+    "@iconify/json": ["@iconify/json@2.2.432", "", { "dependencies": { "@iconify/types": "*", "pathe": "^2.0.3" } }, "sha512-W0Qa5ByXfJUEtami6b4Mm4DRfcAWWsKsUhJ2uiaEOE2QabREEcDSa1op9qP12yrhuArEPiCyuO04rHNxArZ4Xw=="],
 
     "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
 
