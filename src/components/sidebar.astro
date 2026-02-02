@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  site: CollectionEntry<'site'>
+}
+
+const { site } = Astro.props
+---
+
+<aside class='__aside' x-show='$store.isSidebarOpen' x-cloak x-data>
+  <nav x-on:click.outside='$store.isSidebarOpen = false'>
+    <ul>
+      {
+        site.data.nav && (
+          <>
+            {site.data.nav.map((link) => (
+              <li>
+                <a href={link.url}>
+                  <strong>{link.label}</strong>
+                </a>
+              </li>
+            ))}
+          </>
+        )
+      }
+    </ul>
+  </nav>
+</aside>
+
+<style lang='scss'>
+  .__aside {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    padding-inline: calc(var(--pico-spacing) * 1.5);
+    padding-block: calc(var(--pico-spacing) * 2);
+    backdrop-filter: blur(0.125rem);
+
+    nav {
+      background-color: color-mix(
+        in oklab,
+        var(--pico-background-color) 95%,
+        transparent
+      );
+      height: 100%;
+      padding: calc(var(--pico-spacing) * 1.5);
+      backdrop-filter: blur(0.25rem);
+      border: 1px solid var(--pico-primary);
+      border-radius: 1rem;
+
+      ul {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        li {
+          font-size: calc(var(--pico-font-size) * 1.825);
+        }
+      }
+    }
+  }
+</style>

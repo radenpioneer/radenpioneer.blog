@@ -1,0 +1,48 @@
+---
+import Layout, { type Props as LayoutProps } from './layout.astro'
+
+interface Props extends LayoutProps {
+  title: string
+}
+
+const { title, ...props } = Astro.props
+---
+
+<Layout {...props} title={title}>
+  <main class='__main container'>
+    <hgroup>
+      <h1 class='__title'>{title}</h1>
+      <slot name='header' />
+    </hgroup>
+
+    <slot />
+  </main>
+
+  <Fragment slot='head'>
+    <slot name='head' />
+  </Fragment>
+</Layout>
+
+<style lang='scss'>
+  hgroup {
+    padding-bottom: calc(var(--pico-typography-spacing-vertical) * 0.75);
+    border-bottom: 1px solid var(--pico-primary-border);
+
+    .__title {
+      margin-bottom: calc(var(--pico-typography-spacing-vertical) * 0.5);
+    }
+  }
+
+  .__main {
+    max-width: 1024px;
+  }
+</style>
+
+<style lang='scss' is:global>
+  main p:not(hgroup p) img {
+    width: 100%;
+    max-width: 640px;
+    display: block;
+    margin-inline: auto;
+  }
+</style>

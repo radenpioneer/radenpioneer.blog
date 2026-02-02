@@ -1,0 +1,94 @@
+---
+import PageLayout from '~/layout/page.astro'
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
+import { getCollection, render } from 'astro:content'
+import { Picture } from 'astro:assets'
+
+export const getStaticPaths = (async () => {
+  const pages = await getCollection('pages', (page) =>
+    import.meta.env.DEV ? true : !page.data.draft
+  )
+  return pages.map((page) => {
+    return {
+      params: {
+        page:
+          page.data.type === 'post'
+            ? [
+                page.data.publishedDate.getFullYear(),
+                String(page.data.publishedDate.getMonth() + 1).padStart(2, '0'),
+                page.id
+              ].join('/')
+            : page.id
+      },
+      props: {
+        page
+      }
+    }
+  })
+}) satisfies GetStaticPaths
+
+interface Props extends InferGetStaticPropsType<typeof getStaticPaths> {}
+
+const { page } = Astro.props
+const { Content } = await render(page)
+---
+
+<PageLayout
+  title={page.data.title}
+  description={page.data.description}
+  hidden={page.data.hidden}
+>
+  <Content />
+
+  <Fragment slot='header'>
+    {
+      page.data.type === 'post' && (
+        <>
+          <p class='__date'>
+            <time datetime={page.data.publishedDate.toISOString()}>
+              {page.data.publishedDate.toLocaleDateString('id', {
+                dateStyle: 'full'
+              })}
+            </time>
+          </p>
+          {page.data.image && (
+            <figure class='__figure'>
+              <Picture
+                src={page.data.image.src}
+                alt={page.data.title}
+                priority
+              />
+              {page.data.image.caption && (
+                <figcaption>
+                  <small>{page.data.image.caption}</small>
+                </figcaption>
+              )}
+            </figure>
+          )}
+        </>
+      )
+    }
+  </Fragment>
+</PageLayout>
+
+<style lang='scss'>
+  .__date {
+    color: var(--pico-muted-color);
+  }
+
+  .__figure {
+    margin-top: calc(var(--pico-spacing) * 1.5);
+
+    img {
+      @media (width < 576px) {
+        margin-left: calc(var(--pico-spacing) * -1);
+        margin-right: calc(var(--pico-spacing) * -1);
+        max-width: 100vw;
+      }
+    }
+
+    figcaption {
+      font-family: var(--pico-font-family-monospace);
+    }
+  }
+</style>

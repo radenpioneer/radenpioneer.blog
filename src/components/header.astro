@@ -1,0 +1,61 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  site: CollectionEntry<'site'>
+}
+
+const { site } = Astro.props
+---
+
+<header class='container'>
+  <nav>
+    <ul>
+      <li>
+        <a href='/'>{site.data.title}</a>
+      </li>
+    </ul>
+    <ul>
+      {
+        site.data.nav && (
+          <>
+            {site.data.nav.map((link) => (
+              <li class='__menu_link'>
+                <a href={link.url}>{link.label}</a>
+              </li>
+            ))}
+          </>
+        )
+      }
+      <li class='__menu_btn'>
+        <button class='outline' x-on:click='$store.isSidebarOpen = true' x-data>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style lang='scss'>
+  .__menu_btn {
+    button::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-color: var(--pico-color);
+      mask-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik00IDVoMTYiLz48cGF0aCBkPSJNNCAxMmgxNiIvPjxwYXRoIGQ9Ik00IDE5aDE2Ii8+PC9zdmc+');
+      mask-size: contain;
+      mask-repeat: no-repeat;
+    }
+
+    @media (width >= 768px) {
+      display: none;
+    }
+  }
+
+  .__menu_link {
+    @media (width < 768px) {
+      display: none;
+    }
+  }
+</style>

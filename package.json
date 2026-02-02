@@ -1,21 +1,32 @@
 {
-	"name": "radenpioneer-blog",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro build && wrangler dev",
-		"astro": "astro",
-		"deploy": "astro build && wrangler deploy",
-		"cf-typegen": "wrangler types"
-	},
-	"dependencies": {
-		"@astrojs/cloudflare": "^12.6.12",
-		"astro": "^5.17.1"
-	},
-	"devDependencies": {
-		"@types/node": "^25.2.0",
-		"wrangler": "^4.61.1"
-	}
+  "name": "radenpioneer-blog",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "cf-typegen": "wrangler types",
+    "deploy": "astro build && wrangler deploy",
+    "dev": "astro dev",
+    "format": "prettier --write .",
+    "preview": "astro build && wrangler dev"
+  },
+  "dependencies": {
+    "@astrojs/alpinejs": "^0.4.9",
+    "@astrojs/cloudflare": "^13.0.0-beta.3",
+    "@types/alpinejs": "^3.13.11",
+    "alpinejs": "^3.15.7",
+    "astro": "^6.0.0-beta.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@picocss/pico": "^2.1.1",
+    "@types/node": "^25.2.0",
+    "prettier": "^3.8.1",
+    "prettier-config-standard": "^7.0.0",
+    "prettier-plugin-astro": "^0.14.1",
+    "sass": "^1.97.3",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.61.1"
+  }
 }

@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../.astro/collections/site.schema.json",
+  "title": "radenpioneer.blog",
+  "description": "Blog sederhana tentang tips web development dan catatan lainnya.",
+  "favicon": "/favicon.svg",
+  "nav": [
+    {
+      "label": "Beranda",
+      "url": "/"
+    },
+    {
+      "label": "Tentang",
+      "url": "/about"
+    }
+  ]
+}
