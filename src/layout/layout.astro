@@ -1,0 +1,35 @@
+---
+import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
+import Header from '~/components/header.astro'
+import { getEntry } from 'astro:content'
+
+export interface Props extends BaseLayoutProps {
+  title?: string
+  description?: string
+}
+
+const { title, description, ...props } = Astro.props
+const site = await getEntry('site', 'site')
+---
+
+<BaseLayout {...props}>
+  <Header site={site!} />
+  <slot />
+
+  <Fragment slot='head'>
+    <title>
+      {title ? `${title} \u2014 ${site?.data.title}` : site?.data.title}
+    </title>
+    <meta name='description' content={description ?? site?.data.description} />
+    <meta name='color-scheme' content='light dark' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link rel='icon' href='/favicon.ico' />
+    <slot name='head' />
+  </Fragment>
+</BaseLayout>
+
+<style lang='scss' is:global>
+  @use '@picocss/pico/scss/pico' with (
+    $theme-color: 'pumpkin'
+  );
+</style>

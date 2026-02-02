@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection('pages', (post) => post.data.type === 'post')
+---
+
+<section class='grid'>
+  {
+    posts.map((post) => {
+      if (post.data.type !== 'post') {
+        return null
+      }
+
+      const uri = [
+        post.data.publishedDate.getFullYear(),
+        String(post.data.publishedDate.getMonth() + 1).padStart(2, '0'),
+        post.id
+      ].join('/')
+      return (
+        <article>
+          <h2>
+            <a href={`/${uri}`}>{post.data.title}</a>
+          </h2>
+          <p class='__date'>
+            <time datetime={post.data.publishedDate.toISOString()}>
+              <small>
+                {post.data.publishedDate.toLocaleDateString('id', {
+                  dateStyle: 'full'
+                })}
+              </small>
+            </time>
+          </p>
+          <footer>
+            <a class='outline' href={`/${uri}`} role='button'>
+              Baca Selengkapnya
+            </a>
+          </footer>
+        </article>
+      )
+    })
+  }
+</section>
+
+<style lang='scss'>
+  .__date {
+    color: var(--pico-muted-color);
+  }
+</style>
