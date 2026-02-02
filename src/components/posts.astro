@@ -31,9 +31,7 @@ const posts = await getCollection('pages', (post) => post.data.type === 'post')
             </time>
           </p>
           <footer>
-            <a class='outline' href={`/${uri}`} role='button'>
-              Baca Selengkapnya
-            </a>
+            <a href={`/${uri}`}>Baca Selengkapnya</a>
           </footer>
         </article>
       )

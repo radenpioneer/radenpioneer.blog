@@ -9,6 +9,7 @@ const pages = defineCollection({
       .object({
         title: z.string().max(120),
         description: z.string().max(160),
+        draft: z.boolean().default(false),
         hidden: z.boolean().default(false)
       })
       .and(

@@ -1,20 +1,23 @@
 ---
 import BaseLayout, { type Props as BaseLayoutProps } from './base.astro'
 import Header from '~/components/header.astro'
+import Sidebar from '~/components/sidebar.astro'
 import { getEntry } from 'astro:content'
 
 export interface Props extends BaseLayoutProps {
   title?: string
   description?: string
+  hidden?: boolean
 }
 
-const { title, description, ...props } = Astro.props
+const { title, description, hidden, ...props } = Astro.props
 const site = await getEntry('site', 'site')
 ---
 
-<BaseLayout {...props}>
+<BaseLayout {...props} x-bind:class='$store.isSidebarOpen && "__inert"' x-data>
   <Header site={site!} />
   <slot />
+  <Sidebar site={site!} />
 
   <Fragment slot='head'>
     <title>
@@ -25,11 +28,33 @@ const site = await getEntry('site', 'site')
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <link rel='icon' href='/favicon.ico' />
     <slot name='head' />
+    {hidden && <meta name='robots' content='noindex, nofollow' />}
   </Fragment>
 </BaseLayout>
+
+<style lang='scss'>
+  body {
+    min-height: 100dvh;
+
+    &.__inert {
+      overflow: hidden;
+    }
+  }
+</style>
 
 <style lang='scss' is:global>
   @use '@picocss/pico/scss/pico' with (
     $theme-color: 'pumpkin'
   );
+
+  [x-cloak] {
+    display: none !important;
+  }
 </style>
+
+<script>
+  document.addEventListener('alpine:init', () => {
+    // @ts-expect-error YNTKTS
+    Alpine.store('isSidebarOpen', false)
+  })
+</script>

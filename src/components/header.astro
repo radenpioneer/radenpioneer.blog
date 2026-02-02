@@ -28,7 +28,8 @@ const { site } = Astro.props
         )
       }
       <li class='__menu_btn'>
-        <button class='outline'></button>
+        <button class='outline' x-on:click='$store.isSidebarOpen = true' x-data>
+        </button>
       </li>
     </ul>
   </nav>
