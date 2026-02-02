@@ -1,21 +1,25 @@
 {
-	"name": "radenpioneer-blog",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro build && wrangler dev",
-		"astro": "astro",
-		"deploy": "astro build && wrangler deploy",
-		"cf-typegen": "wrangler types"
-	},
-	"dependencies": {
-		"@astrojs/cloudflare": "^13.0.0-beta.3",
-		"astro": "^6.0.0-beta.6"
-	},
-	"devDependencies": {
-		"@types/node": "^25.2.0",
-		"wrangler": "^4.61.1"
-	}
+  "name": "radenpioneer-blog",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "cf-typegen": "wrangler types",
+    "deploy": "astro build && wrangler deploy",
+    "dev": "astro dev",
+    "format": "prettier --write .",
+    "preview": "astro build && wrangler dev"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.0.0-beta.3",
+    "astro": "^6.0.0-beta.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.0",
+    "prettier": "^3.8.1",
+    "prettier-config-standard": "^7.0.0",
+    "prettier-plugin-astro": "^0.14.1",
+    "wrangler": "^4.61.1"
+  }
 }
