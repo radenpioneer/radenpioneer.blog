@@ -17,6 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# local issue tracker (see docs/agents/issue-tracker.md)
+.scratch/
+
 # macOS-specific files
 .DS_Store
 
