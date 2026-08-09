@@ -1,6 +1,10 @@
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
-	"compatibility_date": "2026-08-09",
+	// Must not exceed what the installed workerd supports (wrangler 4.120.0 pins
+	// workerd 1.20260801.1, max 2026-08-08). @astrojs/cloudflare prerenders inside
+	// workerd, so a date ahead of the runtime fails every build. Bump this together
+	// with a wrangler upgrade, never on its own.
+	"compatibility_date": "2026-08-08",
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "radenpioneernet",
 	"main": "@astrojs/cloudflare/entrypoints/server",
