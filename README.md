@@ -32,7 +32,7 @@ committing to `main`. Tailwind 4 for styling. React for components, none of them
 | `CONTEXT.md` | The domain language. Settled terms with settled *Avoid* lists. |
 | `docs/adr/` | Architectural decisions, one per file, with the reasoning that produced them. |
 | `AGENTS.md` | Working conventions, and pointers into `docs/agents/`. |
-| `docs/agents/components.md` | How components are written. Read before touching one. |
+| `docs/agents/conventions.md` | How the code is written. Every rule marked hard or default. Read before touching any of it. |
 | `PRODUCT.md` | Durable product truth — audiences, purpose, constraints, principles. |
 | `DESIGN.md` | The visual system and its named rules. |
 

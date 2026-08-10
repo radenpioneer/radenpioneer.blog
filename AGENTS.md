@@ -21,10 +21,14 @@ Consult these guides before working on related tasks:
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
 
-## Components
+## Conventions
 
-Site components are React (`.tsx`) with an `.astro` wrapper, one directory each, and nothing
-hydrates. See `docs/agents/components.md` before writing or editing any component.
+`docs/agents/conventions.md` is how this codebase is written — components, islands, styling, the
+layout and head seam, images, config, empty vs missing vs error, comments, and the build guards.
+Every rule is marked hard or default. **Read it before writing or editing any code here.**
+
+In short: site components are React (`.tsx`) with an `.astro` wrapper, one directory each, pages
+only assemble, and nothing hydrates unless it has earned an `ISLAND:` header.
 
 ## Agent skills
 
