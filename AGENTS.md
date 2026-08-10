@@ -21,6 +21,11 @@ Consult these guides before working on related tasks:
 - [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
 - [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
 
+## Components
+
+Site components are React (`.tsx`) with an `.astro` wrapper, one directory each, and nothing
+hydrates. See `docs/agents/components.md` before writing or editing any component.
+
 ## Agent skills
 
 ### Issue tracker

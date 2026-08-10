@@ -1,43 +1,47 @@
-# Astro Starter Kit: Minimal
+# radenpioneer.net
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A personal site that is both a dev blog and a portfolio. Content is authored in a git-based CMS
+and published as a static site on Cloudflare Workers.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Two kinds of record live here and they are kept apart on purpose — in the schema, the taxonomy,
+the URLs, and the vocabulary. A **Blog Post** is dated and is never revised to stay true; when it
+is wrong it gets a **Correction**. A **Portfolio Item** describes a standing state and *is* kept
+current. `CONTEXT.md` is the authority on that language.
 
-## 🚀 Project Structure
+## Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+Astro 7 on Cloudflare Workers via `@astrojs/cloudflare` and `wrangler`. Keystatic for authoring,
+committing to `main`. Tailwind 4 for styling. React for components, none of them hydrated.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Commands
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+| Command | Action |
+| :-- | :-- |
+| `npm install` | Install dependencies |
+| `astro dev --background` | Start the dev server on `localhost:4321`, detached |
+| `astro dev status` / `logs` / `stop` | Manage that server |
+| `npm run build` | Build to `./dist/` |
+| `npm run preview` | Build, then serve the output locally |
+| `npm run deploy` | Build and `wrangler deploy` |
+| `npm run cf-typegen` | Regenerate `worker-configuration.d.ts` |
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Where things are written down
 
-Any static assets, like images, can be placed in the `public/` directory.
+| File | What it holds |
+| :-- | :-- |
+| `CONTEXT.md` | The domain language. Settled terms with settled *Avoid* lists. |
+| `docs/adr/` | Architectural decisions, one per file, with the reasoning that produced them. |
+| `AGENTS.md` | Working conventions, and pointers into `docs/agents/`. |
+| `docs/agents/components.md` | How components are written. Read before touching one. |
+| `PRODUCT.md` | Durable product truth — audiences, purpose, constraints, principles. |
+| `DESIGN.md` | The visual system and its named rules. |
 
-## 🧞 Commands
+Two constraints worth knowing before changing anything: an entry's shape is written by hand in
+both `keystatic.config.ts` and `src/content.config.ts` and the two must move together (ADR-0001),
+and editing a published post's `pubDate` silently moves its URL (ADR-0005).
 
-All commands are run from the root of the project, from a terminal:
+## State
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Early. The site builds and deploys, and it has no content yet — no posts, no portfolio items, no
+bio. That is the normal first state here, not a gap being papered over: every surface is built to
+be honest and complete with nothing in it.
