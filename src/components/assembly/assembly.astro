@@ -1,0 +1,18 @@
+---
+// Wrapper. Pages and layouts import this file, never the .tsx beside it.
+//
+// It does the two things the React half cannot: it turns Astro's `class` into React's
+// `className`, and it turns the default slot into `children`. No `client:*` directive — the
+// component renders to plain HTML at build time and ships no JavaScript.
+import { Assembly, type AssemblyProps } from './assembly'
+
+export type Props = Omit<AssemblyProps, 'className' | 'children'> & {
+	class?: string
+}
+
+const { class: className, ...props } = Astro.props
+---
+
+<Assembly className={className} {...props}>
+	<slot />
+</Assembly>

@@ -1,0 +1,9 @@
+---
+// Wrapper. `Astro.url` is another global the React half cannot reach, so the current path is
+// resolved here and passed down as a plain string.
+import { SiteNav } from './site-nav'
+
+export type Props = Record<string, never>
+---
+
+<SiteNav pathname={Astro.url.pathname} />

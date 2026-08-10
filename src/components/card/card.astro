@@ -1,0 +1,38 @@
+---
+// Wrapper. Named slots are how Astro-rendered markup reaches a React component as a prop, so
+// the cover is composed here — Cover is itself a wrapper around `astro:assets` — and arrives in
+// the React half already rendered.
+import type { ImageMetadata } from 'astro'
+import Cover from '~/components/cover/cover.astro'
+import { Card, type CardProps } from './card'
+
+export type Props = Omit<CardProps, 'className' | 'cover' | 'hasByline' | 'byline' | 'children'> & {
+	class?: string
+	cover?: ImageMetadata
+	coverAlt?: string
+	/** Above-the-fold entries opt out of lazy loading. */
+	eager?: boolean
+}
+
+const { class: className, cover, coverAlt = '', eager = false, ...props } = Astro.props
+---
+
+<Card {...props} className={className} hasByline={Astro.slots.has('byline')}>
+	{
+		cover && (
+			<Fragment slot="cover">
+				<Cover image={cover} alt={coverAlt} loading={eager ? 'eager' : 'lazy'} />
+			</Fragment>
+		)
+	}
+
+	<slot />
+
+	{
+		Astro.slots.has('byline') && (
+			<Fragment slot="byline">
+				<slot name="byline" />
+			</Fragment>
+		)
+	}
+</Card>

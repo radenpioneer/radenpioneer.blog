@@ -1,0 +1,13 @@
+---
+import { Band, type BandProps } from './band'
+
+export type Props = Omit<BandProps, 'className' | 'children'> & {
+	class?: string
+}
+
+const { class: className, ...props } = Astro.props
+---
+
+<Band className={className} {...props}>
+	<slot />
+</Band>

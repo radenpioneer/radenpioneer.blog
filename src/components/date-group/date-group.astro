@@ -1,0 +1,11 @@
+---
+import { DateGroup, type DateGroupProps } from './date-group'
+
+export type Props = Omit<DateGroupProps, 'children'>
+
+const props = Astro.props
+---
+
+<DateGroup {...props}>
+	<slot />
+</DateGroup>

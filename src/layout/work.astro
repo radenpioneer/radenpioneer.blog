@@ -1,0 +1,17 @@
+---
+// Type layout for Portfolio Item routes. Extends Common with elements specific to this content type.
+import Layout, { type Props as LayoutProps } from "./layout.astro"
+
+export type Props = LayoutProps & {}
+
+const { ...props } = Astro.props
+---
+
+<Layout {...props}>
+	<slot />
+
+	<Fragment slot="head">
+		<!-- TODO: Work layout SEO tags -->
+		<slot name="head" />
+	</Fragment>
+</Layout>

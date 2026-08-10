@@ -1,0 +1,189 @@
+/*
+ * Scan `src/` and nothing else. Tailwind's automatic detection walks the whole project, which
+ * here means the agent skill scripts under `.agents/` — their string literals were being mined
+ * for class names and emitted as real CSS, including a `rounded-full` nothing uses.
+ */
+@import "tailwindcss" source(none);
+@source "../";
+
+/*
+ * Design tokens. This block is the single source of truth for the visual world described in
+ * DESIGN.md — a component never hard-codes a colour, a face, or an assembly measure.
+ */
+@theme {
+	/* Colors — DESIGN.md, Colors */
+	--color-olive: #a9ae8c; /* Field Olive: the page ground the assembly floats on */
+	--color-band: #39402a; /* Band Deep: header and footer field. Never a text colour on light ground */
+	--color-column: #ffffff; /* Column White: the reading column. Never warmed toward cream */
+	--color-ink: #1a1a1a; /* Ink: body and heading text on the column */
+	--color-quiet: #5a5f4a; /* Secondary text, tinted from the olive rather than greyed */
+	--color-rule: #c4c4b4; /* Rule: every 1px hairline, table border and <hr> */
+	--color-signal: #d2601a; /* Signal Orange: live or current, and nothing else */
+	--color-link: #2a4b9b; /* Link Blue */
+	--color-visited: #6b3fa0; /* Visited Violet */
+
+	/* Faces — core web fonts only. The No Webfont Rule: nothing is ever loaded. */
+	--font-display: "Trebuchet MS", Verdana, sans-serif;
+	--font-body: Georgia, "Times New Roman", serif;
+	--font-ui: Verdana, Tahoma, sans-serif;
+
+	/* Assembly — DESIGN.md, Layout. The Fixed Assembly Rule: a real, stated width. */
+	--container-assembly: 760px;
+	--spacing-sidebar: 180px;
+	--spacing-gutter: 24px;
+
+	/* The reading measure: ~65–72 characters of Georgia at 15.5px. A token, never a literal. */
+	--container-measure: 33rem;
+
+	/* Type scale. DESIGN.md leaves the exact values to implementation; these are them. */
+	--text-title: 26px;
+	--text-entry: 20px;
+	--text-body: 15.5px;
+	--text-body--line-height: 1.7;
+	--text-furniture: 11px;
+	--text-furniture--line-height: 1.6;
+
+	--tracking-band: 0.18em;
+	--tracking-furniture: 0.12em;
+
+	/*
+	 * Three named rules from DESIGN.md, enforced by deleting the tokens rather than by
+	 * discipline. `rounded-*`, `shadow-*` and `animate-*` stop existing as utilities, so the
+	 * Square Corner Rule, the No Shadow Rule and the Still Page Rule cannot be broken by
+	 * habit — only by deliberately editing this block.
+	 */
+	--radius-*: initial;
+	--shadow-*: initial;
+	--inset-shadow-*: initial;
+	--drop-shadow-*: initial;
+	--text-shadow-*: initial;
+	--animate-*: initial;
+}
+
+@layer base {
+	html {
+		background-color: var(--color-olive);
+		color: var(--color-ink);
+		font-family: var(--font-body);
+		font-size: var(--text-body);
+		line-height: 1.7;
+		/* Browser surfaces belong to the design too. */
+		scrollbar-color: var(--color-band) var(--color-olive);
+	}
+
+	/*
+	 * The Visited Link Rule. :visited is styled, always, and visibly differs from unvisited.
+	 * In an archive whose purpose is being returned to, that is a feature, not a relic.
+	 */
+	a {
+		color: var(--color-link);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	a:visited {
+		color: var(--color-visited);
+	}
+
+	/*
+	 * The era's whole hover vocabulary. Signal Orange is never spent here — it marks live or
+	 * current state only.
+	 */
+	a:hover {
+		text-decoration-thickness: 2px;
+	}
+
+	/* currentColor keeps the ring legible on the white column and on the Band Deep field alike. */
+	:focus-visible {
+		outline: 2px solid currentColor;
+		outline-offset: 2px;
+	}
+
+	::selection {
+		background-color: var(--color-olive);
+		color: var(--color-ink);
+	}
+
+	hr {
+		border: 0;
+		border-top: 1px solid var(--color-rule);
+	}
+
+	/* Dates and archive counts line up in a column, so they get tabular figures. */
+	time,
+	.tabular {
+		font-variant-numeric: tabular-nums;
+	}
+}
+
+/*
+ * Element defaults for authored prose, paired with `src/components/prose/`. They live here
+ * rather than in a scoped block for two reasons: an Astro scoped <style> does not reach the
+ * output of a framework component, and these elements arrive from a slot or a rendered MDX body
+ * and cannot be given a class. `@layer components` keeps every Tailwind utility able to
+ * override them.
+ */
+@layer components {
+	.prose-column {
+		/* DESIGN.md, Typography: ~65–72 characters of Georgia, at any viewport width. */
+		max-width: var(--container-measure);
+	}
+
+	.prose-column :is(p, ul, ol, blockquote, pre) {
+		margin-block: 0.9em;
+	}
+
+	/* One spacing rhythm: more space above a heading than below it. */
+	.prose-column :is(h2, h3) {
+		font-family: var(--font-body);
+		font-weight: 700;
+		line-height: 1.3;
+		margin-block: 1.8em 0.5em;
+	}
+
+	.prose-column h2 {
+		font-size: var(--text-entry);
+	}
+
+	.prose-column :is(ul, ol) {
+		padding-inline-start: 1.4em;
+	}
+
+	.prose-column ul {
+		list-style: square;
+	}
+
+	.prose-column blockquote {
+		border-inline-start: 1px solid var(--color-rule);
+		padding-inline-start: 1em;
+		color: var(--color-quiet);
+	}
+
+	/*
+	 * A Correction is rendered the way the era rendered it: the original left visible and struck
+	 * through, the fix appended as a dated block. The form is what stops a Correction from
+	 * quietly becoming an edit (CONTEXT.md).
+	 */
+	.prose-column del {
+		color: var(--color-quiet);
+		text-decoration-thickness: 1px;
+	}
+
+	.prose-column img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		border: 1px solid var(--color-rule);
+	}
+
+	.prose-column code {
+		font-family: ui-monospace, "Courier New", monospace;
+		font-size: 0.9em;
+	}
+
+	.prose-column pre {
+		border: 1px solid var(--color-rule);
+		padding: 0.75em;
+		overflow-x: auto;
+	}
+}

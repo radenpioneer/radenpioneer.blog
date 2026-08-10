@@ -1,0 +1,14 @@
+---
+// Wrapper. Slot presence is the empty-state trigger: the caller passes its items or passes
+// nothing, and never passes an `isEmpty` flag alongside them. `Astro.slots` only exists here,
+// so this is where that question gets answered and handed down as a plain boolean.
+import { Panel, type PanelProps } from './panel'
+
+export type Props = Omit<PanelProps, 'hasItems' | 'children'>
+
+const props = Astro.props
+---
+
+<Panel {...props} hasItems={Astro.slots.has('default')}>
+	<slot />
+</Panel>

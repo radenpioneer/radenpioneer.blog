@@ -1,0 +1,13 @@
+---
+import { Prose, type ProseProps } from './prose'
+
+export type Props = Omit<ProseProps, 'className' | 'children'> & {
+	class?: string
+}
+
+const { class: className, ...props } = Astro.props
+---
+
+<Prose className={className} {...props}>
+	<slot />
+</Prose>

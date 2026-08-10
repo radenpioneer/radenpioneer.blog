@@ -1,0 +1,46 @@
+---
+// Wrapper. This is the clearest case for the split: `<Image>` comes from `astro:assets` and
+// cannot be imported into a .tsx at all, so the optimised image is produced here and handed to
+// the React half as children.
+import { Image } from 'astro:assets'
+import type { ImageMetadata } from 'astro'
+import { Cover, type CoverProps } from './cover'
+
+export type Props = Omit<CoverProps, 'hasImage' | 'children'> & {
+	/** Import through the `@assets/` alias. Never write a `/src/…` path — it fails silently. */
+	image?: ImageMetadata
+	alt?: string
+	/**
+	 * Explicit sizing is mandatory. `image.responsiveStyles` is off because Astro's unlayered
+	 * styles would beat Tailwind's layered ones, so there is no `layout` prop and no inferred
+	 * sizes to fall back on.
+	 */
+	widths?: number[]
+	sizes?: string
+	loading?: 'eager' | 'lazy'
+}
+
+const {
+	image,
+	alt = '',
+	widths = [524, 1048],
+	sizes = '(max-width: 760px) 100vw, 524px',
+	loading = 'lazy',
+	...props
+} = Astro.props
+---
+
+<Cover {...props} hasImage={Boolean(image)}>
+	{
+		image && (
+			<Image
+				src={image}
+				alt={alt}
+				widths={widths}
+				sizes={sizes}
+				loading={loading}
+				class="block w-full"
+			/>
+		)
+	}
+</Cover>

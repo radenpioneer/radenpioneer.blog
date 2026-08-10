@@ -1,0 +1,28 @@
+---
+// Second composition, kept deliberately small: it exists to show a page built from Prose and
+// Cover rather than from Card, so the two shapes a route can take are both on the record.
+import Layout from '~/layout/layout.astro'
+import Prose from '~/components/prose/prose.astro'
+import Cover from '~/components/cover/cover.astro'
+import { site } from '~/config/site'
+
+// About is a singleton and it is not authored yet (PRODUCT.md, Evidence on Hand). Nothing here
+// is invented to stand in for it; the copy below is the empty state, and the authored bio
+// replaces it once `getEntry('about', …)` exists.
+---
+
+<Layout title={`About — ${site.title}`} description={site.tagline}>
+	<h1 class="mb-4 font-body text-entry font-bold">About</h1>
+
+	<div class="w-32">
+		<Cover label="No portrait" widths={[128, 256]} sizes="128px" loading="eager" />
+	</div>
+
+	<Prose class="mt-4">
+		<p>
+			I haven't written this page yet. When I do, it says who I am and what I work on — and
+			the byline under every post reads from here, so this is the only place the site keeps
+			that.
+		</p>
+	</Prose>
+</Layout>
