@@ -42,5 +42,9 @@ A dimension along which content is classified. Blog Posts are classified by Tag;
 ### Configuration
 
 **Site Settings**:
-The single set of site-wide values that an author can change without a code change. Exactly one exists — it is not a collection.
+The site's own identity as copy — what it calls itself and how it describes itself. Exactly one exists. Anything that only takes effect after a code change is not a Site Setting.
 _Avoid_: Config, globals, site config, options
+
+**About**:
+Who the author is — a name, a portrait, a one-line bio, and freeform prose. Exactly one exists. On a personal site the site and the person are the same subject, so About is both the site's about page and the author identity every Blog Post is bylined with.
+_Avoid_: Author, profile, bio, me — each one splits a thing that is deliberately single
