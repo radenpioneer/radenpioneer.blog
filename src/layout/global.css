@@ -35,12 +35,21 @@
 	/* The reading measure: ~65–72 characters of Georgia at 15.5px. A token, never a literal. */
 	--container-measure: 33rem;
 
-	/* Type scale. DESIGN.md leaves the exact values to implementation; these are them. */
-	--text-title: 26px;
-	--text-entry: 20px;
-	--text-body: 15.5px;
+	/*
+	 * Type scale. DESIGN.md leaves the exact values to implementation; these are them.
+	 *
+	 * In rem, never px, and the root font-size is left alone: a reader who raised their browser
+	 * default is exactly the reader 11px Verdana furniture is hardest on, and pinning the root
+	 * would override them and defeat every rem measure in the system at the same time.
+	 * Comments give the px equivalent at a 16px default.
+	 */
+	--text-title: 1.625rem; /* 26px */
+	--text-entry: 1.25rem; /* 20px */
+	--text-body: 0.96875rem; /* 15.5px */
 	--text-body--line-height: 1.7;
-	--text-furniture: 11px;
+	--text-section: 0.8125rem; /* 13px — column section headings */
+	--text-section--line-height: 1.4;
+	--text-furniture: 0.6875rem; /* 11px */
 	--text-furniture--line-height: 1.6;
 
 	--tracking-band: 0.18em;
@@ -63,12 +72,15 @@
 @layer base {
 	html {
 		background-color: var(--color-olive);
+		/* Browser surfaces belong to the design too. */
+		scrollbar-color: var(--color-band) var(--color-olive);
+	}
+
+	body {
 		color: var(--color-ink);
 		font-family: var(--font-body);
 		font-size: var(--text-body);
 		line-height: 1.7;
-		/* Browser surfaces belong to the design too. */
-		scrollbar-color: var(--color-band) var(--color-olive);
 	}
 
 	/*

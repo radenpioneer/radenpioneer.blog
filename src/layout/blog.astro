@@ -1,5 +1,11 @@
 ---
 // Type layout for Blog Post routes. Extends Common with elements specific to this content type.
+//
+// Empty on purpose, and not speculative: ticket 15 settled a Base -> Common -> Type layer table
+// for the SEO head, under the hard rule that a route never re-emits a tag a layer above already
+// emitted. This file is that table's Type tier standing ready. It is where `article:*`,
+// `BlogPosting` JSON-LD, and the Blog Post title segment land — and having the seam exist now is
+// what stops the build session from emitting them from the route and drifting.
 import Layout, { type Props as LayoutProps } from "./layout.astro"
 
 export type Props = LayoutProps & {}
@@ -11,7 +17,7 @@ const { ...props } = Astro.props
 	<slot />
 
 	<Fragment slot="head">
-		<!-- TODO: Blog layout SEO tags -->
+		{/* TODO: Blog layout SEO tags */}
 		<slot name="head" />
 	</Fragment>
 </Layout>

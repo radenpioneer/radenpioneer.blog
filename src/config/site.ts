@@ -19,6 +19,15 @@ export const site = {
 } as const
 
 /**
+ * Contact lives in the footer and on About (PRODUCT.md). Nothing is authored yet and no handle
+ * may be invented, so this ships empty and the footer renders the row only once it is not.
+ *
+ * A visible "contact coming soon" was considered and rejected: that is precisely the period copy
+ * idiom DESIGN.md bans alongside "under construction".
+ */
+export const socials: readonly { label: string; href: string }[] = []
+
+/**
  * `/blog/` and `/work/` are not built yet. They stay in the nav anyway — the Furniture Stays
  * Rule applies to navigation as much as to the sidebar, and the routes land in the build
  * session. Trailing slashes are required: `trailingSlash: 'always'` (ADR-0005).

@@ -10,7 +10,7 @@ import Assembly from '~/components/assembly/assembly.astro'
 import Band from '~/components/band/band.astro'
 import SiteNav from '~/components/site-nav/site-nav.astro'
 import SiteFurniture from '~/components/site-furniture/site-furniture.astro'
-import { site } from '~/config/site'
+import { site, socials } from '~/config/site'
 
 export type Props = BaseProps & {
 	title?: string
@@ -50,8 +50,19 @@ const year = new Date().getFullYear()
 				its own width the sidebar unstacks beneath the main column. Every internal
 				measure holds.
 			-->
-			<div class="grid grid-cols-1 bg-column md:grid-cols-[1fr_var(--spacing-sidebar)]">
-				<main class="p-4">
+			{/*
+				Padding lives on the columns, never on this grid, so the sidebar's hairline runs
+				the full height of the row and meets the nav rule above and the footer band
+				below. A rule that stops short of the rules it should join is a visible join
+				failure in a system whose whole depth vocabulary is 1px hairlines.
+
+				Main drops its right padding at `md` so the 24px gutter is the entire separation
+				between the column and the rule, rather than stacking on top of it.
+			*/}
+			<div
+				class="grid grid-cols-1 bg-column md:grid-cols-[1fr_var(--spacing-sidebar)] md:gap-x-gutter"
+			>
+				<main class="p-4 md:pr-0">
 					<slot />
 				</main>
 
@@ -62,18 +73,40 @@ const year = new Date().getFullYear()
 
 			<Band as="footer" class="px-4 py-3 font-ui text-furniture">
 				<p>&copy; {year} {site.title}</p>
+				{/*
+					Contact is the footer's job (PRODUCT.md), so the slot stays installed when it
+					is empty — the same answer the sidebar gives four lines up, and the same
+					register as its "No tags yet." Letting it vanish would make contact the one
+					piece of furniture in the system that disappears rather than showing its
+					absence. Not a period idiom: it states a fact in the current voice.
+				*/}
+				{
+					socials.length > 0 ? (
+						<ul class="mt-1 flex flex-wrap gap-x-3">
+							{socials.map(({ label, href }) => (
+								<li>
+									<a href={href} class="text-column">
+										{label}
+									</a>
+								</li>
+							))}
+						</ul>
+					) : (
+						<p class="mt-1">No contact links yet.</p>
+					)
+				}
 			</Band>
 		</Assembly>
 	</div>
 
 	<Fragment slot="head">
-		<!-- TODO: conditionally use sitewide configurations -->
+		{/* TODO: conditionally use sitewide configurations */}
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 
-		<!-- TODO: Common layout SEO tags -->
+		{/* TODO: Common layout SEO tags — the Common tier of ticket 15's layer table */}
 		<slot name="head" />
 	</Fragment>
 </BaseLayout>

@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layout/layout.astro'
 import Card, { type Props as CardProps } from '~/components/card/card.astro'
-import Cover from '~/components/cover/cover.astro'
 import DateGroup from '~/components/date-group/date-group.astro'
 import { site } from '~/config/site'
 
@@ -22,27 +21,32 @@ const groups: { date: Date; posts: CardProps[] }[] = []
 		era's own form does not supply the answer, and the user decided the work leads
 		(DESIGN.md, Layout). It is a deliberate departure — do not "correct" it back.
 
-		The label is Ink where Blog's is quiet: with both sections empty, that contrast is the
-		only thing on the page carrying "the work leads".
+		Work and Blog are peers in treatment. An earlier pass demoted Blog to `text-quiet` to
+		express the lead; that was wrong twice over — source order already carries it, and
+		PRODUCT.md's peer-developer audience arrives for the writing, so the blog is that
+		reader's front door.
 	*/}
-	<h2 class="mb-3 font-display text-furniture tracking-band uppercase">Work</h2>
+	<h2 class="mb-3 font-display text-section tracking-furniture uppercase">Work</h2>
 
+	{/*
+		The empty branch renders no cover frame. The heading is the furniture that stays; a cover
+		is content, and an unlabeled 96px grey box is content that says nothing the sentence does
+		not. The sidebar to the right is the system's own answer to an empty slot: heading,
+		hairline, one sentence.
+	*/}
 	{
 		work.length > 0 ? (
 			<Card {...work[0]} eager class="border-t-0 pt-0" />
 		) : (
-			<div class="mb-8">
-				<Cover label="No work yet" loading="eager" />
-				<p class="mt-3 max-w-measure">
-					I haven't published anything here yet. When I do, the newest piece of work
-					leads this column.
-				</p>
-			</div>
+			<p class="mb-8 max-w-measure">
+				I haven't published anything here yet. When I do, the newest piece of work leads
+				this column.
+			</p>
 		)
 	}
 
 	<h2
-		class="mt-8 mb-3 border-t border-rule pt-4 font-display text-furniture tracking-band text-quiet uppercase"
+		class="mt-8 mb-3 border-t border-rule pt-4 font-display text-section tracking-furniture uppercase"
 	>
 		Blog
 	</h2>
