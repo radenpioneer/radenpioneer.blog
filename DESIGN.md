@@ -22,7 +22,7 @@ The period commitment is total and carries no irony. What is deliberately *not* 
 - Zero border radius anywhere; 1px hairlines and the browser's own 3D border keywords do all the drawing
 - Core web fonts only, no webfont loaded, ever
 - Blue links and violet visited links, functional and never restyled away
-- Essentially no motion: hover feedback and the visited state are the whole vocabulary
+- Motion is allowed but never decorative: compositor-only, short, reader-driven, and off entirely under `prefers-reduced-motion`
 - The furniture stays installed when there is nothing in it
 
 ## Colors
@@ -97,12 +97,19 @@ No shadows anywhere. Depth comes from two things and nothing else: the white col
 
 Everything is square. `border-radius` is `0` across the entire system with no exceptions — no rounded buttons, no rounded avatars, no softened corners on images. Rules are 1px. This single invariant is what most separates the world from anything shipping now, and softening it anywhere unravels the whole thing.
 
-Motion belongs here as a form decision rather than a token group: the era's entire motion vocabulary was hover feedback and the visited-state change, and this system keeps exactly that. No entrance animation, no scroll reveal, no transition on page change. Content is visible on arrival.
+Motion belongs here as a form decision rather than a token group. The era's own vocabulary was hover feedback and the visited-state change, and for a while this system kept exactly that and nothing more. It no longer does. Motion is permitted — but under a rule that makes "performant" mean something specific and checkable rather than well-intentioned, and under a line that does not move: content is visible on arrival, and a reader never waits on an animation to read something or click it.
 
 ### Named Rules
 **The Square Corner Rule.** `border-radius: 0`, everywhere, permanently.
 
-**The Still Page Rule.** Nothing animates on arrival or on scroll. The only state changes are hover, focus, and visited.
+**The Performant Motion Rule.** Motion is allowed, and every animation is implemented the most performant way available.
+
+- **Only `transform` and `opacity` animate.** Both are compositor-only — no layout, no paint. Animating `width`, `height`, `top`, `left`, `margin`, `box-shadow`, or `filter` is out. If an effect cannot be expressed in transform and opacity, it is not shipped.
+- **CSS before JavaScript.** A transition or a keyframe animation before a `requestAnimationFrame` loop, always. JavaScript drives motion only when the value is not knowable at author time. Where the platform animates natively — smooth scrolling, `<dialog>`'s top layer — the native path wins over both.
+- **Motion never gates content.** Nothing animates on arrival. Content is readable and interactive the moment it renders. This is what rules out entrance animations, scroll reveals, and page transitions, exactly as before — what this rule opens up is motion the reader drives, not motion that happens to them.
+- **`prefers-reduced-motion: reduce` turns animation off, not down.** The end state, instantly. Never a slower, shorter, or smaller version of the same movement.
+- **Motion is never the only signal.** Every state change is legible in a still screenshot. An animation explains a change; it never carries it.
+- **Duration is short.** 200ms is the ceiling. Longer reads as the site thinking rather than the reader moving.
 
 ## Do's and Don'ts
 
@@ -116,7 +123,7 @@ Motion belongs here as a form decision rather than a token group: the era's enti
 
 ### Don't:
 - **Don't** round a corner, add a shadow, or load a webfont. Each one is a load-bearing invariant, not a preference.
-- **Don't** animate anything on arrival or on scroll, and don't add a page transition.
+- **Don't** let motion gate content. Nothing animates on arrival, which still rules out entrance animations, scroll reveals, and page transitions — see the Performant Motion Rule for what is permitted instead.
 - **Don't** restyle `:visited` to match `:link`, or remove link underlines in prose.
 - **Don't** spend Signal Orange on anything that is not the live or current state.
 - **Don't** borrow 2002 copy idioms — no "under construction", no visitor counter, no "best viewed in". The user chose the era's structure without its voice, and the joke version is the failure mode this whole direction is built to avoid.

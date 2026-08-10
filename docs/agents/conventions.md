@@ -141,8 +141,13 @@ never constitutes one. **Hard.**
 ### Three rules enforced by deletion
 
 `--radius-*`, `--shadow-*` and `--animate-*` are set to `initial` in `@theme`, so `rounded-*`,
-`shadow-*` and `animate-*` are not utilities that exist. Breaking DESIGN.md's Square Corner, No
-Shadow and Still Page rules takes a deliberate edit to that block, which is the point.
+`shadow-*` and `animate-*` are not utilities that exist. Breaking DESIGN.md's Square Corner and No
+Shadow rules takes a deliberate edit to that block, which is the point.
+
+`--animate-*` stays deleted even though the Still Page Rule that first justified it has been
+replaced by the **Performant Motion Rule**. That rule prefers CSS transitions, and `transition-*` /
+`duration-*` were never deleted — so everything it permits is already available, and a keyframe
+animation remains a deliberate edit rather than a reach.
 
 The lock is not total — Tailwind defines a few of these without a token, and `rounded-full` still
 works. Treat it as a lock on the front door, not a wall.
@@ -205,12 +210,28 @@ is duplicated, the rule is not. **Hard.**
   **Hard**, and enforced by a guard.
 - **`<Image>` is only ever written in an `.astro` wrapper.** `astro:assets` cannot be imported into
   a `.tsx`. **Hard.**
+- **A component that builds structure around each image takes `getImage()` output, not `<Image>`.**
+  `<Image>` yields rendered markup, and a `.tsx` cannot get inside rendered markup to wrap each
+  image in its own `<li>` and `<button>`. Passing the images as a slot instead would force the
+  wrapper to emit that structure itself, which is presentation logic and forbidden. So the wrapper
+  calls `getImage()` per image and passes an array of plain `{ src, srcSet, attributes }` objects
+  down; the `.tsx` renders its own `<img>`. That is the wrapper rule's *translate* clause working as
+  written — and `<Image>` is still never written in a `.tsx`. **Hard.**
 - **Responsive images stay opt-out.** `image.responsiveStyles` is `false` and must stay false while
   Tailwind is the styling layer — Astro's unlayered styles beat Tailwind's layered ones. Components
   therefore pass explicit `widths` and `sizes`; there is no `layout` prop and no inferred sizes to
   fall back on. **Hard.**
-- **Loading strategy is spelled `loading`, never a bespoke boolean.** Default `lazy`. Only an image
-  genuinely visible in the first viewport gets `eager`, **at most one per page**. **Hard.**
+- **An image whose displayed size is fixed by the design passes a single rendition instead** — one
+  `height` (or `width`) at 2×, and no `widths`/`sizes`. There is nothing for the browser to select
+  between, and for a fixed-height, variable-width image such as a screenshot thumbnail, `sizes` is
+  unwritable. The intent of the rule above is preserved: nothing falls back on Astro's inference.
+  **Hard**, both branches.
+- **Loading strategy is spelled `loading`, never a bespoke boolean.** Default `lazy`. `eager` is for
+  images genuinely visible in the first viewport, and a page spends it **once** — on a single image,
+  or on one contiguous block of images that fill that first viewport together. A second eager image
+  elsewhere on the page is the rule broken. Note that an in-viewport `lazy` image is fetched
+  immediately regardless; `eager` buys preload-scanner discovery, not the difference between loading
+  and not loading. **Hard.**
 - **Every `ImageMetadata` used in a meta tag goes through `absoluteUrl()`.** `.src` is a
   root-relative path; `og:image` and JSON-LD `image` both require an absolute URL, and getting it
   wrong produces a page that builds green with blank social previews. **Hard**, and enforced by a
@@ -386,8 +407,6 @@ checks that the path was taken.** Make the mistake impossible rather than detect
 
 Named so a build session knows these are its discretion, not an omission:
 
-- **The screenshot carousel** (Portfolio Item) — its own ticket. It is the first component that will
-  need a real interaction decision under [Islands](#islands).
 - **The populated homepage** — how many dated groups before it stops, and what the Stack row looks
   like with authored icons. The day-zero composition is built; the full one waits on real content.
 - **Pagination** — none in v1. Adding it later is non-breaking.
