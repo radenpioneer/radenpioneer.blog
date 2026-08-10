@@ -24,8 +24,16 @@ _Avoid_: Unpublished, hidden, WIP
 A named topic a Blog Post belongs to. A first-class thing with its own name and description, not a loose string — so it can be browsed and described. Applies to Blog Posts only.
 _Avoid_: Category, topic, keyword, label
 
+**Stack**:
+A named technology a Portfolio Item was built with. A first-class thing so that new ones can be introduced by authoring, without a code change — but unlike Tag it is never browsed and carries no description. Every Portfolio Item names at least one.
+_Avoid_: Tech, tool, technology tag, "tag" used to cover both kinds of classification
+
+**Status**:
+The condition of a Portfolio Item as a reader should understand it. `concept` marks work built to prove a concept rather than to serve users, and it is permanent — it describes what the work *is*, so it outranks any stage the work has reached. `on-progress`, `live`, and `archived` mark the stage of work that is not a concept.
+_Avoid_: State, stage, phase, lifecycle — none of these capture that `concept` is a kind rather than a stage
+
 **Taxonomy**:
-A dimension along which content is classified. Blog Posts are classified by Tag; Portfolio Items use a separate taxonomy of their own.
+A dimension along which content is classified. Blog Posts are classified by Tag; Portfolio Items are classified by Stack and Status. No Portfolio Item taxonomy is browsable — both are read on the item itself, not navigated.
 
 ### Configuration
 
