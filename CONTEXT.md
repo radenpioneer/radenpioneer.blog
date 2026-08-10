@@ -7,8 +7,12 @@ A personal site combining a dev blog with a portfolio. Content is authored in a 
 ### Content
 
 **Blog Post**:
-A dated piece of writing. Its identity is tied to when it was published — it records something at a point in time and is not expected to be revised to stay true.
+A dated piece of writing. Its identity is tied to when it was published — it records something at a point in time and is not expected to be revised to stay true. It may be **corrected**; that is a different act from being kept current, and it does not change where the post sits in time.
 _Avoid_: Article, entry, "post" used generically
+
+**Correction**:
+A fix applied to a published Blog Post — a typo repaired, a wrong fact retracted. A correction never changes what the post is a record of, so it never reorders the post relative to others. Distinct from keeping a Portfolio Item current, which is expected and continuous.
+_Avoid_: Update, revision, edit — all three suggest the post is being kept current, which a Blog Post never is
 
 **Portfolio Item**:
 A piece of work being shown off. It describes a standing state rather than an event, so it is kept current rather than dated. Not a kind of Blog Post — it has its own fields, its own taxonomy, and its own ordering.
