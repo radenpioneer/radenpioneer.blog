@@ -15,8 +15,8 @@ A fix applied to a published Blog Post — a typo repaired, a wrong fact retract
 _Avoid_: Update, revision, edit — all three suggest the post is being kept current, which a Blog Post never is
 
 **Portfolio Item**:
-A piece of work being shown off. It describes a standing state rather than an event, so it is kept current rather than dated. Not a kind of Blog Post — it has its own fields, its own taxonomy, and its own ordering.
-_Avoid_: Project, work item, portfolio post, "post" used to cover both kinds of content
+A piece of work being shown off. It describes a standing state rather than an event, so it is kept current rather than dated. Not a kind of Blog Post — it has its own fields, its own taxonomy, and its own ordering. Visitors meet it under the label **Work**; Portfolio Item is the name used in code and documents.
+_Avoid_: Project, portfolio post, "post" used to cover both kinds of content
 
 **Draft**:
 Content that exists in the repository but is deliberately not published. Visible while working locally, absent from the published site.
