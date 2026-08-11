@@ -394,6 +394,18 @@ class no reviewer catches.
 | **Islands** | every `client:` in `src/` sits in a file containing an `ISLAND:` header |
 | **Absolute image URLs** | every line mentioning `og:image` or a JSON-LD `"image"` also mentions `absoluteUrl(` |
 
+A fourth check runs as **`postbuild`**, because it measures a build *output* rather than source:
+
+| Check | Asserts |
+|---|---|
+| **Search index budget** | `dist/search-index.json` is ≤ **60 KB gzipped** (`zlib.gzipSync`) |
+
+The budget is stated in transferred bytes because that is what a visitor pays, and carrying a raw
+number alongside it would guarantee someone eventually checks the wrong one. On breach the build
+fails naming both numbers; the sanctioned response is migrating to Pagefind. Raising the number is
+permitted but is a **recorded decision with a reason**, never a reflex to get a deploy out.
+Truncating indexed bodies to fit is ruled out — it makes search lie with nothing going red.
+
 The third check is deliberately shaped that way. Verifying an expression is *actually* absolute means
 reading the code, not searching it, and a guard that misses is worse than no guard because people
 trust it. So the rule is inverted: **`absoluteUrl()` is the only sanctioned path, and the guard
