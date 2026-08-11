@@ -53,21 +53,25 @@ A committed strategy: one saturated olive carries the page ground and the header
 
 ## Typography
 
-**Display Font:** Trebuchet MS (with Verdana, sans-serif)
-**Body Font:** Georgia (with Times New Roman, serif)
-**Label/UI Font:** Verdana (with Tahoma, sans-serif)
+**Display Font:** Fira Sans (with Trebuchet MS, Verdana, sans-serif)
+**Body Font:** Gelasio (with Georgia, Times New Roman, serif)
+**Label/UI Font:** Fira Sans (with Verdana, Tahoma, sans-serif)
 
-**Character:** Core web fonts, chosen as objects from the era rather than as a fallback stack. In 2002 these were the only faces you could rely on; today, committing to them is a stance — and it costs zero bytes of webfont, which is the kind of honesty this product's principles already ask for. No font file is ever loaded.
+**Character:** The faces of the era, served honestly rather than assumed. This system was built on the core web fonts — Georgia, Verdana, Trebuchet MS — on the stance that in 2002 they were the only faces you could rely on, and that relying on them today costs zero bytes. The second half of that was not true for every reader. Android maps Georgia to Noto Serif and *both* Verdana and Trebuchet MS to Roboto, so display and furniture collapsed into one face and the hierarchy below silently stopped existing; Linux without the Microsoft fonts is the same story. The stance was only ever true on Windows, macOS and iOS.
+
+So the shapes stay and the delivery changes. **Gelasio** is metric-compatible with Georgia — the same face by another name, which means the reader who already has Georgia sees no reflow when it arrives. **Fira Sans** stands in for Trebuchet MS and Verdana together: it was drawn for small-size screen UI, and at the two treatments this system actually uses — 26px letterspaced uppercase in the band, 11px letterspaced in the furniture — the family reads through the treatment rather than over it. One sans covers both roles; the roles stay distinct, and it is size, tracking and case that keep them apart, not two typefaces.
+
+The stance is no longer *zero bytes*. It is *counted bytes* — see the rule below.
 
 ### Hierarchy
-- **Site title** (Trebuchet MS, letterspaced, in the header band): the site's name, set once at the top.
-- **Date group header** (Trebuchet MS, letterspaced, above a day's entries): the date heads a *group*, not an individual post. Blogger grouped a day's writing under one date, and that structure is what makes `/blog/<year>/` from ADR-0005 fall out of the design instead of being bolted onto it.
-- **Entry title** (Georgia, weighted): the title of a Blog Post or Portfolio Item inside the column.
-- **Body** (Georgia, ~15–16px, generous leading, measure held to roughly 65–72 characters): all prose.
-- **Furniture** (Verdana, ~11px): sidebar headings, byline footers, archive lists, catalogue lines, status markers. Small, tight, and the era's true UI size.
+- **Site title** (display face, letterspaced, in the header band): the site's name, set once at the top.
+- **Date group header** (display face, letterspaced, above a day's entries): the date heads a *group*, not an individual post. Blogger grouped a day's writing under one date, and that structure is what makes `/blog/<year>/` from ADR-0005 fall out of the design instead of being bolted onto it.
+- **Entry title** (body face, weighted): the title of a Blog Post or Portfolio Item inside the column.
+- **Body** (body face, ~15–16px, generous leading, measure held to roughly 65–72 characters): all prose.
+- **Furniture** (label/UI face, ~11px): sidebar headings, byline footers, archive lists, catalogue lines, status markers. Small, tight, and the era's true UI size.
 
 ### Named Rules
-**The No Webfont Rule.** Nothing is loaded from a font service or a local font file. If a face is wanted that the era could not serve, the answer is no.
+**The Font Budget Rule.** Every face is self-hosted from a package, never fetched from a font service. Latin subset only, `woff2` only. **The total any one page downloads is 100 KB**, and a build that exceeds it goes red. Today's set is 85.0 KB — Gelasio 400, 400 italic and 700, plus Fira Sans 400. The remaining headroom is deliberately too small for the next obvious addition (Gelasio 700 italic, 22 KB), so adding a face or a weight is a decision someone records, never a reflex. Raising the number is allowed and needs a written reason; quietly shipping a second subset is not.
 
 **The Date Owns the Group Rule.** A date heads a set of entries. An entry never carries its own date as a heading.
 

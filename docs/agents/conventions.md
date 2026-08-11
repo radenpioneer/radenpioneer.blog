@@ -413,11 +413,20 @@ is a shade off is worse than no card. See
 [ADR-0009](../adr/0009-og-images-are-generated-outside-the-astro-build.md) for why it lives outside
 the build at all.
 
-A fourth check runs as **`postbuild`**, because it measures a build *output* rather than source:
+Two more run as **`postbuild`**, because they measure a build *output* rather than source:
 
 | Check | Asserts |
 |---|---|
 | **Search index budget** | `dist/search-index.json` is ≤ **60 KB gzipped** (`zlib.gzipSync`) |
+| **Font budget** | the `-latin-*.woff2` files in `dist/` total ≤ **100 KB**, *and* no non-latin subset file exists at all |
+
+The font check is two assertions because the expensive mistake here is the invisible one. Fontsource's
+per-weight entrypoint (`@fontsource/gelasio/400.css`) carries **every** subset — vietnamese,
+latin-ext, latin — each `@font-face` gated by `unicode-range`. Importing it instead of the subset
+entrypoint (`latin-400.css`) emits files no reader ever downloads, so it costs zero transferred bytes
+and is invisible to a budget measured in transferred bytes. The second assertion is what catches it,
+and it catches a preload that failed to dedupe with the CSS-referenced asset for free. See DESIGN.md's
+**Font Budget Rule** for the number and what raising it costs.
 
 The budget is stated in transferred bytes because that is what a visitor pays, and carrying a raw
 number alongside it would guarantee someone eventually checks the wrong one. On breach the build
