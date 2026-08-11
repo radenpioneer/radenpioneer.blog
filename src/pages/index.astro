@@ -15,7 +15,7 @@ const groups: { date: Date; posts: CardProps[] }[] = []
 	`titleTag="h1"` because on the homepage the site is the subject; every inner route leaves the
 	band as a `p` and owns its own `h1`. The two labels below are therefore section headings.
 */}
-<Layout title={site.title} description={site.tagline} titleTag="h1">
+<Layout title={null} description={site.tagline} titleTag="h1">
 	{/*
 		The top slot is the newest Work, not the newest dated post. This is the one place the
 		era's own form does not supply the answer, and the user decided the work leads

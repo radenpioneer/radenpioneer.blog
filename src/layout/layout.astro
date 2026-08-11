@@ -1,6 +1,4 @@
 ---
-// Common layout. Sitewide UI shared across page types (nav, footer, etc.) on top of Base — used directly by routes with no Type layout of their own, or extended by one (blog.astro, work.astro).
-//
 // This layout owns the whole assembly: the bands, the nav strip, the white column, and the
 // sidebar. A page only ever fills the main column, because the assembly is the site's identity
 // and no route gets to reshape it.
@@ -11,10 +9,9 @@ import Band from '~/components/band/band.astro'
 import SiteNav from '~/components/site-nav/site-nav.astro'
 import SiteFurniture from '~/components/site-furniture/site-furniture.astro'
 import { site, socials } from '~/config/site'
+import { absoluteUrl } from '~/lib/seo'
 
 export type Props = BaseProps & {
-	title?: string
-	description?: string
 	/**
 	 * The element the site title in the header band renders as. On the homepage the site *is*
 	 * the subject, so it is the `h1`; on every inner page it is a link back and the route owns
@@ -23,9 +20,7 @@ export type Props = BaseProps & {
 	titleTag?: 'h1' | 'p'
 }
 
-const { title, description, titleTag = 'p', ...props } = Astro.props
-
-//TODO: Sitewide imports for title & description
+const { titleTag = 'p', ...props } = Astro.props
 
 const SiteTitle = titleTag
 const year = new Date().getFullYear()
@@ -45,11 +40,6 @@ const year = new Date().getFullYear()
 
 			<SiteNav />
 
-			<!--
-				The assembly's one responsive departure from the era (DESIGN.md, Layout): below
-				its own width the sidebar unstacks beneath the main column. Every internal
-				measure holds.
-			-->
 			{/*
 				Padding lives on the columns, never on this grid, so the sidebar's hairline runs
 				the full height of the row and meets the nav rule above and the footer band
@@ -100,9 +90,7 @@ const year = new Date().getFullYear()
 	</div>
 
 	<Fragment slot="head">
-		{/* TODO: conditionally use sitewide configurations */}
-		<title>{title}</title>
-		<meta name="description" content={description} />
+		<link rel="canonical" href={absoluteUrl(Astro.url.pathname, Astro.site)} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 

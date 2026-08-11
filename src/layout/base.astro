@@ -1,10 +1,19 @@
 ---
-// Base layout. Sitewide, only what every page shares — never import this directly from src/pages; go through a Common or Type layout instead.
 import type { HTMLAttributes } from 'astro/types'
 import { lang } from '~/config/site'
+import { pageTitle } from '~/lib/seo'
 
-export type Props = HTMLAttributes<'body'>
-const { ...props } = Astro.props
+export type Props = HTMLAttributes<'body'> & {
+	/**
+	 * The route's own title segment, or `null` for the homepage's shape. Declared as a value that
+	 * must be supplied rather than as an optional prop, so that a document with no title at all
+	 * is a state the type system will not let a caller reach.
+	 */
+	title: string | null
+	description?: string
+}
+
+const { title, description, ...props } = Astro.props
 ---
 
 <html lang={lang}>
@@ -12,26 +21,28 @@ const { ...props } = Astro.props
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<title>{pageTitle(title)}</title>
+		<meta name="description" content={description} />
 		{/* TODO: Base layout SEO tags — the Base tier of ticket 15's layer table */}
 		<slot name="head" />
 	</head>
 	<body {...props}>
-		<!--
-		THESIS: An early-2000s weblog template executed as a working system, not quoted as a
-		  joke. It refuses the dev-portfolio template — no terminal, no typing animation, no
-		  hero metric — and refuses the placeless Medium-generic blog.
-		OWN-WORLD: Field Olive ground #A9AE8C, Band Deep header and footer #39402A, a white
-		  reading column on 1px Rule hairlines #C4C4B4. Signal Orange #D2601A marks live or
-		  current and nothing else. Trebuchet MS / Georgia / Verdana, core web fonts only, no
-		  webfont ever loaded. border-radius, box-shadow and animation are deleted as tokens.
-		STORY: Someone evaluating the author sees a site that decided exactly what it is before
-		  it had anything to show, and leaves knowing there are two kinds of record here.
-		FIRST VIEWPORT: Band Deep header carrying the letterspaced title and tagline; a hairline
-		  nav strip; the main column's top slot is the newest Work as a full-column plate; dated
-		  Blog Post groups beneath it; the sidebar's furniture on the right, installed and empty.
-		FORM: The Template, Played Straight — user-pinned, beating the roll. Seed 074ec59e.
-		FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
-		-->
+		{/*
+			THESIS: An early-2000s weblog template executed as a working system, not quoted as a
+			  joke. It refuses the dev-portfolio template — no terminal, no typing animation, no
+			  hero metric — and refuses the placeless Medium-generic blog.
+			OWN-WORLD: Field Olive ground #A9AE8C, Band Deep header and footer #39402A, a white
+			  reading column on 1px Rule hairlines #C4C4B4. Signal Orange #D2601A marks live or
+			  current and nothing else. Trebuchet MS / Georgia / Verdana, core web fonts only, no
+			  webfont ever loaded. border-radius, box-shadow and animation are deleted as tokens.
+			STORY: Someone evaluating the author sees a site that decided exactly what it is before
+			  it had anything to show, and leaves knowing there are two kinds of record here.
+			FIRST VIEWPORT: Band Deep header carrying the letterspaced title and tagline; a hairline
+			  nav strip; the main column's top slot is the newest Work as a full-column plate; dated
+			  Blog Post groups beneath it; the sidebar's furniture on the right, installed and empty.
+			FORM: The Template, Played Straight — user-pinned, beating the roll. Seed 074ec59e.
+			FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+		*/}
 		<slot />
 	</body>
 </html>
