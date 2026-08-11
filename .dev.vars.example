@@ -1,0 +1,20 @@
+# Keystatic (GitHub mode) — copy to `.dev.vars` and fill in.
+# `.dev.vars` is gitignored; this example file is not. Never commit real values.
+
+# --- Read by the Worker at request time. Supply in production with `wrangler secret put`. ---
+
+KEYSTATIC_GITHUB_CLIENT_ID=
+KEYSTATIC_GITHUB_CLIENT_SECRET=
+
+# Must be at least 32 characters, or Keystatic's `deriveKey` throws.
+# Generate with: openssl rand -hex 32
+KEYSTATIC_SECRET=
+
+# --- Read by the browser, inlined into the client bundle at build time. ---
+#
+# This one is NOT a Worker secret. It is read as `import.meta.env.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
+# inside client code, so it must be set wherever `astro build` runs — locally that means `.env`
+# as well as here, and in CI it means a build variable. Supplied only as a Worker secret it is
+# silently absent from the bundle and the "install this GitHub App" flow breaks.
+
+PUBLIC_KEYSTATIC_GITHUB_APP_SLUG=
