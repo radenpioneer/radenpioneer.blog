@@ -14,7 +14,7 @@
 	"workers_dev": false,
 	"preview_urls": true,
 	"assets": {
-		"directory": "./dist/client",
+		"directory": "./dist",
 		"binding": "ASSETS",
 		// Without this a missing path returns an empty body rather than the built 404 page, and
 		// it only takes effect after a rebuild — so it looks fine in a dev session.

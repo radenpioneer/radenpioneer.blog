@@ -15,12 +15,9 @@ export const pageTitle = (title: string | null) =>
 
 /**
  * A root-relative URL in a meta tag builds green and ships a blank social preview, so verifying
- * one at review time means reading the expression rather than searching for it. This is the only
- * sanctioned way to make an absolute URL, and the guard checks that the path was taken — a check
- * that can be wrong loudly instead of missing quietly.
+ * one at review time means reading the expression rather than searching for it.
  *
- * `origin` is passed in rather than read off `Astro.site` here: `src/lib/` holds no Astro
- * globals. It throws on a missing origin, which is the wanted failure — the alternative is a
- * canonical reading `undefined` on every page of a green build.
+ * Throwing on a missing origin is the wanted failure: the alternative is every page of a green
+ * build carrying a canonical that reads `undefined`.
  */
 export const absoluteUrl = (path: string, origin: URL | undefined) => new URL(path, origin).href

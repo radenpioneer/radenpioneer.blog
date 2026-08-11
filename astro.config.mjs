@@ -50,7 +50,10 @@ export default defineConfig({
       // This does not make the `noindex` tags on those routes redundant. A filter controls what
       // is submitted; the meta tag controls what is indexed once a crawler arrives some other
       // way.
-      filter: (page) => !/\/(search|keystatic)\//.test(page)
+      filter: (page) => {
+        const { pathname } = new URL(page)
+        return !pathname.startsWith('/search/') && !pathname.startsWith('/keystatic/')
+      }
     })
   ]
 });

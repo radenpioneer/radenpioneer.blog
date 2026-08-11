@@ -22,7 +22,9 @@ const { title, description, ...props } = Astro.props
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle(title)}</title>
-		<meta name="description" content={description} />
+		{/* Astro drops an undefined attribute but keeps the element, so an omitted description
+		    would otherwise ship as a bare `<meta name="description">`. */}
+		{description && <meta name="description" content={description} />}
 		{/* TODO: Base layout SEO tags — the Base tier of ticket 15's layer table */}
 		<slot name="head" />
 	</head>
