@@ -8,9 +8,17 @@
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "radenpioneernet",
 	"main": "@astrojs/cloudflare/entrypoints/server",
+	// Production has exactly one origin, so the apex and the www host cannot both be reachable
+	// and neither can a third. Preview URLs are a separate key and stay on — turning the
+	// subdomain off would otherwise take deploy previews with it.
+	"workers_dev": false,
+	"preview_urls": true,
 	"assets": {
-		"directory": "./dist",
-		"binding": "ASSETS"
+		"directory": "./dist/client",
+		"binding": "ASSETS",
+		// Without this a missing path returns an empty body rather than the built 404 page, and
+		// it only takes effect after a rebuild — so it looks fine in a dev session.
+		"not_found_handling": "404-page"
 	},
 	"observability": {
 		"enabled": true

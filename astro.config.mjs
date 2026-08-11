@@ -5,6 +5,7 @@ import cloudflare from '@astrojs/cloudflare';
 
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +17,11 @@ export default defineConfig({
   // Cloudflare forces the trailing slash rather than dropping it, so this is set explicitly to
   // make dev match prod (ADR-0005).
   trailingSlash: 'always',
+
+  // Nothing on this site reads or writes a session, and the adapter otherwise wires a KV-backed
+  // one by default: a binding that has to exist and a runtime that has to be parsed on every
+  // cold start, both to store nothing.
+  session: false,
 
   adapter: cloudflare({
     // The v14 default is the runtime image service, which is billed per request. Ours is
@@ -34,5 +40,17 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [react()]
+  integrations: [
+    react(),
+    sitemap({
+      // Search results and the CMS admin are the two things a crawler should never be handed.
+      // Tag pages stay in — they are indexed on purpose. Drafts need no clause here: they are
+      // already absent from a production build.
+      //
+      // This does not make the `noindex` tags on those routes redundant. A filter controls what
+      // is submitted; the meta tag controls what is indexed once a crawler arrives some other
+      // way.
+      filter: (page) => !/\/(search|keystatic)\//.test(page)
+    })
+  ]
 });

@@ -36,7 +36,7 @@ const groups: { date: Date; posts: CardProps[] }[] = []
 	*/}
 	{
 		work.length > 0 ? (
-			<Card {...work[0]} eager class="border-t-0 pt-0" />
+			<Card {...work[0]} loading="eager" class="border-t-0 pt-0" />
 		) : (
 			<p class="mb-8 max-w-measure">
 				I haven't published anything here yet. When I do, the newest piece of work leads

@@ -393,15 +393,16 @@ skip it, and so should you.
 
 ## Guards
 
-`scripts/check-conventions.mjs`, wired as `prebuild` so it blocks `astro build`. Three checks, all
-text search, all covering failures that are **green at build time and wrong in production** — the
-class no reviewer catches.
+`scripts/check-conventions.mjs`, wired as `prebuild` so it blocks `astro build`. Four checks — text
+search over source, plus assert environment — all covering failures that are **green at build time
+and wrong in production** — the class no reviewer catches.
 
 | Check | Asserts |
 |---|---|
 | **Asset paths** | no `](/src/` anywhere under `src/content/` |
 | **Islands** | every `client:` in `src/` sits in a file containing an `ISLAND:` header |
 | **Absolute image URLs** | every line mentioning `og:image` or a JSON-LD `"image"` also mentions `absoluteUrl(` |
+| **Build variable** | `PUBLIC_KEYSTATIC_GITHUB_APP_SLUG` is set — read from `process.env`, falling back to parsing `.env`, because `prebuild` runs before Vite loads it |
 
 **The OG card generator is exempt from every convention in this document.** **Hard.** It is not a
 site component and cannot be made into one: satori supports no classes, no stylesheet and no

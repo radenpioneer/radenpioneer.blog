@@ -14,7 +14,8 @@ KEYSTATIC_SECRET=
 #
 # This one is NOT a Worker secret. It is read as `import.meta.env.PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
 # inside client code, so it must be set wherever `astro build` runs — locally that means `.env`
-# as well as here, and in CI it means a build variable. Supplied only as a Worker secret it is
-# silently absent from the bundle and the "install this GitHub App" flow breaks.
+# as well as here, and in CI it means a repository variable on the build step, not a secret.
+# Supplied only as a Worker secret it is silently absent from the bundle and the "install this
+# GitHub App" flow breaks.
 
 PUBLIC_KEYSTATIC_GITHUB_APP_SLUG=

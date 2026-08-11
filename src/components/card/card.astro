@@ -10,18 +10,17 @@ export type Props = Omit<CardProps, 'className' | 'cover' | 'hasByline' | 'bylin
 	class?: string
 	cover?: ImageMetadata
 	coverAlt?: string
-	/** Above-the-fold entries opt out of lazy loading. */
-	eager?: boolean
+	loading?: 'eager' | 'lazy'
 }
 
-const { class: className, cover, coverAlt = '', eager = false, ...props } = Astro.props
+const { class: className, cover, coverAlt = '', loading = 'lazy', ...props } = Astro.props
 ---
 
 <Card {...props} className={className} hasByline={Astro.slots.has('byline')}>
 	{
 		cover && (
 			<Fragment slot="cover">
-				<Cover image={cover} alt={coverAlt} loading={eager ? 'eager' : 'lazy'} />
+				<Cover image={cover} alt={coverAlt} loading={loading} />
 			</Fragment>
 		)
 	}
