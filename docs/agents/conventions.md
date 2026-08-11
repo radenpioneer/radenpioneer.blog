@@ -105,11 +105,20 @@ component. **Hard.**
 
 **Nothing hydrates by default.** A page with no island ships zero JavaScript. **Hard.**
 
-An island is a **decision**, not a convenience. It has to earn itself: a control that cannot work
-without a client runtime. When one is warranted:
+An island is a **decision**, not a convenience. It has to earn itself, and **two** reasons are
+sanctioned — only two:
 
-- The island is **React**, hydrated with **`client:visible`**. **Default** — `client:load` needs a
-  stated reason.
+1. **A control that cannot work without a client runtime.**
+2. **A component whose existence is itself content** — on this site, a demonstration of the craft the
+   route is about. Available **only on routes whose subject is that work** (in practice `/work`), and
+   the `ISLAND:` header must name what is being demonstrated. **Not available to make a static
+   control feel livelier.** **Hard.** See ADR-0006.
+
+When one is warranted:
+
+- The island is **React**, hydrated with **`client:idle` above the fold** and **`client:visible`
+  otherwise**. **Default** — `client:load` needs a stated reason. An above-the-fold island is in the
+  viewport already, so `client:visible` there pays for an observer that fires immediately.
 - **The `client:*` directive sits on the wrapper, not on the page.** Pages assemble; they do not
   decide runtime. **Hard.**
 - Consequence, and it is not a loophole to look for a way around: **a component carrying a directive

@@ -54,8 +54,9 @@ Confirmed constraints that future work must preserve:
 - **`cover` is required on both content types and rendered differently** — hero plus card plus OG on a Blog Post; card and OG only on a Portfolio Item, whose page is led by its screenshot carousel (ADR-0003).
 - **About is a singleton carrying author identity.** Blog Posts have no `author` field; the byline reads About directly. `bio` is one sentence bounded 50–160 characters doing three jobs (footer, JSON-LD, meta description) (ADR-0004).
 - **No Portfolio Item taxonomy is browsable.** Stack and Status are read on the item, never navigated. Tag is browsable and described; Stack is neither.
+- **The portfolio index is interactive on purpose, and `/work` is the only place that reason is available.** Its sort-and-filter controls are hydrated because a working control is itself evidence of the craft, not because fewer than a dozen items need them; the index still renders complete and correctly ordered with JavaScript off (ADR-0006).
 
-Not yet built, tracked in `.scratch/dev-blog/issues/`, and therefore not to be assumed present: search, OG image generation, the screenshot carousel, the deploy pipeline, and the base component set.
+Not yet built, tracked in `.scratch/dev-blog/issues/`, and therefore not to be assumed present: search, OG image generation, the screenshot carousel, the portfolio index and its controls, and the deploy pipeline. The base component set **is** built and committed — see `docs/agents/conventions.md`, which is written against that real code.
 
 ## Brand Commitments
 
