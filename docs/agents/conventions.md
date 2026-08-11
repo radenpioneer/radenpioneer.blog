@@ -403,6 +403,16 @@ class no reviewer catches.
 | **Islands** | every `client:` in `src/` sits in a file containing an `ISLAND:` header |
 | **Absolute image URLs** | every line mentioning `og:image` or a JSON-LD `"image"` also mentions `absoluteUrl(` |
 
+**The OG card generator is exempt from every convention in this document.** **Hard.** It is not a
+site component and cannot be made into one: satori supports no classes, no stylesheet and no
+`<style>` tag, so the card is a plain module emitting an HTML string of **inline styles only**, over
+a flexbox subset. It therefore has no `.tsx`, no `.astro` wrapper, no Tailwind token, and it writes
+literal hex. The one duty that replaces them: **every colour in it is copied from `@theme` and must
+not drift from it** — the card is the site's face on someone else's timeline, and a card whose olive
+is a shade off is worse than no card. See
+[ADR-0009](../adr/0009-og-images-are-generated-outside-the-astro-build.md) for why it lives outside
+the build at all.
+
 A fourth check runs as **`postbuild`**, because it measures a build *output* rather than source:
 
 | Check | Asserts |
