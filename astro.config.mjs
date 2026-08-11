@@ -8,6 +8,11 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
+  // The `www` host is the primary one and the apex redirects to it (ADR-0007). Every canonical,
+  // og:url, sitemap entry and JSON-LD id is built from this line, and all of them fail silently
+  // on the wrong value — a green build serving the host we do not use.
+  site: 'https://www.radenpioneer.net',
+
   // Cloudflare forces the trailing slash rather than dropping it, so this is set explicitly to
   // make dev match prod (ADR-0005).
   trailingSlash: 'always',

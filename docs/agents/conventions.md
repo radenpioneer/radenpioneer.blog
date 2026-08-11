@@ -271,7 +271,7 @@ why lives at the line itself; this is the index.
 |---|---|---|
 | `wrangler.jsonc` | `compatibility_date` ≤ what the installed workerd supports | loudly, every build. Bump only alongside a wrangler upgrade |
 | `wrangler.jsonc` | `not_found_handling: "404-page"` | **silently** — 404 ships an empty body. Needs a rebuild to take effect |
-| `astro.config.mjs` | `site: 'https://radenpioneer.net'` | **silently** for canonical (`undefined` in the URL); loudly for `@astrojs/sitemap` |
+| `astro.config.mjs` | `site: 'https://www.radenpioneer.net'` | **silently** for canonical (the wrong host, or `undefined` in the URL); loudly for `@astrojs/sitemap`. The `www` host is the primary one — ADR-0007 |
 | `astro.config.mjs` | `trailingSlash: 'always'` | **silently** — dev stops matching prod. Cloudflare forces the slash |
 | `astro.config.mjs` | `imageService: 'compile'` | **silently** — v14 defaults to the billed runtime service, and content SVG breaks in production |
 | `astro.config.mjs` | `image.responsiveStyles: false` | **silently** — Astro's unlayered styles beat Tailwind's |
