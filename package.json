@@ -7,11 +7,14 @@
 	},
 	"scripts": {
 		"dev": "astro dev",
+		"prebuild": "node scripts/check-conventions.mjs",
 		"build": "astro build",
-		"preview": "astro build && astro preview",
+		"postbuild": "node scripts/check-build-output.mjs",
+		"test": "npm run build && node --test test/site-output.test.mjs",
+		"preview": "npm run build && astro preview",
 		"astro": "astro",
 		"generate-types": "wrangler types",
-		"deploy": "astro build && wrangler deploy",
+		"deploy": "npm run build && wrangler deploy",
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
